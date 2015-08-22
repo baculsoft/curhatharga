@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    ext {
+        androidSupportVersion = '22.2.1'
+        googleMapsVersion = '7.8.0'
+        butterKnifeVersion = '7.0.1'
+        daggerVersion = '1.2.2'
+        javapoetVersion = '1.2.0'
+        javaxInjectVersion = '1'
+        okhttpVersion = '2.4.0'
+        okioVersion = '1.5.0'
+        retrofitVersion = '1.9.0'
+        picassoVersion = '2.5.2'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.1'
+    }
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "23"
+
+    defaultConfig {
+        applicationId "com.baculsoft.mdk.mobile"
+        minSdkVersion 17
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // android support
+    compile ("com.android.support:appcompat-v7:${androidSupportVersion}")
+    compile ("com.android.support:cardview-v7:${androidSupportVersion}")
+    compile ("com.android.support:recyclerview-v7:${androidSupportVersion}")
+    compile ("com.android.support:palette-v7:${androidSupportVersion}")
+    compile ("com.google.android.gms:play-services-maps:${googleMapsVersion}")
+
+    // square injectors
+    compile ("com.jakewharton:butterknife:${butterKnifeVersion}")
+    compile ("com.squareup.dagger:dagger:${daggerVersion}")
+    provided ("com.squareup.dagger:dagger-compiler:${daggerVersion}")
+    compile ("com.squareup:javapoet:${javapoetVersion}")
+    compile ("javax.inject:javax.inject:${javaxInjectVersion}")
+
+    // square rest services
+    compile ("com.squareup.okhttp:okhttp:${okhttpVersion}")
+    compile ("com.squareup.okhttp:okhttp-urlconnection:${okhttpVersion}")
+    compile ("com.squareup.okio:okio:${okioVersion}")
+    compile ("com.squareup.retrofit:retrofit:${retrofitVersion}")
+
+    // square image loader
+    compile ("com.squareup.picasso:picasso:${picassoVersion}")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
+}
