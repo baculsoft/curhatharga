@@ -11,18 +11,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.baculsoft.mdk.mobile.R;
 import com.baculsoft.mdk.mobile.adapter.ProductAdapter;
-import com.baculsoft.mdk.mobile.models.Product;
+import com.baculsoft.mdk.mobile.helper.Locations;
 import com.baculsoft.mdk.mobile.models.ClientResponse;
+import com.baculsoft.mdk.mobile.models.Product;
 import com.baculsoft.mdk.mobile.services.IProductService;
 import com.baculsoft.mdk.mobile.utils.Configs;
-import com.baculsoft.mdk.mobile.helper.Locations;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;
@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Toolbar mToolbar;
 
     @Bind(R.id.btn_like)
-    ImageButton mButtonLike;
+    Button mButtonLike;
 
     @Bind(R.id.btn_dislike)
-    ImageButton mButtonDislike;
+    Button mButtonDislike;
 
     private Spinner mSpinner;
     private Locations mLocations;
@@ -114,17 +114,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_like: {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.label_like), Toast.LENGTH_SHORT).show();
+                StringBuilder messageBuilder = new StringBuilder(getResources().getString(R.string.app_desc));
+                messageBuilder.append(mSpinner.getSelectedItem().toString()).append(" ");
+                messageBuilder.append(getResources().getString(R.string.label_like));
+                Toast.makeText(getApplicationContext(), messageBuilder.toString(), Toast.LENGTH_SHORT).show();
                 isLike = true;
                 collectCommonInfo();
-                setNextItem(mSpinner.getSelectedItemPosition());
                 break;
             }
             case R.id.btn_dislike: {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.label_dislike), Toast.LENGTH_SHORT).show();
+                StringBuilder messageBuilder = new StringBuilder(getResources().getString(R.string.app_desc));
+                messageBuilder.append(mSpinner.getSelectedItem().toString()).append(" ");
+                messageBuilder.append(getResources().getString(R.string.label_dislike));
+                Toast.makeText(getApplicationContext(), messageBuilder.toString(), Toast.LENGTH_SHORT).show();
                 isLike = false;
                 collectCommonInfo();
-                setNextItem(mSpinner.getSelectedItemPosition());
                 break;
             }
         }
@@ -166,19 +170,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         product.setScreenName(getScreenName());
         product.setProductName(getProductName());
         product.setLikes(isLikes());
-        Log.d(TAG, String.format("User is %s", String.valueOf(product.isLikes())));
-
         submit(product);
+        setNextItem(mSpinner.getSelectedItemPosition());
     }
 
     private void setNextItem(int position) {
         if (position < 5) {
             mSpinner.setSelection(position + 1);
-            changeBackground(position + 1);
         } else {
             position = 0;
             mSpinner.setSelection(position);
-            changeBackground(position);
         }
     }
 

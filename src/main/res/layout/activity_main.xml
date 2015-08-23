@@ -10,7 +10,7 @@
         android:id="@+id/app_toolbar"
         layout="@layout/toolbar_app" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_like"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
@@ -21,10 +21,11 @@
         android:background="@drawable/btn_fab_like"
         android:contentDescription="@string/btn_like_desc"
         android:elevation="@dimen/elevation_large"
-        android:src="@mipmap/ic_like"
-        android:textSize="@dimen/text_xxlarge" />
+        android:text="@string/btn_murah"
+        android:textColor="@color/grey_white_1000"
+        android:textSize="@dimen/text_large" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_dislike"
         android:layout_width="@dimen/fab_size"
         android:layout_height="@dimen/fab_size"
@@ -35,6 +36,7 @@
         android:background="@drawable/btn_fab_dislike"
         android:contentDescription="@string/btn_dislike_desc"
         android:elevation="@dimen/elevation_large"
-        android:src="@mipmap/ic_dislike"
-        android:textSize="@dimen/text_xxlarge" />
+        android:text="@string/btn_mahal"
+        android:textColor="@color/grey_white_1000"
+        android:textSize="@dimen/text_large" />
 </RelativeLayout>
