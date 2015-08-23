@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.baculsoft.mdk.mobile.R;
 import com.baculsoft.mdk.mobile.adapter.ProductAdapter;
@@ -114,19 +113,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_like: {
-                StringBuilder messageBuilder = new StringBuilder(getResources().getString(R.string.app_desc));
-                messageBuilder.append(mSpinner.getSelectedItem().toString()).append(" ");
-                messageBuilder.append(getResources().getString(R.string.label_like));
-                Toast.makeText(getApplicationContext(), messageBuilder.toString(), Toast.LENGTH_SHORT).show();
                 isLike = true;
                 collectCommonInfo();
                 break;
             }
             case R.id.btn_dislike: {
-                StringBuilder messageBuilder = new StringBuilder(getResources().getString(R.string.app_desc));
-                messageBuilder.append(mSpinner.getSelectedItem().toString()).append(" ");
-                messageBuilder.append(getResources().getString(R.string.label_dislike));
-                Toast.makeText(getApplicationContext(), messageBuilder.toString(), Toast.LENGTH_SHORT).show();
                 isLike = false;
                 collectCommonInfo();
                 break;
@@ -212,28 +203,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         client.setReadTimeout(1, TimeUnit.MINUTES);
 
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setClient(new OkClient(client))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(Configs.REST_URL).build();
+                                                 .setClient(new OkClient(client))
+                                                 .setLogLevel(RestAdapter.LogLevel.FULL)
+                                                 .setEndpoint(Configs.REST_URL).build();
         IProductService mProductService = restAdapter.create(IProductService.class);
 
         try {
-            mProductService.createProduct(product.getLatitude(),
-                    product.getLongitude(),
-                    product.getScreenName(),
-                    product.getProductName(),
-                    product.isLikes(),
-                    new Callback<ClientResponse>() {
-                        @Override
-                        public void success(ClientResponse clientResponse, Response response) {
-                            Log.d(TAG, response.getReason());
-                        }
-
-                        @Override
-                        public void failure(RetrofitError error) {
-                            Log.e(TAG, error.getMessage());
-                        }
-                    });
+            mProductService.createProduct(
+                            product.getLatitude(),
+                            product.getLongitude(),
+                            product.getScreenName(),
+                            product.getProductName(),
+                            product.isLikes(),
+                            new Callback<ClientResponse>() {
+                                @Override
+                                public void success(ClientResponse clientResponse, Response response) {
+                                    Log.d(TAG, response.getReason());
+                                }
+                                @Override
+                                public void failure(RetrofitError error) {
+                                    Log.e(TAG, error.getMessage());
+                                }
+                            });
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         }

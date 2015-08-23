@@ -1,10 +1,7 @@
 <resources>
     <string name="app_name">Sikerang</string>
-    <string name="app_desc">Harga&#160;</string>
     <string name="btn_murah">Murah</string>
     <string name="btn_mahal">Mahal</string>
     <string name="btn_like_desc">Murah Button</string>
     <string name="btn_dislike_desc">Mahal Button</string>
-    <string name="label_like">Murah :)</string>
-    <string name="label_dislike">Mahal :(</string>
 </resources>
