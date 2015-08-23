@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Pangan Mobile</string>
+    <string name="app_name">Sikerang</string>
+    <string name="app_desc">Harga&#160;</string>
+    <string name="btn_like_desc">Like Button</string>
+    <string name="btn_dislike_desc">Dislike Button</string>
+    <string name="label_like">Puas!</string>
+    <string name="label_dislike">Tidak Puas!</string>
 </resources>
