@@ -215,21 +215,26 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 .setLogLevel(RestAdapter.LogLevel.FULL)
                 .setEndpoint(Configs.REST_URL).build();
         IProductService mProductService = restAdapter.create(IProductService.class);
-        mProductService.createProduct(product.getLatitude(),
-                product.getLongitude(),
-                product.getScreenName(),
-                product.getProductName(),
-                product.isLikes(),
-                new Callback<ClientResponse>() {
-                    @Override
-                    public void success(ClientResponse clientResponse, Response response) {
-                        Log.d(TAG, response.getReason());
-                    }
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        Log.d(TAG, error.getMessage());
-                    }
-                });
+        try {
+            mProductService.createProduct(product.getLatitude(),
+                    product.getLongitude(),
+                    product.getScreenName(),
+                    product.getProductName(),
+                    product.isLikes(),
+                    new Callback<ClientResponse>() {
+                        @Override
+                        public void success(ClientResponse clientResponse, Response response) {
+                            Log.d(TAG, response.getReason());
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            Log.e(TAG, error.getMessage());
+                        }
+                    });
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        }
     }
 }
