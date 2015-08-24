@@ -4,4 +4,5 @@
     <string name="btn_mahal">Mahal</string>
     <string name="btn_like_desc">Murah Button</string>
     <string name="btn_dislike_desc">Mahal Button</string>
+    <string name="msg_price">Harga&#160;</string>
 </resources>

@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.baculsoft.mdk.mobile.R;
 import com.baculsoft.mdk.mobile.adapter.ProductAdapter;
@@ -162,7 +163,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         product.setProductName(getProductName());
         product.setLikes(isLikes());
         submit(product);
+        setSuccessMessage(product.getProductName(), isLikes());
         setNextItem(mSpinner.getSelectedItemPosition());
+    }
+
+    private void setSuccessMessage(String product, boolean isLikes) {
+        String price = getResources().getString(R.string.msg_price);
+        String note = isLikes ? "Mahal!" : "Murah!";
+        StringBuilder messageBuilder = new StringBuilder(price);
+        messageBuilder.append(product).append(" ").append(note);
+        Toast.makeText(getApplicationContext(), messageBuilder.toString(), Toast.LENGTH_SHORT).show();
     }
 
     private void setNextItem(int position) {
