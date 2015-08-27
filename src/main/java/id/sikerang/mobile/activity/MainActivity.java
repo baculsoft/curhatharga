@@ -1,4 +1,4 @@
-package com.baculsoft.mdk.mobile.activity;
+package id.sikerang.mobile.activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,13 +16,13 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.baculsoft.mdk.mobile.R;
-import com.baculsoft.mdk.mobile.adapter.ProductAdapter;
-import com.baculsoft.mdk.mobile.helper.Locations;
-import com.baculsoft.mdk.mobile.models.ClientResponse;
-import com.baculsoft.mdk.mobile.models.Product;
-import com.baculsoft.mdk.mobile.services.IProductService;
-import com.baculsoft.mdk.mobile.utils.Configs;
+import id.sikerang.mobile.R;
+import id.sikerang.mobile.adapter.ProductAdapter;
+import id.sikerang.mobile.helper.Locations;
+import id.sikerang.mobile.models.ClientResponse;
+import id.sikerang.mobile.models.Product;
+import id.sikerang.mobile.services.IProductService;
+import id.sikerang.mobile.utils.Configs;
 import com.squareup.okhttp.OkHttpClient;
 
 import java.util.ArrayList;

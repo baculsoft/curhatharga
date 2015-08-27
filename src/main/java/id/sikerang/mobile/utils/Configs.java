@@ -1,4 +1,4 @@
-package com.baculsoft.mdk.mobile.utils;
+package id.sikerang.mobile.utils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
@@ -10,6 +10,5 @@ public final class Configs {
     private Configs() {
     }
 
-    public static final String REST_URL = "http://hackathon2015.baculsoft.com/api";
-    public static final String REST_ADAPTER = "SikerangAdapter";
+    public static final String REST_URL = "http://sikerang.id/api";
 }

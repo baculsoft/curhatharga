@@ -1,4 +1,4 @@
-package com.baculsoft.mdk.mobile.adapter;
+package id.sikerang.mobile.adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.baculsoft.mdk.mobile.R;
-
 import java.util.ArrayList;
+
+import id.sikerang.mobile.R;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)

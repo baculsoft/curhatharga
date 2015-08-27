@@ -1,6 +1,6 @@
-package com.baculsoft.mdk.mobile.services;
+package id.sikerang.mobile.services;
 
-import com.baculsoft.mdk.mobile.models.ClientResponse;
+import id.sikerang.mobile.models.ClientResponse;
 
 import retrofit.Callback;
 import retrofit.http.Field;

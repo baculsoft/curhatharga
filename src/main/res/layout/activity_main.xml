@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_rice"
-    tools:context="com.baculsoft.mdk.mobile.activity.MainActivity">
+    tools:context="id.sikerang.mobile.activity.MainActivity">
 
     <include
         android:id="@+id/app_toolbar"

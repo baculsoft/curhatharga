@@ -1,4 +1,4 @@
-package com.baculsoft.mdk.mobile.helper;
+package id.sikerang.mobile.helper;
 
 import android.content.Context;
 import android.location.Criteria;

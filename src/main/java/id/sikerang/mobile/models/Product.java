@@ -1,4 +1,4 @@
-package com.baculsoft.mdk.mobile.models;
+package id.sikerang.mobile.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

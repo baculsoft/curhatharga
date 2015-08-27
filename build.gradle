@@ -4,11 +4,7 @@ buildscript {
     ext {
         androidSupportVersion = '22.2.1'
         butterKnifeVersion = '7.0.1'
-        daggerVersion = '1.2.2'
-        javapoetVersion = '1.2.0'
-        javaxInjectVersion = '1'
         okhttpVersion = '2.4.0'
-        okioVersion = '1.5.0'
         retrofitVersion = '1.9.0'
     }
     repositories {
@@ -24,7 +20,7 @@ android {
     buildToolsVersion "23"
 
     defaultConfig {
-        applicationId "com.baculsoft.mdk.mobile"
+        applicationId "id.sikerang.mobile"
         minSdkVersion 17
         targetSdkVersion 22
         versionCode 1
@@ -51,22 +47,11 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // android support
     compile("com.android.support:appcompat-v7:${androidSupportVersion}")
     compile("com.android.support:cardview-v7:${androidSupportVersion}")
-    compile("com.android.support:palette-v7:${androidSupportVersion}")
-
-    // square injectors
     compile("com.jakewharton:butterknife:${butterKnifeVersion}")
-    compile("com.squareup.dagger:dagger:${daggerVersion}")
-    provided("com.squareup.dagger:dagger-compiler:${daggerVersion}")
-    compile("com.squareup:javapoet:${javapoetVersion}")
-    compile("javax.inject:javax.inject:${javaxInjectVersion}")
-
-    // square rest services
     compile("com.squareup.okhttp:okhttp:${okhttpVersion}")
     compile("com.squareup.okhttp:okhttp-urlconnection:${okhttpVersion}")
-    compile("com.squareup.okio:okio:${okioVersion}")
     compile("com.squareup.retrofit:retrofit:${retrofitVersion}")
 }
 
