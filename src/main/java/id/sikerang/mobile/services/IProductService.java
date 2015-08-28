@@ -1,8 +1,5 @@
 package id.sikerang.mobile.services;
 
-import id.sikerang.mobile.models.ClientResponse;
-
-import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.POST;
@@ -17,6 +14,5 @@ public interface IProductService {
                        @Field("longitude") String longitude,
                        @Field("screenName") String screenName,
                        @Field("productName") String productName,
-                       @Field("likes") boolean likes,
-                       Callback<ClientResponse> callback);
+                       @Field("likes") boolean likes);
 }
