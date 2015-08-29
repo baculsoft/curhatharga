@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SiKerang</string>
-    <string name="btn_murah">Murah</string>
-    <string name="btn_mahal">Mahal</string>
-    <string name="btn_murah_desc">Murah Button</string>
-    <string name="btn_mahal_desc">Mahal Button</string>
-    <string name="message_product">Harga&#160;</string>
+    <string name="app_name">CurhatHarga!</string>
+    <string name="btn_likes_desc">Suka!</string>
+    <string name="btn_dislikes_desc">Tidak Suka!</string>
+    <string name="btn_comments_desc">Kirim Komentar!</string>
+    <string name="text_comments">Pantau Trend</string>
 </resources>

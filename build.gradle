@@ -21,10 +21,10 @@ android {
 
     defaultConfig {
         applicationId "id.sikerang.mobile"
-        minSdkVersion 17
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.3"
     }
     buildTypes {
         release {

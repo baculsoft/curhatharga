@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.sikerang.mobile.activity.ProductActivity">
+
+    <include
+        android:id="@+id/app_toolbar"
+        layout="@layout/app_toolbar" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_comments"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:elevation="@dimen/elevation_large"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_dislikes"
+            android:layout_width="@dimen/button_xxlarge"
+            android:layout_height="@dimen/button_xxlarge"
+            android:layout_marginEnd="@dimen/margin_large"
+            android:layout_marginRight="@dimen/margin_large"
+            android:background="@drawable/btn_fab_dislikes"
+            android:contentDescription="@string/btn_dislikes_desc"
+            android:src="@mipmap/ic_thumb_down" />
+
+        <ImageButton
+            android:id="@+id/btn_likes"
+            android:layout_width="@dimen/button_xxlarge"
+            android:layout_height="@dimen/button_xxlarge"
+            android:layout_marginLeft="@dimen/margin_large"
+            android:layout_marginStart="@dimen/margin_large"
+            android:background="@drawable/btn_fab_likes"
+            android:contentDescription="@string/btn_likes_desc"
+            android:src="@mipmap/ic_thumb_up" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_comments"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/red_500"
+        android:contentDescription="@string/btn_comments_desc"
+        android:drawableLeft="@mipmap/ic_favorite"
+        android:drawableStart="@mipmap/ic_favorite"
+        android:elevation="@dimen/elevation_small"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_medium_large"
+        android:paddingLeft="@dimen/padding_extra"
+        android:paddingRight="@dimen/padding_extra"
+        android:paddingTop="@dimen/padding_medium_large"
+        android:text="@string/text_comments"
+        android:textAllCaps="true"
+        android:textColor="@color/grey_100"
+        android:textSize="@dimen/text_larger" />
+</RelativeLayout>

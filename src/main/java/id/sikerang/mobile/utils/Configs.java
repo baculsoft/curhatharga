@@ -10,5 +10,9 @@ public final class Configs {
     private Configs() {
     }
 
-    public static final String REST_URL = "http://sikerang.id/api";
+    /**
+     * Development: http://hackathon2015.baculsoft.com/api
+     * Production: http://sikerang.id/api
+     */
+    public static final String API_URL = "http://sikerang.id/api";
 }
