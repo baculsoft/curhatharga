@@ -67,6 +67,17 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="@dimen/text_12sp" />
+
+        <TextView
+            android:id="@+id/tv_statement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_location"
+            android:layout_marginTop="@dimen/margin_128dp"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textSize="@dimen/text_22sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ImageButton

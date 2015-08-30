@@ -7,6 +7,8 @@
     <string name="action_search">Cari</string>
     <string name="action_comments">Curhat</string>
     <string name="dummy_sugar">Gula</string>
-    <string name="dummy_price">Rp 15.000,-</string>
+    <string name="dummy_price">Rp 15.000,-/Kg</string>
     <string name="dummy_location">Jakarta Selatan</string>
+    <string name="text_likes">Murah!</string>
+    <string name="text_dislikes">Mahal!</string>
 </resources>
