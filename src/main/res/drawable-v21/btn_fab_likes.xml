@@ -3,7 +3,7 @@
     android:color="@color/button_material_dark">
     <item>
         <shape android:shape="oval">
-            <solid android:color="#009688" />
+            <solid android:color="@color/teal_500" />
         </shape>
     </item>
 </ripple>

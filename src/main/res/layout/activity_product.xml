@@ -6,56 +6,49 @@
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
     <include
-        android:id="@+id/app_toolbar"
-        layout="@layout/app_toolbar" />
+        android:id="@+id/toolbar_top"
+        layout="@layout/toolbar_top" />
 
-    <LinearLayout
+    <include
+        android:id="@+id/toolbar_bottom"
+        layout="@layout/toolbar_bottom" />
+
+    <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_comments"
-        android:layout_marginBottom="@dimen/margin_large"
-        android:elevation="@dimen/elevation_large"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/toolbar_bottom"
+        android:layout_below="@+id/toolbar_top"
+        android:contentDescription="@string/app_desc"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_sugar" />
 
-        <ImageButton
-            android:id="@+id/btn_dislikes"
-            android:layout_width="@dimen/button_xxlarge"
-            android:layout_height="@dimen/button_xxlarge"
-            android:layout_marginEnd="@dimen/margin_large"
-            android:layout_marginRight="@dimen/margin_large"
-            android:background="@drawable/btn_fab_dislikes"
-            android:contentDescription="@string/btn_dislikes_desc"
-            android:src="@mipmap/ic_thumb_down" />
+    <ImageButton
+        android:id="@+id/btn_dislikes"
+        android:layout_width="@dimen/button_56dp"
+        android:layout_height="@dimen/button_56dp"
+        android:layout_above="@+id/toolbar_bottom"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="@dimen/margin_24dp"
+        android:layout_marginLeft="@dimen/margin_64dp"
+        android:layout_marginStart="@dimen/margin_64dp"
+        android:background="@drawable/btn_fab_dislikes"
+        android:contentDescription="@string/btn_dislikes_desc"
+        android:elevation="@dimen/elevation_8dp"
+        android:src="@mipmap/ic_thumb_down" />
 
-        <ImageButton
-            android:id="@+id/btn_likes"
-            android:layout_width="@dimen/button_xxlarge"
-            android:layout_height="@dimen/button_xxlarge"
-            android:layout_marginLeft="@dimen/margin_large"
-            android:layout_marginStart="@dimen/margin_large"
-            android:background="@drawable/btn_fab_likes"
-            android:contentDescription="@string/btn_likes_desc"
-            android:src="@mipmap/ic_thumb_up" />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_comments"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/red_500"
-        android:contentDescription="@string/btn_comments_desc"
-        android:drawableLeft="@mipmap/ic_favorite"
-        android:drawableStart="@mipmap/ic_favorite"
-        android:elevation="@dimen/elevation_small"
-        android:gravity="center"
-        android:paddingBottom="@dimen/padding_medium_large"
-        android:paddingLeft="@dimen/padding_extra"
-        android:paddingRight="@dimen/padding_extra"
-        android:paddingTop="@dimen/padding_medium_large"
-        android:text="@string/text_comments"
-        android:textAllCaps="true"
-        android:textColor="@color/grey_100"
-        android:textSize="@dimen/text_larger" />
+    <ImageButton
+        android:id="@+id/btn_likes"
+        android:layout_width="@dimen/button_56dp"
+        android:layout_height="@dimen/button_56dp"
+        android:layout_above="@+id/toolbar_bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/margin_24dp"
+        android:layout_marginEnd="@dimen/margin_64dp"
+        android:layout_marginRight="@dimen/margin_64dp"
+        android:background="@drawable/btn_fab_likes"
+        android:contentDescription="@string/btn_likes_desc"
+        android:elevation="@dimen/elevation_8dp"
+        android:src="@mipmap/ic_thumb_up" />
 </RelativeLayout>

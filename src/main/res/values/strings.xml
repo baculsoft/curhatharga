@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CurhatHarga!</string>
+    <string name="app_desc">Curhat Harga!</string>
     <string name="btn_likes_desc">Suka!</string>
     <string name="btn_dislikes_desc">Tidak Suka!</string>
-    <string name="btn_comments_desc">Kirim Komentar!</string>
-    <string name="text_comments">Pantau Trend</string>
+    <string name="action_search">Cari</string>
+    <string name="action_comments">Curhat</string>
 </resources>
