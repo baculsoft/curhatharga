@@ -61,11 +61,13 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_likes: {
+                mImageButtonDislikes.setEnabled(false);
                 mTextViewStatment.setTextColor(SiKerang.getContext().getResources().getColor(R.color.teal_500));
                 mTextViewStatment.setText(SiKerang.getContext().getResources().getString(R.string.text_likes));
                 break;
             }
             case R.id.btn_dislikes: {
+                mImageButtonLikes.setEnabled(false);
                 mTextViewStatment.setTextColor(SiKerang.getContext().getResources().getColor(R.color.red_500));
                 mTextViewStatment.setText(SiKerang.getContext().getResources().getString(R.string.text_dislikes));
                 break;
