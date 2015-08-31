@@ -21,7 +21,7 @@
 
         <ImageView
             android:id="@+id/iv_product"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:contentDescription="@string/app_desc"
             android:scaleType="centerCrop"
@@ -70,10 +70,8 @@
 
         <TextView
             android:id="@+id/tv_statement"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_location"
-            android:layout_marginTop="@dimen/margin_128dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:gravity="center"
             android:textAllCaps="true"
             android:textSize="@dimen/text_22sp"

@@ -6,6 +6,11 @@
     <string name="btn_dislikes_desc">Tidak Suka!</string>
     <string name="action_search">Cari</string>
     <string name="action_comments">Curhat</string>
+
+    <!--DUMMY TEXT-->
+    <string name="category_primer">Kebutuhan Primer</string>
+    <string name="category_sekunder">Kebutuhan Sekunder</string>
+    <string name="category_tersier">Kebutuhan Tersier</string>
     <string name="dummy_sugar">Gula</string>
     <string name="dummy_price">Rp 15.000,-/Kg</string>
     <string name="dummy_location">Jakarta Selatan</string>

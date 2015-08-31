@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="categories">
+        <item>@string/category_primer</item>
+        <item>@string/category_sekunder</item>
+        <item>@string/category_tersier</item>
+    </array>
+</resources>

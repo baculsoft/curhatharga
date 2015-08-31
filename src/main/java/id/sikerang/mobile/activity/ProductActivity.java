@@ -1,20 +1,15 @@
 package id.sikerang.mobile.activity;
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -49,7 +44,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.btn_dislikes)
     ImageButton mImageButtonDislikes;
 
-    private Spinner mSpinnerCategory;
+    @Bind(R.id.toolbar_spinner)
+    Spinner mSpinnerCategory;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,7 +54,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_product);
         ButterKnife.bind(this);
         initComponents();
-        initSpinnerItems();
+        initAdapters();
     }
 
     @Override
@@ -92,20 +88,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         mButtonLocation.setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
         mImageButtonLikes.setOnClickListener(this);
         mImageButtonDislikes.setOnClickListener(this);
-
-        View spinnerContainer = LayoutInflater.from(this).inflate(R.layout.toolbar_spinner, mToolbarTop, false);
-        ActionBar.LayoutParams spinnerLayout = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        mToolbarTop.addView(spinnerContainer, spinnerLayout);
-        mSpinnerCategory = (Spinner) spinnerContainer.findViewById(R.id.toolbar_spinner);
     }
 
-    private void initSpinnerItems() {
-        ArrayList<String> categories = new ArrayList<>();
-        categories.add("Kebutuhan Pokok");
-        categories.add("Kebutuhan Sandang");
-        categories.add("Kebutuhan Papan");
-
-        CategoryAdapter productAdapter = new CategoryAdapter(SiKerang.getContext().getApplicationContext(), categories);
-        mSpinnerCategory.setAdapter(productAdapter);
+    private void initAdapters() {
+        CategoryAdapter categoryAdapter = new CategoryAdapter(SiKerang.getContext(), SiKerang.getContext().getResources().getStringArray(R.array.categories));
+        mSpinnerCategory.setAdapter(categoryAdapter);
     }
 }
