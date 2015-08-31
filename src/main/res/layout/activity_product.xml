@@ -10,7 +10,7 @@
         layout="@layout/toolbar_top" />
 
     <include
-        android:id="@+id/layout_product"
+        android:id="@+id/vp_product"
         layout="@layout/fragment_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
