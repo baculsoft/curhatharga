@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_item_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_48dp"
+        android:drawablePadding="@dimen/padding_8dp"
+        android:gravity="center|start"
+        android:paddingLeft="@dimen/padding_16dp"
+        android:paddingRight="@dimen/padding_16dp"
+        android:textColor="@color/grey_900"
+        android:textSize="@dimen/text_16sp" />
+</LinearLayout>
