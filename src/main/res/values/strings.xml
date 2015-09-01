@@ -2,10 +2,16 @@
 <resources>
     <string name="app_name">CurhatHarga!</string>
     <string name="app_desc">Curhat Harga!</string>
+    <string name="menu_desc">Menu Utama</string>
+    <string name="menu_open_desc">Buka Menu</string>
+    <string name="menu_close_desc">Tutup Menu</string>
     <string name="btn_likes_desc">Suka!</string>
     <string name="btn_dislikes_desc">Tidak Suka!</string>
     <string name="action_search">Cari</string>
     <string name="action_comments">Curhat</string>
+    <string name="menu_pantau_trend">Pantau Trend</string>
+    <string name="menu_follow_up">Follow Up</string>
+    <string name="menu_about">About</string>
 
     <!--DUMMY TEXT-->
     <string name="category_primer">Kebutuhan Primer</string>

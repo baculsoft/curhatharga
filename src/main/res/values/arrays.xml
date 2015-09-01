@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <array name="menu_icon">
+        <item>@mipmap/ic_trending</item>
+        <item>@mipmap/ic_call</item>
+        <item>@mipmap/ic_info</item>
+    </array>
+    <array name="menu">
+        <item>@string/menu_pantau_trend</item>
+        <item>@string/menu_follow_up</item>
+        <item>@string/menu_about</item>
+    </array>
     <array name="categories">
         <item>@string/category_primer</item>
         <item>@string/category_sekunder</item>

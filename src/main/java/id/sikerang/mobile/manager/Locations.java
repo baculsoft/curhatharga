@@ -15,12 +15,6 @@ import android.util.Log;
 public class Locations implements LocationListener, GpsStatus.Listener {
     private static final String TAG = Locations.class.getSimpleName();
 
-    Context mContext;
-    GpsStatus mGpsStatus;
-
-    String mLatitude;
-    String mLongitude;
-
     private Location mLocation;
     private LocationManager mLocationManager;
 
@@ -28,8 +22,7 @@ public class Locations implements LocationListener, GpsStatus.Listener {
     private String mProviderFine;
 
     public Locations(Context context) {
-        mContext = context;
-        mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+        mLocationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         mLocationManager.addGpsStatusListener(this);
 
         Criteria criteria = new Criteria();
@@ -49,14 +42,14 @@ public class Locations implements LocationListener, GpsStatus.Listener {
 
     @Override
     public void onGpsStatusChanged(int status) {
-        mGpsStatus = mLocationManager.getGpsStatus(null);
+        GpsStatus gpsStatus = mLocationManager.getGpsStatus(null);
         switch (status) {
             case GpsStatus.GPS_EVENT_STARTED: {
-                mGpsStatus.getMaxSatellites();
+                gpsStatus.getMaxSatellites();
                 break;
             }
             case GpsStatus.GPS_EVENT_FIRST_FIX: {
-                mGpsStatus.getTimeToFirstFix();
+                gpsStatus.getTimeToFirstFix();
                 break;
             }
         }
@@ -64,16 +57,18 @@ public class Locations implements LocationListener, GpsStatus.Listener {
 
     @Override
     public void onLocationChanged(Location location) {
+        String latitude;
+        String longitude;
         if (location.getProvider().equals(mProviderCoarse)) {
-            mLatitude = Double.toString(location.getLatitude());
-            mLongitude = Double.toString(location.getLongitude());
-            Log.d(TAG, String.format("Location Coarse: %s, %s", mLatitude, mLongitude));
+            latitude = Double.toString(location.getLatitude());
+            longitude = Double.toString(location.getLongitude());
+            Log.d(TAG, String.format("Location Coarse: %s, %s", latitude, longitude));
         }
 
         if (location.getProvider().equals(mProviderFine)) {
-            mLatitude = Double.toString(location.getLatitude());
-            mLongitude = Double.toString(location.getLongitude());
-            Log.d(TAG, String.format("Location Fine: %s, %s", mLatitude, mLongitude));
+            latitude = Double.toString(location.getLatitude());
+            longitude = Double.toString(location.getLongitude());
+            Log.d(TAG, String.format("Location Fine: %s, %s", latitude, longitude));
         }
     }
 

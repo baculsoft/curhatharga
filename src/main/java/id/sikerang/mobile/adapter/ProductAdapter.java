@@ -17,8 +17,6 @@ import id.sikerang.mobile.SiKerang;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class ProductAdapter extends PagerAdapter {
-    Context mContext;
-
     private LayoutInflater mLayoutInflater;
 
     private ImageView mImageViewProduct;
@@ -28,8 +26,7 @@ public class ProductAdapter extends PagerAdapter {
     private Button mButtonLocation;
 
     public ProductAdapter(Context context) {
-        mContext = context;
-        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
