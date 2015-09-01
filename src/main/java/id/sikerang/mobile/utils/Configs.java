@@ -12,7 +12,7 @@ public final class Configs {
 
     /**
      * Development: http://hackathon2015.baculsoft.com/api
-     * Production: http://sikerang.id/api
+     * Production: https://sikerang.id/api
      */
-    public static final String API_URL = "http://sikerang.id/api";
+    public static final String API_URL = "http://hackathon2015.baculsoft.com/api";
 }

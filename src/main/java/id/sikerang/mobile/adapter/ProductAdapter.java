@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class ProductAdapter extends PagerAdapter {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
 
+    private ImageView mImageViewProduct;
     private TextView mTextViewProduct;
     private TextView mTextViewStatment;
     private Button mButtonPrice;
@@ -42,13 +44,15 @@ public class ProductAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View view = mLayoutInflater.inflate(R.layout.row_product, container, false);
+        mImageViewProduct = (ImageView) view.findViewById(R.id.iv_product);
         mTextViewProduct = (TextView) view.findViewById(R.id.tv_product);
         mTextViewStatment = (TextView) view.findViewById(R.id.tv_statement);
         mButtonPrice = (Button) view.findViewById(R.id.btn_price);
         mButtonLocation = (Button) view.findViewById(R.id.btn_location);
 
-        getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.dummy_sugar));
-        getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.dummy_price));
+        getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
+        getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
+        getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_sugar));
         getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
         container.addView(view);
         return view;
@@ -57,6 +61,10 @@ public class ProductAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((RelativeLayout) object);
+    }
+
+    public ImageView getmImageViewProduct() {
+        return mImageViewProduct;
     }
 
     public TextView getTextViewProduct() {

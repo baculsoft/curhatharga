@@ -8,8 +8,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:contentDescription="@string/app_desc"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/ic_sugar" />
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/tv_product"
@@ -17,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16dp"
         android:gravity="center"
-        android:textColor="@color/black"
+        android:textColor="@color/teal_500"
         android:textSize="@dimen/text_18sp" />
 
     <Button
@@ -33,7 +32,7 @@
         android:clickable="false"
         android:drawableTop="@mipmap/ic_shopping_basket"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/teal_500"
         android:textSize="@dimen/text_12sp" />
 
     <Button
@@ -49,7 +48,7 @@
         android:clickable="false"
         android:drawableTop="@mipmap/ic_language"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:textColor="@color/teal_500"
         android:textSize="@dimen/text_12sp" />
 
     <TextView

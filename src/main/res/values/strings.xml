@@ -11,9 +11,23 @@
     <string name="category_primer">Kebutuhan Primer</string>
     <string name="category_sekunder">Kebutuhan Sekunder</string>
     <string name="category_tersier">Kebutuhan Tersier</string>
-    <string name="dummy_sugar">Gula</string>
-    <string name="dummy_price">Rp 15.000,-/Kg</string>
     <string name="dummy_location">Jakarta Selatan</string>
     <string name="text_likes">Murah!</string>
     <string name="text_dislikes">Mahal!</string>
+
+    <!--DUMMY PRODUCTS-->
+    <string name="product_rice">Beras</string>
+    <string name="product_corn">Jagung</string>
+    <string name="product_soya">Kedelai</string>
+    <string name="product_chicken">Daging Ayam</string>
+    <string name="product_meal">Daging Sapi</string>
+    <string name="product_sugar">Gula</string>
+
+    <!--DUMMY PRICES-->
+    <string name="price_rice">Rp 5.000,-/Kg</string>
+    <string name="price_corm">Rp 10.000,-/Kg</string>
+    <string name="price_soya">Rp 15.000,-/Kg</string>
+    <string name="price_chicken">Rp 20.000,-/Kg</string>
+    <string name="price_meal">Rp 25.000,-/Kg</string>
+    <string name="price_sugar">Rp 30.000,-/Kg</string>
 </resources>
