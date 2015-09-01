@@ -9,9 +9,8 @@
         android:id="@+id/toolbar_top"
         layout="@layout/toolbar_top" />
 
-    <include
+    <android.support.v4.view.ViewPager
         android:id="@+id/vp_product"
-        layout="@layout/fragment_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/toolbar_bottom"

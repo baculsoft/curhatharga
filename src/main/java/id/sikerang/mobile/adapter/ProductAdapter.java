@@ -17,7 +17,8 @@ import id.sikerang.mobile.SiKerang;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class ProductAdapter extends PagerAdapter {
-    private Context mContext;
+    Context mContext;
+
     private LayoutInflater mLayoutInflater;
 
     private ImageView mImageViewProduct;
@@ -33,27 +34,24 @@ public class ProductAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 6;
     }
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((RelativeLayout) object);
+        return view == object;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = mLayoutInflater.inflate(R.layout.row_product, container, false);
+        View view = mLayoutInflater.inflate(R.layout.fragment_product, container, false);
         mImageViewProduct = (ImageView) view.findViewById(R.id.iv_product);
         mTextViewProduct = (TextView) view.findViewById(R.id.tv_product);
         mTextViewStatment = (TextView) view.findViewById(R.id.tv_statement);
         mButtonPrice = (Button) view.findViewById(R.id.btn_price);
         mButtonLocation = (Button) view.findViewById(R.id.btn_location);
 
-        getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
-        getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
-        getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_sugar));
-        getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+        initView(position);
         container.addView(view);
         return view;
     }
@@ -81,5 +79,52 @@ public class ProductAdapter extends PagerAdapter {
 
     public Button getButtonLocation() {
         return mButtonLocation;
+    }
+
+    private void initView(int position) {
+        switch (position) {
+            case 0: {
+                getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
+                getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
+                getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_rice));
+                getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+                break;
+            }
+            case 1: {
+                getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_corn));
+                getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_corn));
+                getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_corn));
+                getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+                break;
+            }
+            case 2: {
+                getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_soya));
+                getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
+                getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_soya));
+                getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+                break;
+            }
+            case 3: {
+                getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_chicken));
+                getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
+                getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_chicken));
+                getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+                break;
+            }
+            case 4: {
+                getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_meal));
+                getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_meal));
+                getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_meal));
+                getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+                break;
+            }
+            case 5: {
+                getmImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
+                getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
+                getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_sugar));
+                getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.dummy_location));
+                break;
+            }
+        }
     }
 }

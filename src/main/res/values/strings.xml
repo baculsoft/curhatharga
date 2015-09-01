@@ -25,7 +25,7 @@
 
     <!--DUMMY PRICES-->
     <string name="price_rice">Rp 5.000,-/Kg</string>
-    <string name="price_corm">Rp 10.000,-/Kg</string>
+    <string name="price_corn">Rp 10.000,-/Kg</string>
     <string name="price_soya">Rp 15.000,-/Kg</string>
     <string name="price_chicken">Rp 20.000,-/Kg</string>
     <string name="price_meal">Rp 25.000,-/Kg</string>

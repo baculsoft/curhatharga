@@ -38,8 +38,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.vp_product)
     ViewPager mViewPagerProduct;
 
-    private CategoryAdapter mCategoryAdapter;
-    private ProductAdapter mProductAdapter;
+    CategoryAdapter mCategoryAdapter;
+    ProductAdapter mProductAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_product"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:contentDescription="@string/app_desc"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tv_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:gravity="center"
+        android:textColor="@color/teal_500"
+        android:textSize="@dimen/text_18sp" />
+
+    <Button
+        android:id="@+id/btn_price"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tv_product"
+        android:layout_marginLeft="@dimen/margin_64dp"
+        android:layout_marginStart="@dimen/margin_64dp"
+        android:clickable="false"
+        android:drawableTop="@mipmap/ic_shopping_basket"
+        android:textAllCaps="false"
+        android:textColor="@color/teal_500"
+        android:textSize="@dimen/text_12sp" />
+
+    <Button
+        android:id="@+id/btn_location"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_product"
+        android:layout_marginEnd="@dimen/margin_64dp"
+        android:layout_marginRight="@dimen/margin_64dp"
+        android:clickable="false"
+        android:drawableTop="@mipmap/ic_language"
+        android:textAllCaps="false"
+        android:textColor="@color/teal_500"
+        android:textSize="@dimen/text_12sp" />
+
+    <TextView
+        android:id="@+id/tv_statement"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:textAllCaps="true"
+        android:textSize="@dimen/text_22sp"
+        android:textStyle="bold" />
+</RelativeLayout>
