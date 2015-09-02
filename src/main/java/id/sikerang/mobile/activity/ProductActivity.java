@@ -78,14 +78,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_likes: {
-                mProductAdapter.getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(R.color.teal_500));
-                mProductAdapter.getTextViewStatment().setText(SiKerang.getContext().getResources().getString(R.string.text_likes));
-                break;
-            }
+            case R.id.btn_likes:
             case R.id.btn_dislikes: {
-                mProductAdapter.getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(R.color.red_500));
-                mProductAdapter.getTextViewStatment().setText(SiKerang.getContext().getResources().getString(R.string.text_dislikes));
+                mProductAdapter.onClick(view);
                 break;
             }
         }
@@ -118,8 +113,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         drawerToggle.syncState();
 
         // FIXME Handle listener to specific viewpager
-        // mImageButtonLikes.setOnClickListener(this);
-        // mImageButtonDislikes.setOnClickListener(this);
+        mImageButtonLikes.setOnClickListener(this);
+        mImageButtonDislikes.setOnClickListener(this);
     }
 
     private void initAdapters() {
@@ -127,6 +122,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         mProductAdapter = new ProductAdapter(SiKerang.getContext());
 
         mSpinnerCategory.setAdapter(categoryAdapter);
+        mViewPagerProduct.addOnPageChangeListener(mProductAdapter);
         mViewPagerProduct.setAdapter(mProductAdapter);
     }
 }
