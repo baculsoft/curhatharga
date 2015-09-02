@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary Colors -->
+    <!-- PRIMARY COLORS -->
     <color name="primary">@color/teal_500</color>
     <color name="primary_dark">@color/teal_700</color>
     <color name="accent">@color/red_A200</color>
-
-    <!-- Default Colors -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
-    <!-- Red Colors -->
+    <!-- RED COLORS -->
     <color name="red_50">#FFEBEE</color>
     <color name="red_100">#FFCDD2</color>
     <color name="red_200">#EF9A9A</color>
@@ -25,7 +23,7 @@
     <color name="red_A400">#FF1744</color>
     <color name="red_A700">#D50000</color>
 
-    <!-- Pink Colors -->
+    <!-- PINK COLORS -->
     <color name="pink_50">#FCE4EC</color>
     <color name="pink_100">#F8BBD0</color>
     <color name="pink_200">#F48FB1</color>
@@ -41,7 +39,7 @@
     <color name="pink_A400">#F50057</color>
     <color name="pink_A700">#C51162</color>
 
-    <!-- Purple Colors -->
+    <!-- PURPLE COLORS -->
     <color name="purple_50">#F3E5F5</color>
     <color name="purple_100">#E1BEE7</color>
     <color name="purple_200">#CE93D8</color>
@@ -57,7 +55,7 @@
     <color name="purple_A400">#D500F9</color>
     <color name="purple_A700">#AA00FF</color>
 
-    <!-- Deep Purple Colors -->
+    <!-- DEEP PURPLE COLORS -->
     <color name="deep_purple_50">#EDE7F6</color>
     <color name="deep_purple_100">#D1C4E9</color>
     <color name="deep_purple_200">#B39DDB</color>
@@ -73,7 +71,7 @@
     <color name="deep_purple_A400">#651FFF</color>
     <color name="deep_purple_A700">#6200EA</color>
 
-    <!-- Indigo Colors -->
+    <!-- INDIGO COLORS -->
     <color name="indigo_50">#E8EAF6</color>
     <color name="indigo_100">#C5CAE9</color>
     <color name="indigo_200">#9FA8DA</color>
@@ -89,7 +87,7 @@
     <color name="indigo_A400">#3D5AFE</color>
     <color name="indigo_A700">#304FFE</color>
 
-    <!-- Blue Colors -->
+    <!-- BLUE COLORS -->
     <color name="blue_50">#E3F2FD</color>
     <color name="blue_100">#BBDEFB</color>
     <color name="blue_200">#90CAF9</color>
@@ -105,7 +103,7 @@
     <color name="blue_A400">#2979FF</color>
     <color name="blue_A700">#2962FF</color>
 
-    <!-- Light Blue Colors -->
+    <!-- LIGHT BLUE COLORS -->
     <color name="light_blue_50">#E1F5FE</color>
     <color name="light_blue_100">#B3E5FC</color>
     <color name="light_blue_200">#81D4FA</color>
@@ -121,7 +119,7 @@
     <color name="light_blue_A400">#00B0FF</color>
     <color name="light_blue_A700">#0091EA</color>
 
-    <!-- Cyan Colors -->
+    <!-- CYAN COLORS -->
     <color name="cyan_50">#E0F7FA</color>
     <color name="cyan_100">#B2EBF2</color>
     <color name="cyan_200">#80DEEA</color>
@@ -137,7 +135,7 @@
     <color name="cyan_A400">#00E5FF</color>
     <color name="cyan_A700">#00B8D4</color>
 
-    <!-- Teal Colors -->
+    <!-- TEAL COLORS -->
     <color name="teal_50">#E0F2F1</color>
     <color name="teal_100">#B2DFDB</color>
     <color name="teal_200">#80CBC4</color>
@@ -153,7 +151,7 @@
     <color name="teal_A400">#1DE9B6</color>
     <color name="teal_A700">#00BFA5</color>
 
-    <!-- Green Colors -->
+    <!-- GREEN COLORS -->
     <color name="green_50">#E8F5E9</color>
     <color name="green_100">#C8E6C9</color>
     <color name="green_200">#A5D6A7</color>
@@ -169,7 +167,7 @@
     <color name="green_A400">#00E676</color>
     <color name="green_A700">#00C853</color>
 
-    <!-- Light Green Colors -->
+    <!-- LIGHT GREEN COLORS -->
     <color name="light_green_50">#F1F8E9</color>
     <color name="light_green_100">#DCEDC8</color>
     <color name="light_green_200">#C5E1A5</color>
@@ -185,7 +183,7 @@
     <color name="light_green_A400">#76FF03</color>
     <color name="light_green_A700">#64DD17</color>
 
-    <!-- Lime Colors -->
+    <!-- LIME COLORS -->
     <color name="lime_50">#F9FBE7</color>
     <color name="lime_100">#F0F4C3</color>
     <color name="lime_200">#E6EE9C</color>
@@ -201,7 +199,7 @@
     <color name="lime_A400">#C6FF00</color>
     <color name="lime_A700">#AEEA00</color>
 
-    <!-- Yellow Colors -->
+    <!-- YELLOW COLORS -->
     <color name="yellow_50">#FFFDE7</color>
     <color name="yellow_100">#FFF9C4</color>
     <color name="yellow_200">#FFF59D</color>
@@ -217,7 +215,7 @@
     <color name="yellow_A400">#FFEA00</color>
     <color name="yellow_A700">#FFD600</color>
 
-    <!-- Amber Colors -->
+    <!-- AMBER COLORS -->
     <color name="amber_50">#FFF8E1</color>
     <color name="amber_100">#FFECB3</color>
     <color name="amber_200">#FFE082</color>
@@ -233,7 +231,7 @@
     <color name="amber_A400">#FFC400</color>
     <color name="amber_A700">#FFAB00</color>
 
-    <!-- Orange Colors -->
+    <!-- ORANGE COLORS -->
     <color name="orange_50">#FFF3E0</color>
     <color name="orange_100">#FFE0B2</color>
     <color name="orange_200">#FFCC80</color>
@@ -249,7 +247,7 @@
     <color name="orange_A400">#FF9100</color>
     <color name="orange_A700">#FF6D00</color>
 
-    <!-- Deep Orange Colors -->
+    <!-- DEEP ORANGE COLORS -->
     <color name="deep_orange_50">#FBE9E7</color>
     <color name="deep_orange_100">#FFCCBC</color>
     <color name="deep_orange_200">#FFAB91</color>
@@ -265,7 +263,7 @@
     <color name="deep_orange_A400">#FF3D00</color>
     <color name="deep_orange_A700">#DD2C00</color>
 
-    <!-- Brown Colors -->
+    <!-- BROWN COLORS -->
     <color name="brown_50">#EFEBE9</color>
     <color name="brown_100">#D7CCC8</color>
     <color name="brown_200">#BCAAA4</color>
@@ -277,7 +275,7 @@
     <color name="brown_800">#4E342E</color>
     <color name="brown_900">#3E2723</color>
 
-    <!-- Grey Colors -->
+    <!-- GREY COLORS -->
     <color name="grey_50">#FAFAFA</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="grey_200">#EEEEEE</color>
@@ -289,7 +287,7 @@
     <color name="grey_800">#424242</color>
     <color name="grey_900">#212121</color>
 
-    <!-- Blue Grey Colors -->
+    <!-- BLUE GREY COLORS -->
     <color name="blue_grey_50">#ECEFF1</color>
     <color name="blue_grey_100">#CFD8DC</color>
     <color name="blue_grey_200">#B0BEC5</color>

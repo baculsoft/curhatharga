@@ -7,7 +7,7 @@
         android:id="@+id/iv_product"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:contentDescription="@string/app_desc"
+        android:contentDescription="@string/product_desc"
         android:scaleType="centerCrop" />
 
     <TextView

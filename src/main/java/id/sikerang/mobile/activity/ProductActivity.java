@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 
 import butterknife.Bind;
@@ -42,6 +43,12 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     @Bind(R.id.vp_product)
     ViewPager mViewPagerProduct;
+
+    @Bind(R.id.btn_likes)
+    ImageButton mImageButtonLikes;
+
+    @Bind(R.id.btn_dislikes)
+    ImageButton mImageButtonDislikes;
 
     private TypedArray mMenuIcons;
     private ProductAdapter mProductAdapter;
@@ -87,11 +94,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void initComponents() {
         setSupportActionBar(mToolbarTop);
         mMenuIcons = SiKerang.getContext().getResources().obtainTypedArray(R.array.menu_icon);
-        String[] menuTitles = SiKerang.getContext().getResources().getStringArray(R.array.menu);
+        String[] menuTitles = SiKerang.getContext().getResources().getStringArray(R.array.menu_text);
 
         RecyclerView.Adapter menuAdapter = new MenuAdapter(mMenuIcons, menuTitles);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-
         mRecyclerViewMenu.setHasFixedSize(true);
         mRecyclerViewMenu.setAdapter(menuAdapter);
         mRecyclerViewMenu.setLayoutManager(layoutManager);
@@ -110,6 +116,10 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
         mDrawerLayoutMenu.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
+
+        // FIXME Handle listener to specific viewpager
+        // mImageButtonLikes.setOnClickListener(this);
+        // mImageButtonDislikes.setOnClickListener(this);
     }
 
     private void initAdapters() {
