@@ -57,7 +57,6 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        mHoldersMap.remove(position);
         container.removeView((RelativeLayout) object);
     }
 
