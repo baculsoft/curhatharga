@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -24,8 +23,7 @@ import id.sikerang.mobile.SiKerang;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class ProductAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener  {
-
+public class ProductAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
     private final LayoutInflater mLayoutInflater;
     private final AtomicInteger mPosition;
     private final Map<Integer, ProductViewHolder> mHoldersMap;
@@ -48,11 +46,11 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        if(!mHoldersMap.containsKey(position) ) {
-            mHoldersMap.put(position, new ProductViewHolder(position, mLayoutInflater, container) );
+        if (!mHoldersMap.containsKey(position)) {
+            mHoldersMap.put(position, new ProductViewHolder(position, mLayoutInflater, container));
         }
         ProductViewHolder viewHolder = mHoldersMap.get(position);
-        container.addView(viewHolder.getView() );
+        container.addView(viewHolder.getView());
 
         return viewHolder.getView();
     }
@@ -65,7 +63,7 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        ProductViewHolder viewHolder = mHoldersMap.get(mPosition.get() );
+        ProductViewHolder viewHolder = mHoldersMap.get(mPosition.get());
         viewHolder.onClick(view);
     }
 
@@ -76,33 +74,31 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        // Do Nothing
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
-        // Do Nothing
     }
 
     static final class ProductViewHolder implements View.OnClickListener {
-
         private final View mView;
 
         @Bind(R.id.iv_product)
         ImageView mImageViewProduct;
+
         @Bind(R.id.tv_product)
         TextView mTextViewProduct;
+
         @Bind(R.id.tv_statement)
         TextView mTextViewStatment;
+
         @Bind(R.id.btn_price)
         Button mButtonPrice;
+
         @Bind(R.id.btn_location)
         Button mButtonLocation;
 
-        public ProductViewHolder(
-                final int position,
-                final LayoutInflater layoutInflater,
-                final ViewGroup container) {
+        public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.fragment_product, container, false);
             ButterKnife.bind(this, mView);
             initView(position);
@@ -112,6 +108,7 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         public void onClick(View view) {
             final int color;
             final int text;
+
             switch (view.getId()) {
                 case R.id.btn_likes: {
                     color = R.color.teal_500;
@@ -123,13 +120,13 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
                     text = R.string.text_dislikes;
                     break;
                 }
-                default : {
+                default: {
                     return;
                 }
             }
 
-            mTextViewStatment.setTextColor(SiKerang.getContext().getResources().getColor(color));
-            mTextViewStatment.setText(SiKerang.getContext().getResources().getString(text));
+            getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(color));
+            getTextViewStatment().setText(SiKerang.getContext().getResources().getString(text));
         }
 
         private void initView(int position) {

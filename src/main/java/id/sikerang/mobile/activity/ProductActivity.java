@@ -112,7 +112,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         mDrawerLayoutMenu.setDrawerListener(drawerToggle);
         drawerToggle.syncState();
 
-        // FIXME Handle listener to specific viewpager
         mImageButtonLikes.setOnClickListener(this);
         mImageButtonDislikes.setOnClickListener(this);
     }
