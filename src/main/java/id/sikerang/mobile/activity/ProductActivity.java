@@ -10,16 +10,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.adapter.CategoryAdapter;
 import id.sikerang.mobile.adapter.MenuAdapter;
 import id.sikerang.mobile.adapter.ProductAdapter;
 
@@ -37,9 +34,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     @Bind(R.id.rv_menu)
     RecyclerView mRecyclerViewMenu;
-
-    @Bind(R.id.toolbar_spinner)
-    Spinner mSpinnerCategory;
 
     @Bind(R.id.vp_product)
     ViewPager mViewPagerProduct;
@@ -64,12 +58,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         mMenuIcons.recycle();
@@ -87,6 +75,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initComponents() {
+        mToolbarTop.setTitle(getTitle());
         setSupportActionBar(mToolbarTop);
         mMenuIcons = SiKerang.getContext().getResources().obtainTypedArray(R.array.menu_icon);
         String[] menuTitles = SiKerang.getContext().getResources().getStringArray(R.array.menu_text);
@@ -117,10 +106,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initAdapters() {
-        CategoryAdapter categoryAdapter = new CategoryAdapter(SiKerang.getContext(), SiKerang.getContext().getResources().getStringArray(R.array.categories));
         mProductAdapter = new ProductAdapter(SiKerang.getContext());
-
-        mSpinnerCategory.setAdapter(categoryAdapter);
         mViewPagerProduct.addOnPageChangeListener(mProductAdapter);
         mViewPagerProduct.setAdapter(mProductAdapter);
     }

@@ -2,7 +2,6 @@
 <resources>
     <!-- CONTENT -->
     <string name="app_name">CurhatHarga!</string>
-    <string name="action_search">Cari</string>
     <string name="action_comments">Curhat</string>
     <string name="menu_pantau_trend">Pantau Trend</string>
     <string name="menu_follow_up">Follow Up</string>
@@ -17,9 +16,6 @@
     <string name="btn_dislikes_desc">Tidak Suka!</string>
 
     <!-- DUMMY TEXT -->
-    <string name="category_primer">Kebutuhan Primer</string>
-    <string name="category_sekunder">Kebutuhan Sekunder</string>
-    <string name="category_tersier">Kebutuhan Tersier</string>
     <string name="text_location">Jakarta Selatan</string>
     <string name="text_likes">Murah!</string>
     <string name="text_dislikes">Mahal!</string>
