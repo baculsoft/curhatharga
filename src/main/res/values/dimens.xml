@@ -6,6 +6,8 @@
     <dimen name="elevation_8dp">8dp</dimen>
 
     <!-- COMPONENT SIZE -->
+    <dimen name="size_1dp">1dp</dimen>
+    <dimen name="size_5dp">5dp</dimen>
     <dimen name="size_24dp">24dp</dimen>
     <dimen name="size_36dp">36dp</dimen>
     <dimen name="size_40dp">40dp</dimen>
