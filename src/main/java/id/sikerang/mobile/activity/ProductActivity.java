@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.viewpagerindicator.CirclePageIndicator;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
@@ -37,6 +39,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     @Bind(R.id.vp_product)
     ViewPager mViewPagerProduct;
+
+    @Bind(R.id.vp_product_indicator)
+    CirclePageIndicator mCirclePageIndicatorProduct;
 
     @Bind(R.id.btn_likes)
     ImageButton mImageButtonLikes;
@@ -109,5 +114,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         mProductAdapter = new ProductAdapter(SiKerang.getContext());
         mViewPagerProduct.addOnPageChangeListener(mProductAdapter);
         mViewPagerProduct.setAdapter(mProductAdapter);
+        mCirclePageIndicatorProduct.setViewPager(mViewPagerProduct);
     }
 }

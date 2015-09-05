@@ -23,6 +23,14 @@
             android:layout_above="@+id/toolbar_bottom"
             android:layout_below="@+id/toolbar_top" />
 
+        <com.viewpagerindicator.CirclePageIndicator
+            android:id="@+id/vp_product_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/toolbar_bottom"
+            android:layout_marginBottom="@dimen/margin_12dp"
+            android:padding="@dimen/padding_4dp" />
+
         <ImageButton
             android:id="@+id/btn_dislikes"
             android:layout_width="@dimen/size_56dp"
