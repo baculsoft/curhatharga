@@ -19,9 +19,11 @@
         <item name="android:textColorPrimary">@color/grey_100</item>
     </style>
 
-    <style name="Widget.SiKerang.Toolbar.Spinner" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
-        <item name="android:background">?android:selectableItemBackground</item>
-        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
-        <item name="android:divider">@null</item>
+    <style name="AppTheme.Base.RatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@mipmap/ic_thumb</item>
+        <item name="android:indeterminateDrawable">@mipmap/ic_thumb</item>
+        <item name="android:minHeight">@dimen/size_40dp</item>
+        <item name="android:maxHeight">@dimen/size_40dp</item>
+        <item name="android:isIndicator">true</item>
     </style>
 </resources>

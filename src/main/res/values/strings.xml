@@ -28,11 +28,8 @@
     <string name="product_meal">Daging Sapi</string>
     <string name="product_sugar">Gula</string>
 
-    <!-- DUMMY PRICES -->
-    <string name="price_rice">Rp 5.000,-/Kg</string>
-    <string name="price_corn">Rp 10.000,-/Kg</string>
-    <string name="price_soya">Rp 15.000,-/Kg</string>
-    <string name="price_chicken">Rp 20.000,-/Kg</string>
-    <string name="price_meal">Rp 25.000,-/Kg</string>
-    <string name="price_sugar">Rp 30.000,-/Kg</string>
+    <!-- DUMMY SATISFACTION LEVEL -->
+    <string name="satisfaction_level_1">Cukup Puas</string>
+    <string name="satisfaction_level_2">Puas</string>
+    <string name="satisfaction_level_3">Sangat Puas</string>
 </resources>

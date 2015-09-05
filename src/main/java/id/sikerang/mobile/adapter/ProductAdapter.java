@@ -6,8 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -91,16 +91,20 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         @Bind(R.id.tv_statement)
         TextView mTextViewStatment;
 
-        @Bind(R.id.btn_price)
-        Button mButtonPrice;
+        @Bind(R.id.bar_satisfaction)
+        RatingBar mRatingBarSatisfaction;
 
-        @Bind(R.id.btn_location)
-        Button mButtonLocation;
+        @Bind(R.id.tv_satisfaction)
+        TextView mTextViewSatisfaction;
+
+        @Bind(R.id.tv_location)
+        TextView mTextViewLocation;
 
         public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.fragment_product, container, false);
             ButterKnife.bind(this, mView);
             initView(position);
+            getTextViewLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
         }
 
         @Override
@@ -133,43 +137,43 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
                 case 0: {
                     getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
                     getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
-                    getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_rice));
-                    getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+                    getRatingBarSatisfaction().setNumStars(3);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
                 case 1: {
                     getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_corn));
                     getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_corn));
-                    getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_corn));
-                    getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+                    getRatingBarSatisfaction().setNumStars(2);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
                     break;
                 }
                 case 2: {
                     getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_soya));
                     getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
-                    getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_soya));
-                    getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+                    getRatingBarSatisfaction().setNumStars(1);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     break;
                 }
                 case 3: {
                     getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_chicken));
                     getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
-                    getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_chicken));
-                    getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+                    getRatingBarSatisfaction().setNumStars(1);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     break;
                 }
                 case 4: {
                     getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_meal));
                     getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_meal));
-                    getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_meal));
-                    getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+                    getRatingBarSatisfaction().setNumStars(2);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
                     break;
                 }
                 case 5: {
                     getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
                     getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
-                    getButtonPrice().setText(SiKerang.getContext().getResources().getString(R.string.price_sugar));
-                    getButtonLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+                    getRatingBarSatisfaction().setNumStars(3);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
             }
@@ -191,12 +195,16 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
             return mTextViewStatment;
         }
 
-        public Button getButtonPrice() {
-            return mButtonPrice;
+        public RatingBar getRatingBarSatisfaction() {
+            return mRatingBarSatisfaction;
         }
 
-        public Button getButtonLocation() {
-            return mButtonLocation;
+        public TextView getTextViewSatisfaction() {
+            return mTextViewSatisfaction;
+        }
+
+        public TextView getTextViewLocation() {
+            return mTextViewLocation;
         }
     }
 }

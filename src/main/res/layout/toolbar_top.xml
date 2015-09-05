@@ -7,4 +7,4 @@
     android:background="@color/primary"
     android:elevation="@dimen/elevation_4dp"
     android:minHeight="?attr/actionBarSize"
-    app:theme="@style/AppTheme.Base.Toolbar" />
+    app:theme="@style/AppTheme.Toolbar" />

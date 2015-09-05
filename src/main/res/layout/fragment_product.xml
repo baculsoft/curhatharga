@@ -19,9 +19,7 @@
         android:textColor="@color/teal_500"
         android:textSize="@dimen/text_18sp" />
 
-    <Button
-        android:id="@+id/btn_price"
-        style="?android:attr/borderlessButtonStyle"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -29,25 +27,36 @@
         android:layout_below="@+id/tv_product"
         android:layout_marginLeft="@dimen/margin_64dp"
         android:layout_marginStart="@dimen/margin_64dp"
-        android:clickable="false"
-        android:drawableTop="@mipmap/ic_shopping_basket"
-        android:textAllCaps="false"
-        android:textColor="@color/teal_500"
-        android:textSize="@dimen/text_12sp" />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_location"
-        style="?android:attr/borderlessButtonStyle"
+        <RatingBar
+            android:id="@+id/bar_satisfaction"
+            style="@style/AppTheme.RatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false" />
+
+        <TextView
+            android:id="@+id/tv_satisfaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/teal_500"
+            android:textSize="@dimen/text_12sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv_product"
+        android:layout_gravity="center"
         android:layout_marginEnd="@dimen/margin_64dp"
         android:layout_marginRight="@dimen/margin_64dp"
-        android:clickable="false"
         android:drawableTop="@mipmap/ic_language"
-        android:textAllCaps="false"
         android:textColor="@color/teal_500"
         android:textSize="@dimen/text_12sp" />
 
