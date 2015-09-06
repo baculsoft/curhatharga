@@ -4,6 +4,7 @@
     android:id="@+id/dl_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@dimen/elevation_8dp"
     android:fitsSystemWindows="true"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
@@ -34,13 +35,12 @@
             android:layout_width="@dimen/size_56dp"
             android:layout_height="@dimen/size_56dp"
             android:layout_above="@+id/toolbar_bottom"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="@dimen/margin_36dp"
-            android:layout_marginLeft="@dimen/margin_64dp"
             android:layout_marginStart="@dimen/margin_64dp"
             android:background="@drawable/btn_fab_dislikes"
             android:contentDescription="@string/btn_dislikes_desc"
+            android:elevation="@dimen/elevation_8dp"
             android:src="@mipmap/ic_thumb_down" />
 
         <ImageButton
@@ -49,12 +49,11 @@
             android:layout_height="@dimen/size_56dp"
             android:layout_above="@+id/toolbar_bottom"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/margin_36dp"
             android:layout_marginEnd="@dimen/margin_64dp"
-            android:layout_marginRight="@dimen/margin_64dp"
             android:background="@drawable/btn_fab_likes"
             android:contentDescription="@string/btn_likes_desc"
+            android:elevation="@dimen/elevation_8dp"
             android:src="@mipmap/ic_thumb_up" />
 
         <include

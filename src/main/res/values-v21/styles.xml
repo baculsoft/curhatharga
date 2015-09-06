@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="AppTheme" parent="AppTheme.Base" />
-    <style name="AppTheme.NoActionBar.FullScreen" parent="Theme.AppCompat.Light.NoActionBar.FullScreen" />
-    <style name="AppTheme.Toolbar" parent="AppTheme.Base.Toolbar" />
-    <style name="AppTheme.RatingBar" parent="AppTheme.Base.RatingBar" />
-</resources>
