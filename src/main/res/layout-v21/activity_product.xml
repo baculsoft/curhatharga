@@ -4,7 +4,7 @@
     android:id="@+id/dl_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="@dimen/elevation_8dp"
+    android:elevation="@dimen/elevation_16dp"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
     <RelativeLayout
@@ -39,7 +39,7 @@
             android:layout_marginStart="@dimen/margin_64dp"
             android:background="@drawable/btn_fab_dislikes"
             android:contentDescription="@string/btn_dislikes_desc"
-            android:elevation="@dimen/elevation_8dp"
+            android:elevation="@dimen/elevation_12dp"
             android:src="@mipmap/ic_thumb_down" />
 
         <ImageButton
@@ -52,7 +52,7 @@
             android:layout_marginEnd="@dimen/margin_64dp"
             android:background="@drawable/btn_fab_likes"
             android:contentDescription="@string/btn_likes_desc"
-            android:elevation="@dimen/elevation_8dp"
+            android:elevation="@dimen/elevation_12dp"
             android:src="@mipmap/ic_thumb_up" />
 
         <include

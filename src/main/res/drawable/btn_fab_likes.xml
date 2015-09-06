@@ -2,12 +2,12 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="false">
         <layer-list>
-            <item android:bottom="0dp" android:left="2dp" android:right="2dp" android:top="2dp">
+            <item android:bottom="@dimen/size_0dp" android:left="@dimen/size_2dp" android:right="@dimen/size_2dp" android:top="@dimen/size_2dp">
                 <shape android:shape="oval">
-                    <solid android:color="@color/button_material_dark" />
+                    <solid android:color="@color/grey_700" />
                 </shape>
             </item>
-            <item android:bottom="2dp" android:left="2dp" android:right="2dp" android:top="2dp">
+            <item android:bottom="@dimen/size_2dp" android:left="@dimen/size_2dp" android:right="@dimen/size_2dp" android:top="@dimen/size_2dp">
                 <shape android:shape="oval">
                     <solid android:color="@color/teal_500" />
                 </shape>
@@ -15,7 +15,7 @@
         </layer-list>
     </item>
     <item android:state_pressed="true">
-        <shape android:bottom="2dp" android:left="2dp" android:right="2dp" android:shape="oval" android:top="2dp">
+        <shape android:bottom="@dimen/size_2dp" android:left="@dimen/size_2dp" android:right="@dimen/size_2dp" android:shape="oval" android:top="@dimen/size_2dp">
             <solid android:color="@color/teal_300" />
         </shape>
     </item>

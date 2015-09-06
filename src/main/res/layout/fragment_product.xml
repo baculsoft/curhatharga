@@ -17,7 +17,8 @@
         android:layout_marginTop="@dimen/margin_16dp"
         android:gravity="center"
         android:textColor="@color/teal_500"
-        android:textSize="@dimen/text_18sp" />
+        android:textSize="@dimen/text_18sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="wrap_content"

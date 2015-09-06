@@ -4,10 +4,13 @@
     <dimen name="elevation_4dp">4dp</dimen>
     <dimen name="elevation_6dp">6dp</dimen>
     <dimen name="elevation_8dp">8dp</dimen>
+    <dimen name="elevation_12dp">12dp</dimen>
+    <dimen name="elevation_16dp">16dp</dimen>
 
     <!-- COMPONENT SIZE -->
-    <dimen name="size_1dp">1dp</dimen>
-    <dimen name="size_5dp">5dp</dimen>
+    <dimen name="size_0dp">0dp</dimen>
+    <dimen name="size_2dp">2dp</dimen>
+    <dimen name="size_6dp">6dp</dimen>
     <dimen name="size_24dp">24dp</dimen>
     <dimen name="size_36dp">36dp</dimen>
     <dimen name="size_40dp">40dp</dimen>
