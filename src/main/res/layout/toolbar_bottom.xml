@@ -8,15 +8,23 @@
     android:minHeight="?attr/actionBarSize"
     app:theme="@style/AppTheme.Toolbar">
 
-    <Button
-        android:id="@+id/btn_comments"
+    <LinearLayout
+        android:id="@+id/ll_comments"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableTop="@mipmap/ic_feedback"
         android:gravity="center"
-        android:text="@string/action_comments"
-        android:textAllCaps="true"
-        android:textColor="@color/grey_100"
-        android:textSize="@dimen/text_16sp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@mipmap/ic_feedback"
+            android:drawablePadding="@dimen/padding_12dp"
+            android:drawableStart="@mipmap/ic_feedback"
+            android:text="@string/action_comments"
+            android:textAllCaps="true"
+            android:textColor="@color/grey_100"
+            android:textSize="@dimen/text_16sp" />
+    </LinearLayout>
 </android.support.v7.widget.Toolbar>

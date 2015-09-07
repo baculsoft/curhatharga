@@ -2,12 +2,12 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="false">
         <layer-list>
-            <item android:bottom="@dimen/size_0dp" android:left="@dimen/size_2dp" android:right="@dimen/size_2dp" android:top="@dimen/size_2dp">
+            <item android:bottom="@dimen/padding_0dp" android:left="@dimen/padding_2dp" android:right="@dimen/padding_2dp" android:top="@dimen/padding_2dp">
                 <shape android:shape="oval">
                     <solid android:color="@color/grey_700" />
                 </shape>
             </item>
-            <item android:bottom="@dimen/size_2dp" android:left="@dimen/size_2dp" android:right="@dimen/size_2dp" android:top="@dimen/size_2dp">
+            <item android:bottom="@dimen/padding_2dp" android:left="@dimen/padding_2dp" android:right="@dimen/padding_2dp" android:top="@dimen/padding_2dp">
                 <shape android:shape="oval">
                     <solid android:color="@color/teal_500" />
                 </shape>
@@ -15,7 +15,7 @@
         </layer-list>
     </item>
     <item android:state_pressed="true">
-        <shape android:bottom="@dimen/size_2dp" android:left="@dimen/size_2dp" android:right="@dimen/size_2dp" android:shape="oval" android:top="@dimen/size_2dp">
+        <shape android:bottom="@dimen/padding_2dp" android:left="@dimen/padding_2dp" android:right="@dimen/padding_2dp" android:shape="oval" android:top="@dimen/padding_2dp">
             <solid android:color="@color/teal_300" />
         </shape>
     </item>
