@@ -23,14 +23,14 @@
     <style name="AppTheme.Base.RatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:progressDrawable">@mipmap/ic_thumb</item>
         <item name="android:indeterminateDrawable">@mipmap/ic_thumb</item>
-        <item name="android:minHeight">@dimen/size_40dp</item>
-        <item name="android:maxHeight">@dimen/size_40dp</item>
+        <item name="android:minHeight">@dimen/view_40dp</item>
+        <item name="android:maxHeight">@dimen/view_40dp</item>
         <item name="android:isIndicator">true</item>
     </style>
 
     <style name="CustomCirclePageIndicator">
         <item name="fillColor">@color/teal_500</item>
         <item name="strokeColor">@color/grey_100</item>
-        <item name="radius">@dimen/size_6dp</item>
+        <item name="radius">@dimen/view_6dp</item>
     </style>
 </resources>

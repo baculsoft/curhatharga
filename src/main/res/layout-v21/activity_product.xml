@@ -4,7 +4,7 @@
     android:id="@+id/dl_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="@dimen/elevation_16dp"
+    android:elevation="@dimen/view_16dp"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
     <RelativeLayout
@@ -27,32 +27,32 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/toolbar_bottom"
-            android:padding="@dimen/padding_8dp" />
+            android:padding="@dimen/view_8dp" />
 
         <ImageButton
             android:id="@+id/btn_dislikes"
-            android:layout_width="@dimen/size_56dp"
-            android:layout_height="@dimen/size_56dp"
+            android:layout_width="@dimen/view_56dp"
+            android:layout_height="@dimen/view_56dp"
             android:layout_above="@+id/toolbar_bottom"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="@dimen/margin_36dp"
-            android:layout_marginStart="@dimen/margin_64dp"
+            android:layout_marginBottom="@dimen/view_36dp"
+            android:layout_marginStart="@dimen/view_64dp"
             android:background="@drawable/btn_fab_dislikes"
             android:contentDescription="@string/btn_dislikes_desc"
-            android:elevation="@dimen/elevation_12dp"
+            android:elevation="@dimen/view_12dp"
             android:src="@mipmap/ic_thumb_down" />
 
         <ImageButton
             android:id="@+id/btn_likes"
-            android:layout_width="@dimen/size_56dp"
-            android:layout_height="@dimen/size_56dp"
+            android:layout_width="@dimen/view_56dp"
+            android:layout_height="@dimen/view_56dp"
             android:layout_above="@+id/toolbar_bottom"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="@dimen/margin_36dp"
-            android:layout_marginEnd="@dimen/margin_64dp"
+            android:layout_marginBottom="@dimen/view_36dp"
+            android:layout_marginEnd="@dimen/view_64dp"
             android:background="@drawable/btn_fab_likes"
             android:contentDescription="@string/btn_likes_desc"
-            android:elevation="@dimen/elevation_12dp"
+            android:elevation="@dimen/view_12dp"
             android:src="@mipmap/ic_thumb_up" />
 
         <include
@@ -62,7 +62,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_menu"
-        android:layout_width="@dimen/size_320dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/teal_500"

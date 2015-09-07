@@ -2,27 +2,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/margin_16dp"
-    android:paddingBottom="@dimen/padding_8dp"
-    android:paddingTop="@dimen/padding_8dp">
+    android:layout_marginTop="@dimen/view_16dp"
+    android:paddingBottom="@dimen/view_8dp"
+    android:paddingTop="@dimen/view_8dp">
 
     <ImageView
         android:id="@+id/iv_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/menu_desc"
-        android:paddingEnd="@dimen/padding_16dp"
-        android:paddingLeft="@dimen/padding_16dp"
-        android:paddingRight="@dimen/padding_16dp"
-        android:paddingStart="@dimen/padding_16dp" />
+        android:paddingEnd="@dimen/view_16dp"
+        android:paddingLeft="@dimen/view_16dp"
+        android:paddingRight="@dimen/view_16dp"
+        android:paddingStart="@dimen/view_16dp" />
 
     <TextView
         android:id="@+id/tv_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/iv_menu"
-        android:layout_marginLeft="@dimen/margin_12dp"
-        android:layout_marginStart="@dimen/margin_12dp"
+        android:layout_marginLeft="@dimen/view_12dp"
+        android:layout_marginStart="@dimen/view_12dp"
         android:layout_toEndOf="@+id/iv_menu"
         android:layout_toRightOf="@+id/iv_menu"
         android:textAppearance="?android:attr/textAppearanceMedium"

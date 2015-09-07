@@ -14,7 +14,7 @@
         android:id="@+id/tv_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/view_16dp"
         android:gravity="center"
         android:textColor="@color/teal_500"
         android:textSize="@dimen/text_18sp"
@@ -26,8 +26,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/tv_product"
-        android:layout_marginLeft="@dimen/margin_64dp"
-        android:layout_marginStart="@dimen/margin_64dp"
+        android:layout_marginLeft="@dimen/view_64dp"
+        android:layout_marginStart="@dimen/view_64dp"
         android:orientation="vertical">
 
         <RatingBar
@@ -55,8 +55,8 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv_product"
         android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/margin_64dp"
-        android:layout_marginRight="@dimen/margin_64dp"
+        android:layout_marginEnd="@dimen/view_64dp"
+        android:layout_marginRight="@dimen/view_64dp"
         android:drawableTop="@mipmap/ic_language"
         android:textColor="@color/teal_500"
         android:textSize="@dimen/text_12sp" />
