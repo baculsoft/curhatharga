@@ -1,16 +1,15 @@
 package id.sikerang.mobile.activity;
 
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.viewpagerindicator.CirclePageIndicator;
@@ -19,13 +18,12 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.adapter.MenuAdapter;
 import id.sikerang.mobile.adapter.ProductAdapter;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class ProductActivity extends AppCompatActivity implements View.OnClickListener {
+public class ProductActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = ProductActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar_top)
@@ -34,8 +32,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.dl_menu)
     DrawerLayout mDrawerLayoutMenu;
 
-    @Bind(R.id.rv_menu)
-    RecyclerView mRecyclerViewMenu;
+    @Bind(R.id.nv_menu)
+    NavigationView mNavigationViewMenu;
 
     @Bind(R.id.vp_product)
     ViewPager mViewPagerProduct;
@@ -49,7 +47,6 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.btn_dislikes)
     FloatingActionButton mFabDislikes;
 
-    private TypedArray mMenuIcons;
     private ProductAdapter mProductAdapter;
 
     @Override
@@ -59,13 +56,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_product);
         ButterKnife.bind(this);
         initComponents();
+        initDrawer();
         initAdapters();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mMenuIcons.recycle();
     }
 
     @Override
@@ -79,19 +71,23 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        mNavigationViewMenu.getMenu().findItem(menuItem.getItemId()).setChecked(true);
+        mDrawerLayoutMenu.closeDrawers();
+        return true;
+    }
+
     private void initComponents() {
         mToolbarTop.setTitle(getTitle());
         setSupportActionBar(mToolbarTop);
-        mMenuIcons = SiKerang.getContext().getResources().obtainTypedArray(R.array.menu_icon);
-        String[] menuTitles = SiKerang.getContext().getResources().getStringArray(R.array.menu_text);
+        mNavigationViewMenu.setNavigationItemSelectedListener(this);
+        mFabLikes.setOnClickListener(this);
+        mFabDislikes.setOnClickListener(this);
+    }
 
-        RecyclerView.Adapter menuAdapter = new MenuAdapter(mMenuIcons, menuTitles);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        mRecyclerViewMenu.setHasFixedSize(true);
-        mRecyclerViewMenu.setAdapter(menuAdapter);
-        mRecyclerViewMenu.setLayoutManager(layoutManager);
-
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayoutMenu, mToolbarTop, R.string.menu_open_desc, R.string.menu_close_desc) {
+    private void initDrawer() {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayoutMenu, mToolbarTop, R.string.menu_open_desc, R.string.menu_close_desc) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -102,12 +98,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
                 super.onDrawerClosed(drawerView);
             }
         };
-
-        mDrawerLayoutMenu.setDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-
-        mFabLikes.setOnClickListener(this);
-        mFabDislikes.setOnClickListener(this);
+        mDrawerLayoutMenu.setDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
     }
 
     private void initAdapters() {

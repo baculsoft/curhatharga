@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:elevation="@dimen/view_16dp"
+    android:fitsSystemWindows="true"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
     <RelativeLayout
@@ -65,11 +66,14 @@
             layout="@layout/toolbar_bottom" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_menu"
-        android:layout_width="match_parent"
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nv_menu"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/teal_500"
-        android:scrollbars="vertical" />
+        app:headerLayout="@layout/fragment_menu"
+        app:itemIconTint="@color/grey_100"
+        app:itemTextColor="@color/grey_100"
+        app:menu="@menu/app_menu" />
 </android.support.v4.widget.DrawerLayout>

@@ -57,7 +57,6 @@ dependencies {
     compile("com.android.support:appcompat-v7:${androidSupportVersion}")
     compile("com.android.support:design:${androidSupportVersion}")
     compile("com.android.support:palette-v7:${androidSupportVersion}")
-    compile("com.android.support:recyclerview-v7:${androidSupportVersion}")
     compile("com.jakewharton:butterknife:${butterKnifeVersion}")
     compile("com.viewpagerindicator:library:${viewpagerindicatorVersion}")
     compile("com.squareup.okhttp:okhttp:${okhttpVersion}")

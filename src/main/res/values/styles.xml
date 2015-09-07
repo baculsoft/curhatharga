@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
-        <item name="android:windowNoTitle">true</item>
-        <item name="windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
     <style name="AppTheme" parent="AppTheme.Base" />
 
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/accent</item>
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorAccent">@color/accent</item>
         <item name="vpiCirclePageIndicatorStyle">@style/CustomCirclePageIndicator</item>
     </style>
 
@@ -21,16 +14,16 @@
     </style>
 
     <style name="AppTheme.Base.RatingBar" parent="@android:style/Widget.RatingBar">
-        <item name="android:progressDrawable">@mipmap/ic_thumb</item>
         <item name="android:indeterminateDrawable">@mipmap/ic_thumb</item>
+        <item name="android:isIndicator">true</item>
         <item name="android:minHeight">@dimen/view_40dp</item>
         <item name="android:maxHeight">@dimen/view_40dp</item>
-        <item name="android:isIndicator">true</item>
+        <item name="android:progressDrawable">@mipmap/ic_thumb</item>
     </style>
 
     <style name="CustomCirclePageIndicator">
         <item name="fillColor">@color/teal_500</item>
-        <item name="strokeColor">@color/grey_100</item>
         <item name="radius">@dimen/view_6dp</item>
+        <item name="strokeColor">@color/grey_100</item>
     </style>
 </resources>
