@@ -5,7 +5,7 @@
     android:id="@+id/dl_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:elevation="@dimen/view_16dp"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
     <RelativeLayout
@@ -35,11 +35,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/toolbar_bottom"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="@dimen/view_36dp"
-            android:layout_marginLeft="@dimen/view_64dp"
             android:layout_marginStart="@dimen/view_64dp"
+            android:elevation="@dimen/view_6dp"
             android:src="@mipmap/ic_thumb_down"
             app:backgroundTint="@color/red_500"
             app:borderWidth="@dimen/view_0dp"
@@ -52,10 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/toolbar_bottom"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/view_36dp"
             android:layout_marginEnd="@dimen/view_64dp"
-            android:layout_marginRight="@dimen/view_64dp"
+            android:elevation="@dimen/view_6dp"
             android:src="@mipmap/ic_thumb_up"
             app:backgroundTint="@color/teal_500"
             app:borderWidth="@dimen/view_0dp"
