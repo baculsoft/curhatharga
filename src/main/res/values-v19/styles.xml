@@ -6,4 +6,5 @@
 
     <style name="AppTheme.Toolbar" parent="AppTheme.Base.Toolbar" />
     <style name="AppTheme.RatingBar" parent="AppTheme.Base.RatingBar" />
+    <style name="AppTheme.NavigationView" parent="AppTheme.Base.NavigationView" />
 </resources>

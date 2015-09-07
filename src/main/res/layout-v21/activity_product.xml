@@ -75,5 +75,6 @@
         app:headerLayout="@layout/fragment_menu"
         app:itemIconTint="@color/grey_100"
         app:itemTextColor="@color/grey_100"
-        app:menu="@menu/app_menu" />
+        app:menu="@menu/app_menu"
+        app:theme="@style/AppTheme.NavigationView" />
 </android.support.v4.widget.DrawerLayout>

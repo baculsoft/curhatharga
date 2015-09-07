@@ -21,6 +21,10 @@
         <item name="android:progressDrawable">@mipmap/ic_thumb</item>
     </style>
 
+    <style name="AppTheme.Base.NavigationView">
+        <item name="android:textSize">@dimen/text_16sp</item>
+    </style>
+
     <style name="CustomCirclePageIndicator">
         <item name="fillColor">@color/teal_500</item>
         <item name="radius">@dimen/view_6dp</item>
