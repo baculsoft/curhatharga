@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dl_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    app:elevation="@dimen/view_16dp"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
     <RelativeLayout
@@ -29,33 +31,39 @@
             android:layout_above="@+id/toolbar_bottom"
             android:padding="@dimen/view_8dp" />
 
-        <ImageButton
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_dislikes"
-            android:layout_width="@dimen/view_56dp"
-            android:layout_height="@dimen/view_56dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/toolbar_bottom"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginBottom="@dimen/view_36dp"
             android:layout_marginLeft="@dimen/view_64dp"
             android:layout_marginStart="@dimen/view_64dp"
-            android:background="@drawable/btn_fab_dislikes"
-            android:contentDescription="@string/btn_dislikes_desc"
-            android:src="@mipmap/ic_thumb_down" />
+            android:src="@mipmap/ic_thumb_down"
+            app:backgroundTint="@color/red_500"
+            app:borderWidth="@dimen/view_0dp"
+            app:elevation="@dimen/view_6dp"
+            app:pressedTranslationZ="@dimen/view_12dp"
+            app:rippleColor="@color/grey_700" />
 
-        <ImageButton
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_likes"
-            android:layout_width="@dimen/view_56dp"
-            android:layout_height="@dimen/view_56dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/toolbar_bottom"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_marginBottom="@dimen/view_36dp"
             android:layout_marginEnd="@dimen/view_64dp"
             android:layout_marginRight="@dimen/view_64dp"
-            android:background="@drawable/btn_fab_likes"
-            android:contentDescription="@string/btn_likes_desc"
-            android:src="@mipmap/ic_thumb_up" />
+            android:src="@mipmap/ic_thumb_up"
+            app:backgroundTint="@color/teal_500"
+            app:borderWidth="@dimen/view_0dp"
+            app:elevation="@dimen/view_6dp"
+            app:pressedTranslationZ="@dimen/view_12dp"
+            app:rippleColor="@color/grey_700" />
 
         <include
             android:id="@+id/toolbar_bottom"

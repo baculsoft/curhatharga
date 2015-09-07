@@ -12,8 +12,6 @@
     <string name="menu_open_desc">Buka Menu</string>
     <string name="menu_close_desc">Tutup Menu</string>
     <string name="product_desc">Produk</string>
-    <string name="btn_likes_desc">Suka!</string>
-    <string name="btn_dislikes_desc">Tidak Suka!</string>
 
     <!-- DUMMY TEXT -->
     <string name="text_location">Jakarta Selatan</string>
