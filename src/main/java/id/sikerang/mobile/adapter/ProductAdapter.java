@@ -1,8 +1,10 @@
 package id.sikerang.mobile.adapter;
 
 import android.content.Context;
+import android.location.Address;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -19,11 +22,14 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
+import id.sikerang.mobile.controller.ProductController;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class ProductAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
+    private static final String TAG = ProductAdapter.class.getSimpleName();
+
     private final LayoutInflater mLayoutInflater;
     private final AtomicInteger mPosition;
     private final Map<Integer, ProductViewHolder> mHoldersMap;
@@ -100,11 +106,14 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         @Bind(R.id.tv_location)
         TextView mTextViewLocation;
 
+        private ProductController mProductController;
+
         public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.row_product, container, false);
             ButterKnife.bind(this, mView);
+            mProductController = new ProductController(SiKerang.getContext());
             initView(position);
-            getTextViewLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));
+            initAddress();
         }
 
         @Override
@@ -176,6 +185,15 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
+            }
+        }
+
+        private void initAddress() {
+            try {
+                Address address = mProductController.getAddress().get(0);
+                getTextViewLocation().setText(address.getLocality());
+            } catch (IOException e) {
+                Log.e(TAG, e.getMessage(), e);
             }
         }
 

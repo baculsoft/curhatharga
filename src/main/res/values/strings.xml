@@ -15,7 +15,6 @@
     <string name="product_desc">Produk</string>
 
     <!-- DUMMY TEXT -->
-    <string name="text_location">Jakarta Selatan</string>
     <string name="text_likes">Murah!</string>
     <string name="text_dislikes">Mahal!</string>
     <string name="text_empty">Empty</string>
