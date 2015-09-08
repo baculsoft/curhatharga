@@ -73,9 +73,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/teal_500"
-        app:headerLayout="@layout/fragment_menu"
-        app:itemIconTint="@color/grey_100"
-        app:itemTextColor="@color/grey_100"
-        app:menu="@menu/app_menu"
+        app:headerLayout="@layout/menu_header"
+        app:menu="@menu/menu_drawer"
         app:theme="@style/AppTheme.NavigationView" />
 </android.support.v4.widget.DrawerLayout>

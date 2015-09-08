@@ -81,6 +81,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void initComponents() {
         mToolbarTop.setTitle(getTitle());
         setSupportActionBar(mToolbarTop);
+        mNavigationViewMenu.getMenu().getItem(0).setChecked(true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         mFabLikes.setOnClickListener(this);
         mFabDislikes.setOnClickListener(this);

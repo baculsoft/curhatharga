@@ -3,6 +3,7 @@
     <!-- CONTENT -->
     <string name="app_name">CurhatHarga!</string>
     <string name="action_comments">Curhat</string>
+    <string name="menu_product">Komoditi</string>
     <string name="menu_pantau_trend">Pantau Trend</string>
     <string name="menu_kawal_perubahan">Kawal Perubahan</string>
     <string name="menu_about">Tentang Aplikasi</string>

@@ -14,6 +14,7 @@
     <dimen name="view_40dp">40dp</dimen>
     <dimen name="view_56dp">56dp</dimen>
     <dimen name="view_64dp">64dp</dimen>
+    <dimen name="view_170dp">170dp</dimen>
 
     <!-- TEXT SIZE -->
     <dimen name="text_8sp">8sp</dimen>
