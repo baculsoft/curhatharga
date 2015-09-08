@@ -101,7 +101,7 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         TextView mTextViewLocation;
 
         public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
-            mView = layoutInflater.inflate(R.layout.fragment_product, container, false);
+            mView = layoutInflater.inflate(R.layout.row_product, container, false);
             ButterKnife.bind(this, mView);
             initView(position);
             getTextViewLocation().setText(SiKerang.getContext().getResources().getString(R.string.text_location));

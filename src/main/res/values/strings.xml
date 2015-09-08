@@ -18,6 +18,7 @@
     <string name="text_location">Jakarta Selatan</string>
     <string name="text_likes">Murah!</string>
     <string name="text_dislikes">Mahal!</string>
+    <string name="text_empty">Empty</string>
 
     <!-- DUMMY PRODUCTS -->
     <string name="product_rice">Beras</string>

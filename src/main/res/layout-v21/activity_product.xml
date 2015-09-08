@@ -9,62 +9,20 @@
     android:fitsSystemWindows="true"
     tools:context="id.sikerang.mobile.activity.ProductActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <include
-            android:id="@+id/toolbar_top"
-            layout="@layout/toolbar_top" />
+            android:id="@+id/toolbar_app"
+            layout="@layout/toolbar_app" />
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/vp_product"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/toolbar_bottom"
-            android:layout_below="@+id/toolbar_top" />
-
-        <com.viewpagerindicator.CirclePageIndicator
-            android:id="@+id/vp_product_indicator"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/toolbar_bottom"
-            android:padding="@dimen/view_8dp" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btn_dislikes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/toolbar_bottom"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="@dimen/view_36dp"
-            android:layout_marginStart="@dimen/view_64dp"
-            android:elevation="@dimen/view_6dp"
-            android:src="@mipmap/ic_thumb_down"
-            app:backgroundTint="@color/red_500"
-            app:borderWidth="@dimen/view_0dp"
-            app:pressedTranslationZ="@dimen/view_12dp"
-            app:rippleColor="@color/grey_700" />
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/btn_likes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/toolbar_bottom"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="@dimen/view_36dp"
-            android:layout_marginEnd="@dimen/view_64dp"
-            android:elevation="@dimen/view_6dp"
-            android:src="@mipmap/ic_thumb_up"
-            app:backgroundTint="@color/teal_500"
-            app:borderWidth="@dimen/view_0dp"
-            app:pressedTranslationZ="@dimen/view_12dp"
-            app:rippleColor="@color/grey_700" />
-
-        <include
-            android:id="@+id/toolbar_bottom"
-            layout="@layout/toolbar_bottom" />
-    </RelativeLayout>
+        <FrameLayout
+            android:id="@+id/fl_product"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nv_menu"

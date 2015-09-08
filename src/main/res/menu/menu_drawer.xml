@@ -4,7 +4,7 @@
         <item
             android:id="@+id/item_product"
             android:checkable="true"
-            android:icon="@mipmap/ic_info"
+            android:icon="@mipmap/ic_shopping_basket"
             android:title="@string/menu_product" />
         <item
             android:id="@+id/item_pantau_trend"
