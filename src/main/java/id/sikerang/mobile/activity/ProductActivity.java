@@ -48,8 +48,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.btn_dislikes)
     FloatingActionButton mFabDislikes;
 
-    private ProductAdapter mProductAdapter;
     private MenuItem mMenuItemPrevious;
+    private ProductAdapter mProductAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -65,11 +65,8 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
-        setCheckFirstMenu(0, true);
-        if (null != mMenuItemPrevious) {
-            mMenuItemPrevious.setChecked(false);
-        }
+        setCheckedFirstMenu(0, true);
+        checkPreviousMenu(mMenuItemPrevious, false);
     }
 
     @Override
@@ -85,21 +82,19 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        setCheckFirstMenu(0, false);
+        setCheckedFirstMenu(0, false);
         menuItem.setChecked(true);
-        if (null != mMenuItemPrevious) {
-            mMenuItemPrevious.setChecked(false);
-        }
-
+        checkPreviousMenu(mMenuItemPrevious, false);
         mMenuItemPrevious = menuItem;
         mDrawerLayoutMenu.closeDrawers();
+
         return true;
     }
 
     private void initComponents() {
         mToolbarTop.setTitle(getTitle());
         setSupportActionBar(mToolbarTop);
-        setCheckFirstMenu(0, true);
+        setCheckedFirstMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         mFabLikes.setOnClickListener(this);
         mFabDislikes.setOnClickListener(this);
@@ -128,7 +123,13 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         mCirclePageIndicatorProduct.setViewPager(mViewPagerProduct);
     }
 
-    private MenuItem setCheckFirstMenu(int position, boolean checked) {
+    private MenuItem setCheckedFirstMenu(int position, boolean checked) {
         return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
+    }
+
+    private void checkPreviousMenu(MenuItem menuItem, boolean checked) {
+        if (null != menuItem && menuItem.getItemId() != R.id.item_product) {
+            menuItem.setChecked(checked);
+        }
     }
 }
