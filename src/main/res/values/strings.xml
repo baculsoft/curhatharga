@@ -6,7 +6,8 @@
     <string name="menu_product">Komoditi</string>
     <string name="menu_pantau_trend">Pantau Trend</string>
     <string name="menu_kawal_perubahan">Kawal Perubahan</string>
-    <string name="menu_about">Tentang Aplikasi</string>
+    <string name="submenu_title_help">Bantuan</string>
+    <string name="submenu_item_about">Tentang Aplikasi</string>
 
     <!-- CONTENT DESCRIPTION -->
     <string name="menu_open_desc">Buka Menu</string>

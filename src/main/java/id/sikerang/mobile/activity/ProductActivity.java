@@ -1,5 +1,6 @@
 package id.sikerang.mobile.activity;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -48,6 +49,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     FloatingActionButton mFabDislikes;
 
     private ProductAdapter mProductAdapter;
+    private MenuItem mMenuItemPrevious;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,16 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         initComponents();
         initDrawer();
         initAdapters();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        setCheckFirstMenu(0, true);
+        if (null != mMenuItemPrevious) {
+            mMenuItemPrevious.setChecked(false);
+        }
     }
 
     @Override
@@ -73,7 +85,13 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        mNavigationViewMenu.getMenu().findItem(menuItem.getItemId()).setChecked(true);
+        setCheckFirstMenu(0, false);
+        menuItem.setChecked(true);
+        if (null != mMenuItemPrevious) {
+            mMenuItemPrevious.setChecked(false);
+        }
+
+        mMenuItemPrevious = menuItem;
         mDrawerLayoutMenu.closeDrawers();
         return true;
     }
@@ -81,7 +99,7 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
     private void initComponents() {
         mToolbarTop.setTitle(getTitle());
         setSupportActionBar(mToolbarTop);
-        mNavigationViewMenu.getMenu().getItem(0).setChecked(true);
+        setCheckFirstMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         mFabLikes.setOnClickListener(this);
         mFabDislikes.setOnClickListener(this);
@@ -108,5 +126,9 @@ public class ProductActivity extends AppCompatActivity implements View.OnClickLi
         mViewPagerProduct.addOnPageChangeListener(mProductAdapter);
         mViewPagerProduct.setAdapter(mProductAdapter);
         mCirclePageIndicatorProduct.setViewPager(mViewPagerProduct);
+    }
+
+    private MenuItem setCheckFirstMenu(int position, boolean checked) {
+        return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
     }
 }
