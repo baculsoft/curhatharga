@@ -107,6 +107,7 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         TextView mTextViewLocation;
 
         private ProductController mProductController;
+        private boolean isLikes = false;
 
         public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.row_product, container, false);
@@ -125,11 +126,13 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
                 case R.id.btn_likes: {
                     color = R.color.teal_500;
                     text = R.string.text_likes;
+                    isLikes = true;
                     break;
                 }
                 case R.id.btn_dislikes: {
                     color = R.color.red_500;
                     text = R.string.text_dislikes;
+                    isLikes = false;
                     break;
                 }
                 default: {
@@ -139,6 +142,8 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
             getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(color));
             getTextViewStatment().setText(SiKerang.getContext().getResources().getString(text));
+
+            mProductController.collectCommonInfo(mProductController.getLatitude(), mProductController.getLongitude(), mProductController.getScreenName(), getTextViewProduct().getText().toString(), isLikes);
         }
 
         private void initView(int position) {

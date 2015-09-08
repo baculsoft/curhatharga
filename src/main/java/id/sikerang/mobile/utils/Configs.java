@@ -14,5 +14,5 @@ public final class Configs {
      * Development: http://hackathon2015.baculsoft.com/api
      * Production: https://sikerang.id/api
      */
-    public static final String API_URL = "http://hackathon2015.baculsoft.com/api";
+    public static final String API_URL = "https://sikerang.id/api";
 }

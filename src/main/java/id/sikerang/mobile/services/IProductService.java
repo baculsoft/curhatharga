@@ -1,5 +1,7 @@
 package id.sikerang.mobile.services;
 
+import id.sikerang.mobile.models.CommonResponse;
+import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.POST;
@@ -14,5 +16,7 @@ public interface IProductService {
                        @Field("longitude") String longitude,
                        @Field("screenName") String screenName,
                        @Field("productName") String productName,
-                       @Field("likes") boolean likes);
+                       @Field("likes") boolean likes,
+                       @Field("text") String text,
+                       Callback<CommonResponse> callback);
 }

@@ -21,6 +21,7 @@ public class Product implements Parcelable {
     private String longitude;
     private String screenName;
     private String productName;
+    private String text;
     private boolean likes;
 
     public Product() {
@@ -32,6 +33,7 @@ public class Product implements Parcelable {
         longitude = in.readString();
         screenName = in.readString();
         productName = in.readString();
+        text = in.readString();
         likes = in.readByte() != 0;
     }
 
@@ -46,6 +48,7 @@ public class Product implements Parcelable {
         dest.writeString(longitude);
         dest.writeString(screenName);
         dest.writeString(productName);
+        dest.writeString(text);
         dest.writeByte((byte) (likes ? 1 : 0));
     }
 
@@ -79,6 +82,14 @@ public class Product implements Parcelable {
 
     public void setProductName(String pProductName) {
         productName = pProductName;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String pText) {
+        text = pText;
     }
 
     public boolean isLikes() {
