@@ -30,11 +30,20 @@ android {
         versionCode 1
         versionName "1.0.3"
     }
+    signingConfigs {
+        release {
+            storeFile file("sikerang.keystore")
+            storePassword "sikerang"
+            keyAlias "SiKerang"
+            keyPassword "sikerang"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     lintOptions {
