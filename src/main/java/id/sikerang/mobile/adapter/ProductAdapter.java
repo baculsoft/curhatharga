@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,11 +34,13 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
     private final LayoutInflater mLayoutInflater;
     private final AtomicInteger mPosition;
     private final Map<Integer, ProductViewHolder> mHoldersMap;
+    private final ProductController mProductController;
 
     public ProductAdapter(Context context) {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPosition = new AtomicInteger();
         mHoldersMap = new HashMap<>();
+        mProductController = new ProductController(SiKerang.getContext());
     }
 
     @Override
@@ -55,7 +58,10 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         if (!mHoldersMap.containsKey(position)) {
             mHoldersMap.put(position, new ProductViewHolder(position, mLayoutInflater, container));
         }
+
+        String location = getLocationAddress();
         ProductViewHolder viewHolder = mHoldersMap.get(position);
+        viewHolder.getTextViewLocation().setText(location);
         container.addView(viewHolder.getView());
 
         return viewHolder.getView();
@@ -70,6 +76,8 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
     public void onClick(View view) {
         ProductViewHolder viewHolder = mHoldersMap.get(mPosition.get());
         viewHolder.onClick(view);
+
+        mProductController.collectCommonInfo(mProductController.getLatitude(), mProductController.getLongitude(), mProductController.getScreenName(), viewHolder.getTextViewProduct().getText().toString(), viewHolder.isLikes);
     }
 
     @Override
@@ -85,8 +93,27 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
     public void onPageScrollStateChanged(int state) {
     }
 
+    private String getLocationAddress() {
+        String locationAddress = "";
+
+        try {
+            List<Address> addresses = mProductController.getAddress();
+
+            if (addresses != null && addresses.size() > 0) {
+                Address address = mProductController.getAddress().get(0);
+                locationAddress = address.getLocality();
+            }
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage(), e);
+        }
+
+        return locationAddress;
+    }
+
     static final class ProductViewHolder implements View.OnClickListener {
         private final View mView;
+
+        private boolean isLikes;
 
         @Bind(R.id.iv_product)
         ImageView mImageViewProduct;
@@ -106,15 +133,10 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         @Bind(R.id.tv_location)
         TextView mTextViewLocation;
 
-        private ProductController mProductController;
-        private boolean isLikes = false;
-
         public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.row_product, container, false);
             ButterKnife.bind(this, mView);
-            mProductController = new ProductController(SiKerang.getContext());
             initView(position);
-            initAddress();
         }
 
         @Override
@@ -142,8 +164,6 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
             getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(color));
             getTextViewStatment().setText(SiKerang.getContext().getResources().getString(text));
-
-            mProductController.collectCommonInfo(mProductController.getLatitude(), mProductController.getLongitude(), mProductController.getScreenName(), getTextViewProduct().getText().toString(), isLikes);
         }
 
         private void initView(int position) {
@@ -190,15 +210,6 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
-            }
-        }
-
-        private void initAddress() {
-            try {
-                Address address = mProductController.getAddress().get(0);
-                getTextViewLocation().setText(address.getLocality());
-            } catch (IOException e) {
-                Log.e(TAG, e.getMessage(), e);
             }
         }
 

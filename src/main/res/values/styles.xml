@@ -10,10 +10,13 @@
     </style>
 
     <style name="AppTheme.Base.Toolbar" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColor">@color/grey_100</item>
         <item name="android:textColorPrimary">@color/grey_100</item>
+        <item name="android:textColorSecondary">@color/grey_100</item>
     </style>
 
     <style name="AppTheme.Base.NavigationView">
+        <item name="android:textColor">@color/grey_100</item>
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="itemIconTint">@color/grey_100</item>
         <item name="itemTextColor">@color/grey_100</item>
