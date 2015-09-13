@@ -27,6 +27,11 @@
     @retrofit.http.* <methods>;
 }
 
--keepattributes *Annotation*
+-adaptresourcefilenames **.xsd,**.wsdl,**.xml,**.js,**.json,**.properties,**.gif,**.jpg,**.png
 
--adaptresourcefilenames **.xsd,**.wsdl,**.xml,**.properties,**.gif,**.jpg,**.png
+-dontshrink
+-dontoptimize
+
+-keepattributes *Annotation*
+-keepattributes Signature
+-keepattributes Exceptions
