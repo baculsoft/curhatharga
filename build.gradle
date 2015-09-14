@@ -4,7 +4,7 @@ buildscript {
     ext {
         androidSupportVersion = '23.0.1'
         butterKnifeVersion = '7.0.1'
-		viewpagerindicatorVersion = '2.4.1@aar'
+        viewpagerindicatorVersion = '2.4.1@aar'
         okhttpVersion = '2.5.0'
         retrofitVersion = '1.9.0'
     }
@@ -26,7 +26,7 @@ android {
     defaultConfig {
         applicationId "id.sikerang.mobile"
         minSdkVersion 14
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 4
         versionName "1.0.3"
     }
@@ -63,8 +63,8 @@ repositories {
 }
 
 dependencies {
-    compile("com.android.support:design:${androidSupportVersion}")
     compile("com.android.support:appcompat-v7:${androidSupportVersion}")
+    compile("com.android.support:design:${androidSupportVersion}")
     compile("com.jakewharton:butterknife:${butterKnifeVersion}")
     compile("com.viewpagerindicator:library:${viewpagerindicatorVersion}")
     compile("com.squareup.okhttp:okhttp:${okhttpVersion}")
