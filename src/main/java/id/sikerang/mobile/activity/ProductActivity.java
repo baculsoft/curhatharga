@@ -1,5 +1,6 @@
 package id.sikerang.mobile.activity;
 
+import android.location.Address;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,11 +12,17 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.IOException;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
+import id.sikerang.mobile.SiKerang;
+import id.sikerang.mobile.controller.ProductController;
 import id.sikerang.mobile.fragment.ProductEmptyFragment;
 import id.sikerang.mobile.fragment.ProductFragment;
+import id.sikerang.mobile.utils.SharedPreferencesUtil;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
@@ -33,6 +40,7 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
     NavigationView mNavigationViewMenu;
 
     private MenuItem mMenuItemPrevious;
+    private ProductController mProductController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,6 +51,26 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         initComponents();
         initDrawer();
         initFragments();
+        initController();
+        initLocationAddress();
+    }
+
+    @Override
+    protected void onDestroy() {
+        removeLocationAddress();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initLocationAddress();
+    }
+
+    @Override
+    protected void onPause() {
+        removeLocationAddress();
+        super.onPause();
     }
 
     @Override
@@ -83,6 +111,19 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(1)).commit();
     }
 
+    private void initController() {
+        mProductController = new ProductController(SiKerang.getContext());
+    }
+
+    private void initLocationAddress() {
+        String locationAddress = getLocationAddress();
+        SharedPreferencesUtil.getInstance(SiKerang.getContext()).setLocationAddress(locationAddress);
+    }
+
+    private void removeLocationAddress() {
+        SharedPreferencesUtil.getInstance(SiKerang.getContext()).clearSharedPreferences();
+    }
+
     private MenuItem setCheckedLastMenu(int position, boolean checked) {
         return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
     }
@@ -106,5 +147,22 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
                 return null;
             }
         }
+    }
+
+    private String getLocationAddress() {
+        String locationAddress = SiKerang.getContext().getResources().getString(R.string.text_location_unknown);
+
+        try {
+            List<Address> addresses = mProductController.getAddress();
+
+            if (addresses != null && addresses.size() > 0) {
+                Address address = mProductController.getAddress().get(0);
+                locationAddress = address.getLocality();
+            }
+        } catch (IOException e) {
+            Log.e(TAG, e.getMessage(), e);
+        }
+
+        return locationAddress;
     }
 }

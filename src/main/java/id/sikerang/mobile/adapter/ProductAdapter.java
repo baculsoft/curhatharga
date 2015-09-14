@@ -1,10 +1,8 @@
 package id.sikerang.mobile.adapter;
 
 import android.content.Context;
-import android.location.Address;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +11,7 @@ import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -24,13 +20,12 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.controller.ProductController;
+import id.sikerang.mobile.utils.SharedPreferencesUtil;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class ProductAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
-    private static final String TAG = ProductAdapter.class.getSimpleName();
-
     private final LayoutInflater mLayoutInflater;
     private final AtomicInteger mPosition;
     private final Map<Integer, ProductViewHolder> mHoldersMap;
@@ -59,7 +54,7 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
             mHoldersMap.put(position, new ProductViewHolder(position, mLayoutInflater, container));
         }
 
-        String location = getLocationAddress();
+        String location = SharedPreferencesUtil.getInstance(SiKerang.getContext()).getLocationAddress();
         ProductViewHolder viewHolder = mHoldersMap.get(position);
         viewHolder.getTextViewLocation().setText(location);
         container.addView(viewHolder.getView());
@@ -91,23 +86,6 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public void onPageScrollStateChanged(int state) {
-    }
-
-    private String getLocationAddress() {
-        String locationAddress = "";
-
-        try {
-            List<Address> addresses = mProductController.getAddress();
-
-            if (addresses != null && addresses.size() > 0) {
-                Address address = mProductController.getAddress().get(0);
-                locationAddress = address.getLocality();
-            }
-        } catch (IOException e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
-
-        return locationAddress;
     }
 
     static final class ProductViewHolder implements View.OnClickListener {

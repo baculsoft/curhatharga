@@ -3,8 +3,4 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
-    <style name="AppTheme.Toolbar" parent="AppTheme.Base.Toolbar" />
-    <style name="AppTheme.NavigationView" parent="AppTheme.Base.NavigationView" />
-    <style name="AppTheme.RatingBar" parent="AppTheme.Base.RatingBar" />
 </resources>

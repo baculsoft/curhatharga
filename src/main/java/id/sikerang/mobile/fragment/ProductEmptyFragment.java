@@ -31,6 +31,6 @@ public class ProductEmptyFragment extends Fragment {
     }
 
     private void initComponents() {
-        mTextViewEmptyProduct.setText(SiKerang.getContext().getResources().getString(R.string.text_empty));
+        mTextViewEmptyProduct.setText(SiKerang.getContext().getResources().getString(R.string.text_comingsoon));
     }
 }

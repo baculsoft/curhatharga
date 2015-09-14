@@ -15,4 +15,6 @@ public final class Configs {
      * Production: https://sikerang.id/api
      */
     public static final String API_URL = "https://sikerang.id/api";
+
+    public static final String GEOCODING = "geocoding";
 }
