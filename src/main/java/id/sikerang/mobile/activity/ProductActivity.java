@@ -49,10 +49,7 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_product);
         ButterKnife.bind(this);
         initComponents();
-        initDrawer();
-        initFragments();
         initController();
-        initLocationAddress();
     }
 
     @Override
@@ -89,6 +86,8 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         setSupportActionBar(mToolbarApp);
         setCheckedLastMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
+        initDrawer();
+        initFragments();
     }
 
     private void initDrawer() {
@@ -113,6 +112,7 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
 
     private void initController() {
         mProductController = new ProductController(SiKerang.getContext());
+        initLocationAddress();
     }
 
     private void initLocationAddress() {

@@ -92,9 +92,9 @@ public class ProductController {
         client.setReadTimeout(1, TimeUnit.MINUTES);
 
         RestAdapter restAdapter = new RestAdapter.Builder()
-                .setClient(new OkClient(client))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setEndpoint(Configs.API_URL).build();
+                                                 .setClient(new OkClient(client))
+                                                 .setLogLevel(RestAdapter.LogLevel.FULL)
+                                                 .setEndpoint(Configs.API_URL).build();
         IProductService mProductService = restAdapter.create(IProductService.class);
 
         try {
@@ -108,7 +108,7 @@ public class ProductController {
                     new Callback<CommonResponse>() {
                         @Override
                         public void success(CommonResponse commonResponse, Response response) {
-                            Log.d(TAG, response.getReason());
+                            handleResponse(commonResponse);
                         }
 
                         @Override
@@ -118,6 +118,15 @@ public class ProductController {
                     });
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
+        }
+    }
+
+    private void handleResponse(CommonResponse commonResponse) {
+        switch (commonResponse.getCode()) {
+            case 0:
+            case 1: {
+                Log.d(TAG, commonResponse.getStatus());
+            }
         }
     }
 }
