@@ -3,6 +3,7 @@ package id.sikerang.mobile.adapter;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,23 +20,25 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.controller.ProductController;
-import id.sikerang.mobile.utils.SharedPreferencesUtil;
+import id.sikerang.mobile.controller.KomoditasController;
+import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class ProductAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class KomoditasAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
+    private static final String TAG = KomoditasAdapter.class.getSimpleName();
+
     private final LayoutInflater mLayoutInflater;
     private final AtomicInteger mPosition;
-    private final Map<Integer, ProductViewHolder> mHoldersMap;
-    private final ProductController mProductController;
+    private final Map<Integer, KomoditasViewHolder> mHoldersMap;
+    private final KomoditasController mKomoditasController;
 
-    public ProductAdapter(Context context) {
+    public KomoditasAdapter(Context context) {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPosition = new AtomicInteger();
         mHoldersMap = new HashMap<>();
-        mProductController = new ProductController(SiKerang.getContext());
+        mKomoditasController = new KomoditasController(SiKerang.getContext());
     }
 
     @Override
@@ -51,15 +54,15 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         if (!mHoldersMap.containsKey(position)) {
-            mHoldersMap.put(position, new ProductViewHolder(position, mLayoutInflater, container));
+            mHoldersMap.put(position, new KomoditasViewHolder(position, mLayoutInflater, container));
         }
 
-        String location = SharedPreferencesUtil.getInstance(SiKerang.getContext()).getLocationAddress();
-        ProductViewHolder viewHolder = mHoldersMap.get(position);
-        viewHolder.getTextViewLocation().setText(location);
-        container.addView(viewHolder.getView());
+        String location = SharedPreferencesUtils.getInstance(SiKerang.getContext()).getLocationAddress();
+        KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(position);
+        komoditasViewHolder.getTextViewLocation().setText(location);
+        container.addView(komoditasViewHolder.getView());
 
-        return viewHolder.getView();
+        return komoditasViewHolder.getView();
     }
 
     @Override
@@ -69,10 +72,10 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        ProductViewHolder viewHolder = mHoldersMap.get(mPosition.get());
-        viewHolder.onClick(view);
+        KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get());
+        komoditasViewHolder.onClick(view);
 
-        mProductController.collectCommonInfo(mProductController.getLatitude(), mProductController.getLongitude(), mProductController.getScreenName(), viewHolder.getTextViewProduct().getText().toString(), viewHolder.isLikes);
+        mKomoditasController.collectCommonInfo(mKomoditasController.getLatitude(), mKomoditasController.getLongitude(), mKomoditasController.getScreenName(), komoditasViewHolder.getTextViewKomoditas().getText().toString(), komoditasViewHolder.isLikes());
     }
 
     @Override
@@ -82,27 +85,25 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
 
     @Override
     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+        Log.d(TAG, "onPageScrolled KomoditasAdapter.");
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
+        Log.d(TAG, "onPageScrollStateChanged KomoditasAdapter.");
     }
 
-    static final class ProductViewHolder implements View.OnClickListener {
-        private final View mView;
+    static final class KomoditasViewHolder implements View.OnClickListener {
+        @Bind(R.id.iv_komoditas)
+        ImageView mImageViewKomoditas;
 
-        private boolean isLikes;
-
-        @Bind(R.id.iv_product)
-        ImageView mImageViewProduct;
-
-        @Bind(R.id.tv_product)
-        TextView mTextViewProduct;
+        @Bind(R.id.tv_komoditas)
+        TextView mTextViewKomoditas;
 
         @Bind(R.id.tv_statement)
         TextView mTextViewStatment;
 
-        @Bind(R.id.bar_satisfaction)
+        @Bind(R.id.ratingbar_satisfaction)
         RatingBar mRatingBarSatisfaction;
 
         @Bind(R.id.tv_satisfaction)
@@ -111,10 +112,14 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
         @Bind(R.id.tv_location)
         TextView mTextViewLocation;
 
-        public ProductViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
-            mView = layoutInflater.inflate(R.layout.row_product, container, false);
+        private final View mView;
+
+        private boolean isLikes;
+
+        public KomoditasViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
+            mView = layoutInflater.inflate(R.layout.row_komoditas, container, false);
             ButterKnife.bind(this, mView);
-            initView(position);
+            initComponents(position);
         }
 
         @Override
@@ -123,15 +128,15 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
             final int text;
 
             switch (view.getId()) {
-                case R.id.btn_likes: {
+                case R.id.fab_murah: {
                     color = R.color.teal_500;
-                    text = R.string.text_likes;
+                    text = R.string.text_murah;
                     isLikes = true;
                     break;
                 }
-                case R.id.btn_dislikes: {
+                case R.id.fab_mahal: {
                     color = R.color.red_500;
-                    text = R.string.text_dislikes;
+                    text = R.string.text_mahal;
                     isLikes = false;
                     break;
                 }
@@ -144,46 +149,47 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
             getTextViewStatment().setText(SiKerang.getContext().getResources().getString(text));
         }
 
-        private void initView(int position) {
+        // FIXME Hardcoded value
+        private void initComponents(int position) {
             switch (position) {
                 case 0: {
-                    getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
-                    getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
+                    getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
+                    getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
                     getRatingBarSatisfaction().setNumStars(3);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
                 case 1: {
-                    getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_corn));
-                    getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_corn));
+                    getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_corn));
+                    getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_corn));
                     getRatingBarSatisfaction().setNumStars(2);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
                     break;
                 }
                 case 2: {
-                    getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_soya));
-                    getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
+                    getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_soya));
+                    getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
                     getRatingBarSatisfaction().setNumStars(1);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     break;
                 }
                 case 3: {
-                    getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_chicken));
-                    getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
+                    getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_chicken));
+                    getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
                     getRatingBarSatisfaction().setNumStars(1);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     break;
                 }
                 case 4: {
-                    getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_meal));
-                    getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_meal));
+                    getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_meal));
+                    getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_meal));
                     getRatingBarSatisfaction().setNumStars(2);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
                     break;
                 }
                 case 5: {
-                    getImageViewProduct().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
-                    getTextViewProduct().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
+                    getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
+                    getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
                     getRatingBarSatisfaction().setNumStars(3);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
@@ -195,12 +201,16 @@ public class ProductAdapter extends PagerAdapter implements View.OnClickListener
             return mView;
         }
 
-        public ImageView getImageViewProduct() {
-            return mImageViewProduct;
+        public boolean isLikes() {
+            return isLikes;
         }
 
-        public TextView getTextViewProduct() {
-            return mTextViewProduct;
+        public ImageView getImageViewKomoditas() {
+            return mImageViewKomoditas;
+        }
+
+        public TextView getTextViewKomoditas() {
+            return mTextViewKomoditas;
         }
 
         public TextView getTextViewStatment() {

@@ -2,21 +2,21 @@
 <resources>
     <!-- CONTENT -->
     <string name="app_name">CurhatHarga!</string>
-    <string name="menu_product">Komoditas</string>
+    <string name="menu_komoditas">Komoditas</string>
     <string name="menu_pantau_trend">Pantau Trend</string>
     <string name="menu_kawal_perubahan">Kawal Perubahan</string>
-    <string name="menu_about">Tentang Aplikasi</string>
-    <string name="text_action_comments">Curhat</string>
+    <string name="menu_tentang_aplikasi">Tentang Aplikasi</string>
+    <string name="text_action_curhat">Curhat</string>
     <string name="text_location_unknown">Tidak Diketahui</string>
 
     <!-- CONTENT DESCRIPTION -->
-    <string name="menu_open_desc">Buka Menu</string>
-    <string name="menu_close_desc">Tutup Menu</string>
-    <string name="product_desc">Produk</string>
+    <string name="desc_menu_open">Buka Menu</string>
+    <string name="desc_menu_close">Tutup Menu</string>
+    <string name="desc_komoditas">Komoditas</string>
 
     <!-- DUMMY TEXT -->
-    <string name="text_likes">Murah!</string>
-    <string name="text_dislikes">Mahal!</string>
+    <string name="text_murah">Murah!</string>
+    <string name="text_mahal">Mahal!</string>
     <string name="text_empty">Coming Soon!</string>
 
     <!-- DUMMY PRODUCTS -->

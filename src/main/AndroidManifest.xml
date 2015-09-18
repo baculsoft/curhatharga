@@ -17,8 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="id.sikerang.mobile.activity.ProductActivity"
-            android:label="@string/app_name"
+            android:name="id.sikerang.mobile.activity.SiKerangActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

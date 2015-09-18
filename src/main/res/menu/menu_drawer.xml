@@ -2,10 +2,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:id="@+id/group_menu">
         <item
-            android:id="@+id/item_product"
+            android:id="@+id/item_komoditas"
             android:checkable="true"
             android:icon="@mipmap/ic_shopping_basket"
-            android:title="@string/menu_product" />
+            android:title="@string/menu_komoditas" />
         <item
             android:id="@+id/item_pantau_trend"
             android:checkable="true"
@@ -19,9 +19,9 @@
     </group>
     <group android:id="@+id/group_help">
         <item
-            android:id="@+id/item_about"
+            android:id="@+id/item_tentang_aplikasi"
             android:checkable="true"
             android:icon="@mipmap/ic_info"
-            android:title="@string/menu_about" />
+            android:title="@string/menu_tentang_aplikasi" />
     </group>
 </menu>

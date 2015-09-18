@@ -6,14 +6,14 @@ import android.os.Parcelable;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class Product implements Parcelable {
-    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
-        public Product createFromParcel(Parcel in) {
-            return new Product(in);
+public class Komoditas implements Parcelable {
+    public static final Parcelable.Creator<Komoditas> CREATOR = new Parcelable.Creator<Komoditas>() {
+        public Komoditas createFromParcel(Parcel in) {
+            return new Komoditas(in);
         }
 
-        public Product[] newArray(int size) {
-            return new Product[size];
+        public Komoditas[] newArray(int size) {
+            return new Komoditas[size];
         }
     };
 
@@ -24,11 +24,11 @@ public class Product implements Parcelable {
     private String text;
     private boolean likes;
 
-    public Product() {
+    public Komoditas() {
         super();
     }
 
-    public Product(Parcel in) {
+    public Komoditas(Parcel in) {
         latitude = in.readString();
         longitude = in.readString();
         screenName = in.readString();

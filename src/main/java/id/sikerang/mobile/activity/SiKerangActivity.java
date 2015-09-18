@@ -19,17 +19,17 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.controller.ProductController;
+import id.sikerang.mobile.controller.KomoditasController;
 import id.sikerang.mobile.fragment.EmptyFragment;
-import id.sikerang.mobile.fragment.ProductFragment;
+import id.sikerang.mobile.fragment.KomoditasFragment;
 import id.sikerang.mobile.utils.Constants;
-import id.sikerang.mobile.utils.SharedPreferencesUtil;
+import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class ProductActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private static final String TAG = ProductActivity.class.getSimpleName();
+public class SiKerangActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = SiKerangActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar_app)
     Toolbar mToolbarApp;
@@ -41,13 +41,13 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
     NavigationView mNavigationViewMenu;
 
     private MenuItem mMenuItemPrevious;
-    private ProductController mProductController;
+    private KomoditasController mKomoditasController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate ProductActivity");
+        Log.d(TAG, "onCreate SiKerangActivity.");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+        setContentView(R.layout.activity_sikerang);
         ButterKnife.bind(this);
         initComponents();
         initControllers();
@@ -81,8 +81,8 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
 
         int status = 0;
         switch (menuItem.getItemId()) {
-            case R.id.item_product: {
-                status = Constants.MENU_PRODUCT;
+            case R.id.item_komoditas: {
+                status = Constants.MENU_KOMODITAS;
                 break;
             }
         }
@@ -91,21 +91,20 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
     }
 
     private void initComponents() {
-        mToolbarApp.setTitle(getTitle());
         setSupportActionBar(mToolbarApp);
         setCheckedMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         initDrawers();
-        initFragments(Constants.MENU_PRODUCT);
+        initFragments(Constants.MENU_KOMODITAS);
     }
 
     private void initControllers() {
-        mProductController = new ProductController(SiKerang.getContext());
+        mKomoditasController = new KomoditasController(SiKerang.getContext());
         addLocationAddress();
     }
 
     private void initDrawers() {
-        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayoutMenu, mToolbarApp, R.string.menu_open_desc, R.string.menu_close_desc) {
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayoutMenu, mToolbarApp, R.string.desc_menu_open, R.string.desc_menu_close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -121,20 +120,20 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
     }
 
     private void initFragments(int status) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(status)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_sikerang, getFragments(status)).commit();
     }
 
     private void addLocationAddress() {
         String locationAddress = getLocationAddress();
-        SharedPreferencesUtil.getInstance(SiKerang.getContext()).setLocationAddress(locationAddress);
+        SharedPreferencesUtils.getInstance(SiKerang.getContext()).setLocationAddress(locationAddress);
     }
 
     private void removeLocationAddress() {
-        SharedPreferencesUtil.getInstance(SiKerang.getContext()).clearSharedPreferences();
+        SharedPreferencesUtils.getInstance(SiKerang.getContext()).clearSharedPreferences();
     }
 
     private void getCheckedMenu(MenuItem menuItem, boolean checked) {
-        if (menuItem != null && menuItem.getItemId() != R.id.item_product) {
+        if (menuItem != null) {
             menuItem.setChecked(checked);
         }
     }
@@ -143,10 +142,10 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
     }
 
-    private Fragment getFragment(int status) {
+    private Fragment getFragments(int status) {
         switch (status) {
-            case Constants.MENU_PRODUCT: {
-                return new ProductFragment();
+            case Constants.MENU_KOMODITAS: {
+                return new KomoditasFragment();
             }
             default: {
                 Log.e(TAG, "Menu is not available");
@@ -159,10 +158,10 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         String locationAddress = SiKerang.getContext().getResources().getString(R.string.text_location_unknown);
 
         try {
-            List<Address> addresses = mProductController.getAddress();
+            List<Address> addresses = mKomoditasController.getAddress();
 
             if (addresses != null && addresses.size() > 0) {
-                Address address = mProductController.getAddress().get(0);
+                Address address = mKomoditasController.getAddress().get(0);
                 locationAddress = address.getLocality();
             }
         } catch (IOException e) {

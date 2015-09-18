@@ -12,9 +12,13 @@ public final class Constants {
 
     public static final long MIN_TIME = 1L;
     public static final long MIN_DISTANCE = 1L;
+    public static final long MAX_TIMEOUT = 1l;
 
-    public static final int MENU_PRODUCT = 100;
+    public static final int GEOCODING_MAX_RESULT = 1;
+    public static final int MENU_KOMODITAS = 100;
     public static final int MENU_PANTAU_TREND = 101;
     public static final int MENU_KAWAL_PERUBAHAN = 102;
-    public static final int MENU_ABOUT = 200;
+    public static final int MENU_TENTANG_APLIKASI = 200;
+    public static final int STATUS_FAILED = 0;
+    public static final int STATUS_SUCCESS = 1;
 }

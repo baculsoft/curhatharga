@@ -8,23 +8,23 @@ import android.util.Log;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class SharedPreferencesUtil {
-    private static final String TAG = SharedPreferencesUtil.class.getSimpleName();
+public class SharedPreferencesUtils {
+    private static final String TAG = SharedPreferencesUtils.class.getSimpleName();
 
-    private static volatile SharedPreferencesUtil INSTANCE = null;
+    private static volatile SharedPreferencesUtils INSTANCE = null;
 
     private SharedPreferences mSharedPreferences;
 
-    public static synchronized SharedPreferencesUtil getInstance(Context context) {
+    public static synchronized SharedPreferencesUtils getInstance(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = new SharedPreferencesUtil(context);
+            INSTANCE = new SharedPreferencesUtils(context);
         }
 
         return INSTANCE;
     }
 
-    public SharedPreferencesUtil(Context context) {
-        Log.d(TAG, "Initial SharedPreferencesUtil");
+    public SharedPreferencesUtils(Context context) {
+        Log.d(TAG, "Initial SharedPreferencesUtils");
         mSharedPreferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
     }
 
