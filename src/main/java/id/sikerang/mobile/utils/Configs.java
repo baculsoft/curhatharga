@@ -10,11 +10,6 @@ public final class Configs {
     private Configs() {
     }
 
-    /**
-     * Development: http://hackathon2015.baculsoft.com/api
-     * Production: https://sikerang.id/api
-     */
-    public static final String API_URL = "https://sikerang.id/api";
-
+    public static final String APP_URL = "https://sikerang.id";
     public static final String GEOCODING = "geocoding";
 }

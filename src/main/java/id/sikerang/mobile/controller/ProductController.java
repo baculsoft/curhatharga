@@ -27,7 +27,7 @@ import retrofit.client.Response;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class ProductController {
+public class ProductController implements Callback<CommonResponse> {
     private static final String TAG = ProductController.class.getSimpleName();
 
     private final Context mContext;
@@ -86,6 +86,16 @@ public class ProductController {
         submit(product);
     }
 
+    @Override
+    public void success(CommonResponse commonResponse, Response response) {
+        handleResponse(commonResponse);
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        Log.e(TAG, error.getMessage(), error);
+    }
+
     private void submit(Product product) {
         OkHttpClient client = new OkHttpClient();
         client.setConnectTimeout(1, TimeUnit.MINUTES);
@@ -94,7 +104,7 @@ public class ProductController {
         RestAdapter restAdapter = new RestAdapter.Builder()
                                                  .setClient(new OkClient(client))
                                                  .setLogLevel(RestAdapter.LogLevel.FULL)
-                                                 .setEndpoint(Configs.API_URL).build();
+                                                 .setEndpoint(Configs.APP_URL).build();
         IProductService mProductService = restAdapter.create(IProductService.class);
 
         try {
@@ -104,18 +114,7 @@ public class ProductController {
                     product.getScreenName(),
                     product.getProductName(),
                     product.isLikes(),
-                    product.getText(),
-                    new Callback<CommonResponse>() {
-                        @Override
-                        public void success(CommonResponse commonResponse, Response response) {
-                            handleResponse(commonResponse);
-                        }
-
-                        @Override
-                        public void failure(RetrofitError error) {
-                            Log.e(TAG, error.getMessage());
-                        }
-                    });
+                    product.getText(), this);
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         }

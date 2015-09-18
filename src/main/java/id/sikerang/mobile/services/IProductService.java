@@ -11,7 +11,7 @@ import retrofit.http.POST;
  */
 public interface IProductService {
     @FormUrlEncoded
-    @POST("/save")
+    @POST("/api/save")
     void createProduct(@Field("latitude") String latitude,
                        @Field("longitude") String longitude,
                        @Field("screenName") String screenName,

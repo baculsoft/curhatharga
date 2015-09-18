@@ -10,9 +10,10 @@ import android.util.Log;
 public class SiKerang extends Application {
     private static final String TAG = SiKerang.class.getSimpleName();
 
-    static Context CONTEXT;
+    static volatile Context CONTEXT;
 
-    public static Context getContext() {
+    public static synchronized Context getContext() {
+        Log.d(TAG, "Synch SiKerang.getContext()");
         return CONTEXT;
     }
 
