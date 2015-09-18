@@ -27,7 +27,7 @@ android {
         applicationId "id.sikerang.mobile"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 4
+        versionCode 5
         versionName "1.0.3"
     }
     signingConfigs {
@@ -63,7 +63,6 @@ repositories {
 }
 
 dependencies {
-    compile("com.android.support:appcompat-v7:${androidSupportVersion}")
     compile("com.android.support:design:${androidSupportVersion}")
     compile("com.jakewharton:butterknife:${butterKnifeVersion}")
     compile("com.viewpagerindicator:library:${viewpagerindicatorVersion}")
