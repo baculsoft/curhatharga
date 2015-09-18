@@ -5,21 +5,10 @@
     android:background="@mipmap/ic_cover">
 
     <ImageView
-        android:layout_width="@dimen/view_64dp"
-        android:layout_height="@dimen/view_64dp"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/view_32dp"
+        android:layout_width="@dimen/view_96dp"
+        android:layout_height="@dimen/view_96dp"
+        android:layout_gravity="center"
         android:background="@android:color/transparent"
         android:contentDescription="@string/app_name"
-        android:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/view_16dp"
-        android:text="@string/app_name"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_16sp"
-        android:textStyle="bold" />
+        android:src="@mipmap/ic_logo" />
 </FrameLayout>

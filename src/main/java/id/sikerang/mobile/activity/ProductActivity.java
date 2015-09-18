@@ -22,6 +22,7 @@ import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.controller.ProductController;
 import id.sikerang.mobile.fragment.ProductEmptyFragment;
 import id.sikerang.mobile.fragment.ProductFragment;
+import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.SharedPreferencesUtil;
 
 /**
@@ -61,7 +62,7 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
     @Override
     protected void onResume() {
         super.onResume();
-        initLocationAddress();
+        addLocationAddress();
     }
 
     @Override
@@ -77,6 +78,13 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         checkPreviousMenu(mMenuItemPrevious, false);
         mMenuItemPrevious = menuItem;
         mDrawerLayoutMenu.closeDrawers();
+
+        switch (menuItem.getItemId()) {
+            case R.id.item_product: {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(Constants.MENU_PRODUCT)).commit();
+                break;
+            }
+        }
 
         return true;
     }
@@ -107,15 +115,15 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
     }
 
     private void initFragments() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(1)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(Constants.MENU_PRODUCT)).commit();
     }
 
     private void initController() {
         mProductController = new ProductController(SiKerang.getContext());
-        initLocationAddress();
+        addLocationAddress();
     }
 
-    private void initLocationAddress() {
+    private void addLocationAddress() {
         String locationAddress = getLocationAddress();
         SharedPreferencesUtil.getInstance(SiKerang.getContext()).setLocationAddress(locationAddress);
     }
@@ -136,10 +144,10 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
 
     private Fragment getFragment(int status) {
         switch (status) {
-            case 0: {
+            case Constants.MENU_EMPTY_PRODUCT: {
                 return new ProductEmptyFragment();
             }
-            case 1: {
+            case Constants.MENU_PRODUCT: {
                 return new ProductFragment();
             }
             default: {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
+    <group android:id="@+id/group_menu">
         <item
             android:id="@+id/item_product"
             android:checkable="true"
@@ -17,15 +17,11 @@
             android:icon="@mipmap/ic_speaker_notes"
             android:title="@string/menu_kawal_perubahan" />
     </group>
-    <group>
-        <item android:title="@string/submenu_title_help">
-            <menu>
-                <item
-                    android:id="@+id/item_about"
-                    android:checkable="true"
-                    android:icon="@mipmap/ic_info"
-                    android:title="@string/submenu_item_about" />
-            </menu>
-        </item>
+    <group android:id="@+id/group_help">
+        <item
+            android:id="@+id/item_about"
+            android:checkable="true"
+            android:icon="@mipmap/ic_info"
+            android:title="@string/submenu_about" />
     </group>
 </menu>
