@@ -22,6 +22,6 @@
             android:id="@+id/item_about"
             android:checkable="true"
             android:icon="@mipmap/ic_info"
-            android:title="@string/submenu_about" />
+            android:title="@string/menu_about" />
     </group>
 </menu>

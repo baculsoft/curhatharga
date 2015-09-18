@@ -16,14 +16,14 @@ import id.sikerang.mobile.SiKerang;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class ProductEmptyFragment extends Fragment {
-    @Bind(R.id.tv_empty_product)
-    TextView mTextViewEmptyProduct;
+public class EmptyFragment extends Fragment {
+    @Bind(R.id.tv_empty)
+    TextView mTextViewEmpty;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_empty_product, container, false);
+        View view = inflater.inflate(R.layout.fragment_empty, container, false);
         ButterKnife.bind(this, view);
         initComponents();
 
@@ -31,6 +31,7 @@ public class ProductEmptyFragment extends Fragment {
     }
 
     private void initComponents() {
-        mTextViewEmptyProduct.setText(SiKerang.getContext().getResources().getString(R.string.text_comingsoon));
+        String title = SiKerang.getContext().getResources().getString(R.string.text_empty);
+        mTextViewEmpty.setText(title);
     }
 }

@@ -3,7 +3,7 @@ package id.sikerang.mobile.utils;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class Constants {
+public final class Constants {
     /**
      * Constants class, which is no need to be instance.
      */
@@ -16,6 +16,5 @@ public class Constants {
     public static final int MENU_PRODUCT = 100;
     public static final int MENU_PANTAU_TREND = 101;
     public static final int MENU_KAWAL_PERUBAHAN = 102;
-    public static final int SUBMENU_ABOUT = 200;
-    public static final int MENU_EMPTY_PRODUCT = 300;
+    public static final int MENU_ABOUT = 200;
 }

@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/view_12dp"
             android:drawableStart="@mipmap/ic_feedback"
-            android:text="@string/action_comments"
+            android:text="@string/text_action_comments"
             android:textAllCaps="true"
             android:textColor="@color/grey_100"
             android:textSize="@dimen/text_16sp" />

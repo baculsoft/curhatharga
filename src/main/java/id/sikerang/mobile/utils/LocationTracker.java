@@ -43,14 +43,17 @@ public class LocationTracker implements LocationListener {
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
+        Log.d(TAG, "onStatusChanged LocationTracker.");
     }
 
     @Override
     public void onProviderEnabled(String s) {
+        Log.d(TAG, "onProviderEnabled LocationTracker.");
     }
 
     @Override
     public void onProviderDisabled(String s) {
+        Log.d(TAG, "onProviderDisabled LocationTracker.");
     }
 
     public Location getLocation() {

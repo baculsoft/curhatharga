@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.controller.ProductController;
-import id.sikerang.mobile.fragment.ProductEmptyFragment;
+import id.sikerang.mobile.fragment.EmptyFragment;
 import id.sikerang.mobile.fragment.ProductFragment;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.SharedPreferencesUtil;
@@ -50,7 +50,7 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         setContentView(R.layout.activity_product);
         ButterKnife.bind(this);
         initComponents();
-        initController();
+        initControllers();
     }
 
     @Override
@@ -73,32 +73,38 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        setCheckedLastMenu(0, false);
+        setCheckedMenu(0, false);
         menuItem.setChecked(true);
-        checkPreviousMenu(mMenuItemPrevious, false);
+        getCheckedMenu(mMenuItemPrevious, false);
         mMenuItemPrevious = menuItem;
         mDrawerLayoutMenu.closeDrawers();
 
+        int status = 0;
         switch (menuItem.getItemId()) {
             case R.id.item_product: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(Constants.MENU_PRODUCT)).commit();
+                status = Constants.MENU_PRODUCT;
                 break;
             }
         }
-
+        initFragments(status);
         return true;
     }
 
     private void initComponents() {
         mToolbarApp.setTitle(getTitle());
         setSupportActionBar(mToolbarApp);
-        setCheckedLastMenu(0, true);
+        setCheckedMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
-        initDrawer();
-        initFragments();
+        initDrawers();
+        initFragments(Constants.MENU_PRODUCT);
     }
 
-    private void initDrawer() {
+    private void initControllers() {
+        mProductController = new ProductController(SiKerang.getContext());
+        addLocationAddress();
+    }
+
+    private void initDrawers() {
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayoutMenu, mToolbarApp, R.string.menu_open_desc, R.string.menu_close_desc) {
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -114,13 +120,8 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         actionBarDrawerToggle.syncState();
     }
 
-    private void initFragments() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(Constants.MENU_PRODUCT)).commit();
-    }
-
-    private void initController() {
-        mProductController = new ProductController(SiKerang.getContext());
-        addLocationAddress();
+    private void initFragments(int status) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_product, getFragment(status)).commit();
     }
 
     private void addLocationAddress() {
@@ -132,27 +133,24 @@ public class ProductActivity extends AppCompatActivity implements NavigationView
         SharedPreferencesUtil.getInstance(SiKerang.getContext()).clearSharedPreferences();
     }
 
-    private MenuItem setCheckedLastMenu(int position, boolean checked) {
-        return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
-    }
-
-    private void checkPreviousMenu(MenuItem menuItem, boolean checked) {
+    private void getCheckedMenu(MenuItem menuItem, boolean checked) {
         if (menuItem != null && menuItem.getItemId() != R.id.item_product) {
             menuItem.setChecked(checked);
         }
     }
 
+    private MenuItem setCheckedMenu(int position, boolean checked) {
+        return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
+    }
+
     private Fragment getFragment(int status) {
         switch (status) {
-            case Constants.MENU_EMPTY_PRODUCT: {
-                return new ProductEmptyFragment();
-            }
             case Constants.MENU_PRODUCT: {
                 return new ProductFragment();
             }
             default: {
-                Log.e(TAG, "Not yet implemented!");
-                return null;
+                Log.e(TAG, "Menu is not available");
+                return new EmptyFragment();
             }
         }
     }
