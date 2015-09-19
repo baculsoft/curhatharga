@@ -4,7 +4,7 @@ buildscript {
     ext {
         androidSupportVersion = '23.0.1'
         butterKnifeVersion = '7.0.1'
-        viewpagerindicatorVersion = '2.4.1@aar'
+        viewpagerIndicatorVersion = '2.4.1@aar'
         okhttpVersion = '2.5.0'
         retrofitVersion = '1.9.0'
     }
@@ -65,7 +65,7 @@ repositories {
 dependencies {
     compile("com.android.support:design:${androidSupportVersion}")
     compile("com.jakewharton:butterknife:${butterKnifeVersion}")
-    compile("com.viewpagerindicator:library:${viewpagerindicatorVersion}")
+    compile("com.viewpagerindicator:library:${viewpagerIndicatorVersion}")
     compile("com.squareup.okhttp:okhttp:${okhttpVersion}")
     compile("com.squareup.okhttp:okhttp-urlconnection:${okhttpVersion}")
     compile("com.squareup.retrofit:retrofit:${retrofitVersion}")
