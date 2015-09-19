@@ -4,6 +4,7 @@ import android.location.Address;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -72,6 +73,15 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
     }
 
     @Override
+    public void onBackPressed() {
+        if (mDrawerLayoutMenu.isDrawerVisible(GravityCompat.START)) {
+            mDrawerLayoutMenu.closeDrawers();
+        } else {
+            finish();
+        }
+    }
+
+    @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         setCheckedMenu(0, false);
         menuItem.setChecked(true);
@@ -114,6 +124,15 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
             }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                if (drawerView != null && drawerView == mNavigationViewMenu) {
+                    super.onDrawerSlide(drawerView, 0);
+                } else {
+                    super.onDrawerSlide(drawerView, slideOffset);
+                }
+            }
         };
         mDrawerLayoutMenu.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
@@ -133,7 +152,7 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void getCheckedMenu(MenuItem menuItem, boolean checked) {
-        if (menuItem != null) {
+        if (menuItem != null && menuItem.getItemId() != R.id.item_komoditas) {
             menuItem.setChecked(checked);
         }
     }
