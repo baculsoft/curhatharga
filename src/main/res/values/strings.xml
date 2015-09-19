@@ -12,6 +12,8 @@
     <string name="text_title_curhat">Curhatan Kamu</string>
     <string name="text_hint_curhat">Silahkan tulis curhat kamu disini&#8230;</string>
     <string name="text_location_unknown">Tidak Diketahui</string>
+    <string name="text_versi">Versi\u0020</string>
+    <string name="text_copyright">Copyright\u00A9 2015</string>
 
     <!-- CONTENT DESCRIPTION -->
     <string name="desc_menu_open">Buka Menu</string>

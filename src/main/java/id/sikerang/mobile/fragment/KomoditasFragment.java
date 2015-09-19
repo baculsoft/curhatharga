@@ -17,7 +17,6 @@ import com.viewpagerindicator.CirclePageIndicator;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
-import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.adapter.KomoditasAdapter;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
@@ -80,7 +79,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
     }
 
     private void initComponents() {
-        String title = SiKerang.getContext().getResources().getString(R.string.app_name);
+        String title = getActivity().getResources().getString(R.string.app_name);
         getActionBar().setTitle(title);
         mFabMurah.setOnClickListener(this);
         mFabMahal.setOnClickListener(this);
