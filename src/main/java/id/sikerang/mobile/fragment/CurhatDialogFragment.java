@@ -9,7 +9,6 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,11 +23,14 @@ public class CurhatDialogFragment extends DialogFragment implements DialogInterf
     @Bind(R.id.et_curhat)
     EditText mEditTextCurhat;
 
+    private static CurhatDialogListener mCurhatDialogListener;
+
     public CurhatDialogFragment() {
         Log.d(TAG, "Initial CurhatDialogFragment.");
     }
 
-    public static CurhatDialogFragment newInstance() {
+    public static CurhatDialogFragment newInstance(final CurhatDialogListener curhatDialogListener) {
+        mCurhatDialogListener = curhatDialogListener;
         return new CurhatDialogFragment();
     }
 
@@ -51,7 +53,7 @@ public class CurhatDialogFragment extends DialogFragment implements DialogInterf
     public void onClick(DialogInterface dialogInterface, int which) {
         switch (which) {
             case Dialog.BUTTON_POSITIVE: {
-                Toast.makeText(getActivity().getApplicationContext(), mEditTextCurhat.getText().toString(), Toast.LENGTH_SHORT).show();
+                mCurhatDialogListener.onSetValue(mEditTextCurhat.getText().toString());
                 break;
             }
             case Dialog.BUTTON_NEGATIVE: {
@@ -59,5 +61,9 @@ public class CurhatDialogFragment extends DialogFragment implements DialogInterf
                 break;
             }
         }
+    }
+
+    interface CurhatDialogListener {
+        void onSetValue(String value);
     }
 }

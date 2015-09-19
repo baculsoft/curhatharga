@@ -12,4 +12,5 @@ public final class Configs {
 
     public static final String APP_URL = "https://sikerang.id";
     public static final String GEOCODING = "geocoding";
+    public static final String CURHAT = "curhat";
 }

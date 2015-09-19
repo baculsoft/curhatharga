@@ -13,12 +13,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.models.CommonResponse;
 import id.sikerang.mobile.models.Komoditas;
 import id.sikerang.mobile.services.IKomoditasService;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.LocationTracker;
+import id.sikerang.mobile.utils.SharedPreferencesUtils;
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
@@ -71,7 +73,11 @@ public class KomoditasController implements Callback<CommonResponse> {
         return screenName;
     }
 
-    public void collectCommonInfo(String latitude, String longitude, String screenName, String productName, boolean isLikes) {
+    public String getComments() {
+        return SharedPreferencesUtils.getInstance(SiKerang.getContext()).getCurhat();
+    }
+
+    public void collectCommonInfo(String latitude, String longitude, String screenName, String productName, String text, boolean isLikes) {
         Komoditas komoditas = new Komoditas();
         komoditas.setLatitude(latitude);
         Log.i(TAG, String.format("Latitude:%s", komoditas.getLatitude()));
@@ -85,12 +91,11 @@ public class KomoditasController implements Callback<CommonResponse> {
         komoditas.setProductName(productName);
         Log.i(TAG, String.format("ProductName:%s", komoditas.getProductName()));
 
+        komoditas.setText(text);
+        Log.i(TAG, String.format("Text:%s", komoditas.getText()));
+
         komoditas.setLikes(isLikes);
         Log.i(TAG, String.format("Like/Dislike:%s", komoditas.isLikes()));
-
-        // FIXME Just for testing
-        komoditas.setText("Tes Komentar!");
-        Log.i(TAG, String.format("Comments:%s", komoditas.getText()));
 
         submit(komoditas);
     }
@@ -134,7 +139,12 @@ public class KomoditasController implements Callback<CommonResponse> {
             case Constants.STATUS_FAILED:
             case Constants.STATUS_SUCCESS: {
                 Log.d(TAG, String.format("Response: %s", commonResponse.getStatus()));
+                resetCurhatValue();
             }
         }
+    }
+
+    private void resetCurhatValue() {
+        SharedPreferencesUtils.getInstance(SiKerang.getContext()).resetCurhat();
     }
 }

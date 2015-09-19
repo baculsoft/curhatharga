@@ -148,7 +148,7 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
     }
 
     private void removeLocationAddress() {
-        SharedPreferencesUtils.getInstance(SiKerang.getContext()).clearSharedPreferences();
+        SharedPreferencesUtils.getInstance(SiKerang.getContext()).resetLocationAddress();
     }
 
     private void getCheckedMenu(MenuItem menuItem, boolean checked) {

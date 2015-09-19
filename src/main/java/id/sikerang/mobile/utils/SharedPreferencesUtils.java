@@ -38,9 +38,25 @@ public class SharedPreferencesUtils {
         return mSharedPreferences.getString(Configs.GEOCODING, null);
     }
 
-    public void clearSharedPreferences() {
+    public void setCurhat(String text) {
+        Editor editor = mSharedPreferences.edit();
+        editor.putString(Configs.CURHAT, text);
+        editor.apply();
+    }
+
+    public String getCurhat() {
+        return mSharedPreferences.getString(Configs.CURHAT, null);
+    }
+
+    public void resetLocationAddress() {
         Editor editor = mSharedPreferences.edit();
         editor.remove(Configs.GEOCODING);
+        editor.apply();
+    }
+
+    public void resetCurhat() {
+        Editor editor = mSharedPreferences.edit();
+        editor.remove(Configs.CURHAT);
         editor.apply();
     }
 }

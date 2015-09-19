@@ -19,11 +19,12 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.adapter.KomoditasAdapter;
+import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KomoditasFragment extends Fragment implements View.OnClickListener {
+public class KomoditasFragment extends Fragment implements View.OnClickListener, CurhatDialogFragment.CurhatDialogListener {
     @Bind(R.id.vp_komoditas)
     ViewPager mViewPagerKomoditas;
 
@@ -73,6 +74,11 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    @Override
+    public void onSetValue(String value) {
+        SharedPreferencesUtils.getInstance(getActivity().getApplicationContext()).setCurhat(value);
+    }
+
     private void initComponents() {
         String title = SiKerang.getContext().getResources().getString(R.string.app_name);
         getActionBar().setTitle(title);
@@ -89,7 +95,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener 
     }
 
     private void initDialogFragments() {
-        CurhatDialogFragment.newInstance().show(getActivity().getSupportFragmentManager(), CurhatDialogFragment.class.getSimpleName());
+        CurhatDialogFragment.newInstance(this).show(getActivity().getSupportFragmentManager(), CurhatDialogFragment.class.getSimpleName());
     }
 
     private ActionBar getActionBar() {
