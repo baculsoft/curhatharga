@@ -22,6 +22,7 @@ import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.controller.KomoditasController;
 import id.sikerang.mobile.fragment.EmptyFragment;
+import id.sikerang.mobile.fragment.KawalPerubahanFragment;
 import id.sikerang.mobile.fragment.KomoditasFragment;
 import id.sikerang.mobile.fragment.TentangAplikasiFragment;
 import id.sikerang.mobile.utils.Constants;
@@ -94,6 +95,10 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
         switch (menuItem.getItemId()) {
             case R.id.item_komoditas: {
                 status = Constants.MENU_KOMODITAS;
+                break;
+            }
+            case R.id.item_kawal_perubahan: {
+                status = Constants.MENU_KAWAL_PERUBAHAN;
                 break;
             }
             case R.id.item_tentang_aplikasi: {
@@ -170,6 +175,9 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
         switch (status) {
             case Constants.MENU_KOMODITAS: {
                 return new KomoditasFragment();
+            }
+            case Constants.MENU_KAWAL_PERUBAHAN: {
+                return new KawalPerubahanFragment();
             }
             case Constants.MENU_TENTANG_APLIKASI: {
                 return new TentangAplikasiFragment();
