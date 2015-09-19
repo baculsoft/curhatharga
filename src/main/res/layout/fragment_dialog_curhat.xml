@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/et_curhat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/text_hint_curhat"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:maxLines="5"
+        android:minLines="3"
+        android:textColorHint="@color/grey_300" />
+</LinearLayout>

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -34,6 +35,9 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener 
 
     @Bind(R.id.fab_mahal)
     FloatingActionButton mFabMahal;
+
+    @Bind(R.id.btn_curhat)
+    Button mButtonCurhat;
 
     private KomoditasAdapter mKomoditasAdapter;
 
@@ -62,6 +66,10 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener 
                 mKomoditasAdapter.onClick(view);
                 break;
             }
+            case R.id.btn_curhat: {
+                initDialogFragments();
+                break;
+            }
         }
     }
 
@@ -70,6 +78,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener 
         getActionBar().setTitle(title);
         mFabMurah.setOnClickListener(this);
         mFabMahal.setOnClickListener(this);
+        mButtonCurhat.setOnClickListener(this);
     }
 
     private void initAdapters() {
@@ -77,6 +86,10 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener 
         mViewPagerKomoditas.addOnPageChangeListener(mKomoditasAdapter);
         mViewPagerKomoditas.setAdapter(mKomoditasAdapter);
         mCirclePageIndicatorKomoditas.setViewPager(mViewPagerKomoditas);
+    }
+
+    private void initDialogFragments() {
+        CurhatDialogFragment.newInstance().show(getActivity().getSupportFragmentManager(), CurhatDialogFragment.class.getSimpleName());
     }
 
     private ActionBar getActionBar() {
