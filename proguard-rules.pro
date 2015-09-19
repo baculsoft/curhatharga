@@ -1,4 +1,4 @@
--keep class butterknife.** { *; }
+ -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
 -keep class **$$ViewBinder { *; }
 
