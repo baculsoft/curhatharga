@@ -12,6 +12,7 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.models.KawalPerubahan;
+import id.sikerang.mobile.utils.DateUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
@@ -33,7 +34,8 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
 
     @Override
     public void onBindViewHolder(KawalPerubahanHolder holder, int position) {
-        String date = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(mKawalPerubahan.getKawalPerubahanContents().get(position).getDate());
+        String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(position).getDate());
+        String date = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(convertedDate);
         String title = mKawalPerubahan.getKawalPerubahanContents().get(position).getTitle();
         String content = mKawalPerubahan.getKawalPerubahanContents().get(position).getContent().substring(0, 128).concat("...");
 
