@@ -21,17 +21,12 @@ public class EmptyFragment extends Fragment {
     @Bind(R.id.tv_empty)
     TextView mTextViewEmpty;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initComponents();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_empty, container, false);
         ButterKnife.bind(this, view);
+        initComponents();
 
         return view;
     }

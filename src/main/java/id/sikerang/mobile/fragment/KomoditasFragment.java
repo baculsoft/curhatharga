@@ -41,12 +41,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
 
     private KomoditasAdapter mKomoditasAdapter;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initComponents();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

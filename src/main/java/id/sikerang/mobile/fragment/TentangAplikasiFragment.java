@@ -25,17 +25,13 @@ public class TentangAplikasiFragment extends Fragment {
     @Bind(R.id.tv_about_version)
     TextView mTextViewAboutVersion;
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initComponents();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tentang_aplikasi, container, false);
         ButterKnife.bind(this, view);
+        initComponents();
+        initPackageInfo();
 
         return view;
     }
@@ -43,18 +39,16 @@ public class TentangAplikasiFragment extends Fragment {
     private void initComponents() {
         String title = getActivity().getResources().getString(R.string.menu_tentang_aplikasi);
         getActionBar().setTitle(title);
+    }
 
+    private void initPackageInfo() {
         try {
-            initPackageInfo();
+            String appVersion = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
+            String appInfo = getActivity().getResources().getString(R.string.text_versi).concat(appVersion);
+            mTextViewAboutVersion.setText(appInfo);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, e.getMessage(), e);
         }
-    }
-
-    private void initPackageInfo() throws PackageManager.NameNotFoundException {
-        String appVersion = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
-        String appInfo = getActivity().getResources().getString(R.string.text_versi).concat(appVersion);
-        mTextViewAboutVersion.setText(appInfo);
     }
 
     private ActionBar getActionBar() {
