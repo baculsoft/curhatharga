@@ -20,7 +20,7 @@
         android:layout_height="@dimen/view_384dp"
         android:layout_below="@+id/tv_pantau_trend"
         android:layout_margin="@dimen/view_16dp"
-        app:cardBackgroundColor="@color/grey_100"
+        app:cardBackgroundColor="@color/teal_500"
         app:cardCornerRadius="@dimen/view_4dp"
         app:cardElevation="@dimen/view_6dp">
 
