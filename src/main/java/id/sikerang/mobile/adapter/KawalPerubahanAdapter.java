@@ -10,12 +10,20 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
+import id.sikerang.mobile.SiKerang;
+import id.sikerang.mobile.models.KawalPerubahan;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAdapter.KawalPerubahanHolder> {
     private static final String TAG = KawalPerubahanAdapter.class.getSimpleName();
+
+    private KawalPerubahan mKawalPerubahan;
+
+    public KawalPerubahanAdapter(final KawalPerubahan kawalPerubahan) {
+        mKawalPerubahan = kawalPerubahan;
+    }
 
     @Override
     public KawalPerubahanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -25,10 +33,13 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
 
     @Override
     public void onBindViewHolder(KawalPerubahanHolder holder, int position) {
-        holder.getTextViewDate().setText("15/08/2015");
-        holder.getTextViewTitle().setText("Tiga Jam Operasi Pasar, Ayam di Bandung Ludes Diserbu");
-        holder.getTextViewContent().setText("Kepala Dinas Peternakan dan Ketahanan Pangan Kota Bandung, Elly Wasilah mengatakan, dalam kurun waktu tiga jam sebanyak 500..");
+        String date = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(mKawalPerubahan.getKawalPerubahanContents().get(position).getDate());
+        String title = mKawalPerubahan.getKawalPerubahanContents().get(position).getTitle();
+        String content = mKawalPerubahan.getKawalPerubahanContents().get(position).getContent().substring(0, 128).concat("...");
 
+        holder.getTextViewDate().setText(date);
+        holder.getTextViewTitle().setText(title);
+        holder.getTextViewContent().setText(content);
         holder.mKawalPerubahanListener = new KawalPerubahanListener() {
             @Override
             public void onClick(View view, long position) {
@@ -40,7 +51,7 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
 
     @Override
     public int getItemCount() {
-        return 5;
+        return mKawalPerubahan.getSize();
     }
 
     class KawalPerubahanHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
