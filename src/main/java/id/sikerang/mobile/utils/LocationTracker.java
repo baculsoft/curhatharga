@@ -10,7 +10,7 @@ import android.util.Log;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class LocationTracker implements LocationListener {
+public final class LocationTracker implements LocationListener {
     private static final String TAG = LocationTracker.class.getSimpleName();
 
     private static volatile LocationTracker INSTANCE = null;

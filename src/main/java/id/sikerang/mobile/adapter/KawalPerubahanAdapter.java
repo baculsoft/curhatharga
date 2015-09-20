@@ -45,7 +45,7 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
         holder.mKawalPerubahanListener = new KawalPerubahanListener() {
             @Override
             public void onClick(View view, long position) {
-                // TODO Not yet implemented
+                // TODO Implement detail "Kawal Perubahan" here
                 Log.d(TAG, String.format("Not yet implemented %d", position));
             }
         };

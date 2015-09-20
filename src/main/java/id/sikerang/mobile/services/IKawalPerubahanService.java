@@ -9,5 +9,5 @@ import retrofit.http.GET;
  */
 public interface IKawalPerubahanService {
     @GET("/api/kawal-perubahan")
-    void getKawalPerubahan(Callback<KawalPerubahan> callback);
+    void readKawalPerubahan(Callback<KawalPerubahan> callback);
 }

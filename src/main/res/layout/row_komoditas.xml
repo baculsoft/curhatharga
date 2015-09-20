@@ -7,7 +7,7 @@
         android:id="@+id/iv_komoditas"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:contentDescription="@string/desc_komoditas"
+        android:contentDescription="@string/menu_komoditas"
         android:scaleType="centerCrop" />
 
     <TextView

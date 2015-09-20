@@ -8,7 +8,7 @@ import android.util.Log;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class SharedPreferencesUtils {
+public final class SharedPreferencesUtils {
     private static final String TAG = SharedPreferencesUtils.class.getSimpleName();
 
     private static volatile SharedPreferencesUtils INSTANCE = null;

@@ -23,10 +23,6 @@ public class KawalPerubahanContents implements Parcelable {
     private String title;
     private String date;
 
-    public KawalPerubahanContents() {
-        super();
-    }
-
     public KawalPerubahanContents(Parcel in) {
         content = in.readString();
         title = in.readString();
@@ -49,23 +45,11 @@ public class KawalPerubahanContents implements Parcelable {
         return content;
     }
 
-    public void setContent(String pContent) {
-        content = pContent;
-    }
-
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String pTitle) {
-        title = pTitle;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String pDate) {
-        date = pDate;
     }
 }

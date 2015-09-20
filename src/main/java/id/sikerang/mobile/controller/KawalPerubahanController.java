@@ -46,7 +46,7 @@ public class KawalPerubahanController implements Callback<KawalPerubahan> {
         IKawalPerubahanService kawalPerubahanService = restAdapter.create(IKawalPerubahanService.class);
 
         try {
-            kawalPerubahanService.getKawalPerubahan(this);
+            kawalPerubahanService.readKawalPerubahan(this);
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         }
