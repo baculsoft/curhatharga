@@ -5,6 +5,7 @@ buildscript {
         androidSupportVersion = '23.0.1'
         butterKnifeVersion = '7.0.1'
         viewpagerIndicatorVersion = '2.4.1@aar'
+        williamchartVersion = '2.0.1'
         okhttpVersion = '2.5.0'
         retrofitVersion = '1.9.0'
     }
@@ -68,6 +69,7 @@ dependencies {
     compile("com.android.support:recyclerview-v7:${androidSupportVersion}")
     compile("com.jakewharton:butterknife:${butterKnifeVersion}")
     compile("com.viewpagerindicator:library:${viewpagerIndicatorVersion}")
+    compile("com.diogobernardino:williamchart:${williamchartVersion}")
     compile("com.squareup.okhttp:okhttp:${okhttpVersion}")
     compile("com.squareup.okhttp:okhttp-urlconnection:${okhttpVersion}")
     compile("com.squareup.retrofit:retrofit:${retrofitVersion}")
