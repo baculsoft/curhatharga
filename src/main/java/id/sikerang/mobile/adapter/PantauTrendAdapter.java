@@ -143,53 +143,56 @@ public class PantauTrendAdapter extends PagerAdapter implements ViewPager.OnPage
 
             switch (position) {
                 case 0: {
-                    label = new String[]{"", "20/09", "", "19/09", "", "18/09", "", "17/09", "", "16/09", ""};
-                    values = new float[]{0f, 0f, 0f, 72f, 0f, 45f, 0f, 87f, 0f, 61f, 0f};
+                    label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
+                    values = new float[]{0f, 72f, 45f, 87f, 61f};
                     break;
                 }
                 case 1: {
-                    label = new String[]{"", "20/09", "", "19/09", "", "18/09", "", "17/09", "", "16/09", ""};
-                    values = new float[]{0f, 57f, 0f, 41f, 0f, 85f, 0f, 5f, 0f, 30f, 0f};
+                    label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
+                    values = new float[]{57f, 41f, 85f, 5f, 30f};
                     break;
                 }
                 case 2: {
-                    label = new String[]{"", "20/09", "", "19/09", "", "18/09", "", "17/09", "", "16/09", ""};
-                    values = new float[]{0f, 38f, 0f, 40f, 0f, 13f, 0f, 75f, 0f, 32f, 0f};
+                    label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
+                    values = new float[]{38f, 40f, 13f, 75f, 32f};
                     break;
                 }
                 case 3: {
-                    label = new String[]{"", "20/09", "", "19/09", "", "18/09", "", "17/09", "", "16/09", ""};
-                    values = new float[]{0f, 29f, 0f, 72f, 0f, 62f, 0f, 84f, 0f, 68f, 0f};
+                    label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
+                    values = new float[]{29f, 72f, 62f, 84f, 68f};
                     break;
                 }
                 case 4: {
-                    label = new String[]{"", "20/09", "", "19/09", "", "18/09", "", "17/09", "", "16/09", ""};
-                    values = new float[]{0f, 80f, 0f, 10f, 0f, 95f, 0f, 92f, 0f, 7f, 0f};
+                    label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
+                    values = new float[]{80f, 10f, 95f, 92f, 7f};
                     break;
                 }
                 case 5: {
-                    label = new String[]{"", "20/09", "", "19/09", "", "18/09", "", "17/09", "", "16/09", ""};
-                    values = new float[]{0f, 48f, 0f, 2f, 0f, 99f, 0f, 11f, 0f, 51f, 0f};
+                    label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
+                    values = new float[]{48f, 2f, 99f, 11f, 51f};
                     break;
                 }
             }
 
             LineSet dataset = new LineSet(label, values);
             dataset.setColor(getView().getResources().getColor(R.color.red_500))
-                    .setFill(getView().getResources().getColor(R.color.red_500))
-                    .setSmooth(true);
+                    .setDotsStrokeThickness(Tools.fromDpToPx(3))
+                    .setDotsStrokeColor(getView().getResources().getColor(R.color.red_500))
+                    .setDotsColor(getView().getResources().getColor(R.color.teal_500));
             getLineChartViewPantauTrend().addData(dataset);
 
-            getLineChartViewPantauTrend().setTopSpacing(Tools.fromDpToPx(15))
-                    .setBorderSpacing(Tools.fromDpToPx(0))
-                    .setAxisBorderValues(0, 100, 1)
-                    .setXLabels(AxisController.LabelPosition.INSIDE)
-                    .setYLabels(AxisController.LabelPosition.NONE)
+            getLineChartViewPantauTrend().setBorderSpacing(3)
+                    .setAxisBorderValues(0, 100, 10)
+                    .setXLabels(AxisController.LabelPosition.OUTSIDE)
+                    .setYLabels(AxisController.LabelPosition.OUTSIDE)
                     .setLabelsColor(getView().getResources().getColor(R.color.grey_100))
                     .setXAxis(false)
-                    .setYAxis(false);
+                    .setYAxis(false)
+                    .setStep(10)
+                    .setAxisLabelsSpacing(Tools.fromDpToPx(20))
+                    .setBorderSpacing(Tools.fromDpToPx(5));
 
-            Animation animation = new Animation().setStartPoint(-1, 1);
+            Animation animation = new Animation();
             getLineChartViewPantauTrend().show(animation);
         }
 
