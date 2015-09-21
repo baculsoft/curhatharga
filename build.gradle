@@ -28,7 +28,7 @@ android {
         applicationId "id.sikerang.mobile"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 8
+        versionCode 9
         versionName "1.0.4"
     }
     signingConfigs {
