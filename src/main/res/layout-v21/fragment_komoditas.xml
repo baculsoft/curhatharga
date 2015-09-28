@@ -55,7 +55,7 @@
         android:background="@color/red_500"
         android:gravity="center"
         android:minHeight="?attr/actionBarSize"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/btn_curhat"
@@ -68,5 +68,15 @@
             android:textAllCaps="true"
             android:textColor="@color/grey_100"
             android:textSize="@dimen/text_16sp" />
+
+        <EditText
+            android:id="@+id/et_curhat"
+            android:visibility="gone"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/view_96dp"
+            android:background="@android:color/white"
+            android:drawableRight="@drawable/abc_ic_go_search_api_mtrl_alpha"
+            android:gravity="top|left" />
+
     </LinearLayout>
 </RelativeLayout>

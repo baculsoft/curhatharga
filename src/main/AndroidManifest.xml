@@ -20,7 +20,8 @@
         tools:ignore="UnusedAttribute">
         <activity
             android:name="id.sikerang.mobile.activity.SiKerangActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
