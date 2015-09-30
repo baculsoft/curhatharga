@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -27,9 +26,6 @@ public class PantauTrendFragment extends Fragment {
 
     @Bind(R.id.vp_pantau_trend_indicator)
     CirclePageIndicator mCirclePageIndicatorPantauTrend;
-
-    @Bind(R.id.pb_pantau_trend)
-    ProgressBar mProgressBarPantauTrend;
 
     @Nullable
     @Override
