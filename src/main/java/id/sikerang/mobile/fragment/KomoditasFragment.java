@@ -1,10 +1,7 @@
 package id.sikerang.mobile.fragment;
 
-import android.content.Context;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,13 +12,9 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.WindowManager;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -29,12 +22,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.adapter.KomoditasAdapter;
+import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KomoditasFragment extends Fragment implements View.OnClickListener, CurhatDialogFragment.CurhatDialogListener {
+public class KomoditasFragment extends Fragment implements View.OnClickListener, OnGlobalLayoutListener {
     @Bind(R.id.vp_komoditas)
     ViewPager mViewPagerKomoditas;
 
@@ -47,17 +41,17 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
     @Bind(R.id.fab_mahal)
     FloatingActionButton mFabMahal;
 
-    @Bind(R.id.ll_curhat)
-    LinearLayout mLlCurhat;
-
     @Bind(R.id.btn_curhat)
     Button mButtonCurhat;
 
     @Bind(R.id.et_curhat)
-    EditText mEtCurhat;
+    EditText mEditTextCurhat;
 
     private KomoditasAdapter mKomoditasAdapter;
-    private boolean mIsEtCurhatExpanded;
+    private View mRootView;
+    private boolean isCurhatExpanded;
+
+    private final Rect mRect = new Rect();
 
     @Nullable
     @Override
@@ -67,36 +61,29 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         initComponents();
         initAdapters();
 
-        final View activityRootView = getActivity().findViewById(android.R.id.content);
-        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-
-            private boolean wasOpened;
-            private final int DefaultKeyboardDP = 100;
-            private final int EstimatedKeyboardDP = DefaultKeyboardDP + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 48 : 0);
-            private final Rect r = new Rect();
-
-            @Override
-            public void onGlobalLayout() {
-                // Convert the dp to pixels.
-                int estimatedKeyboardHeight = (int) TypedValue
-                        .applyDimension(TypedValue.COMPLEX_UNIT_DIP, EstimatedKeyboardDP, activityRootView.getResources().getDisplayMetrics());
-
-                // Conclude whether the keyboard is shown or not.
-                activityRootView.getWindowVisibleDisplayFrame(r);
-                int heightDiff = activityRootView.getRootView().getHeight() - (r.bottom - r.top);
-                boolean isShown = heightDiff >= estimatedKeyboardHeight;
-                if(isShown) {
-                    mFabMurah.hide();
-                    mFabMahal.hide();
-                }
-                else {
-                    mFabMurah.show();
-                    mFabMahal.show();
-                }
-            }
-        });
-
         return view;
+    }
+
+    @Override
+    public void onGlobalLayout() {
+        // Convert DP to Pixels.
+        int keyboardHeight = (int) TypedValue
+                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, Constants.KEYBOARD_LAYOUT, mRootView.getResources().getDisplayMetrics());
+
+        // Conclude whether Keyboard is Shown or Not.
+        mRootView.getWindowVisibleDisplayFrame(mRect);
+        int heightDiff = mRootView.getRootView().getHeight() - (mRect.bottom - mRect.top);
+        boolean isShown = heightDiff >= keyboardHeight;
+
+        if (isShown) {
+            mFabMurah.hide();
+            mFabMahal.hide();
+            mButtonCurhat.setEnabled(false);
+        } else {
+            mFabMurah.show();
+            mFabMahal.show();
+            mButtonCurhat.setEnabled(true);
+        }
     }
 
     @Override
@@ -104,62 +91,29 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         switch (view.getId()) {
             case R.id.fab_murah:
             case R.id.fab_mahal: {
+                setCurhatValue(mEditTextCurhat.getText().toString());
                 mKomoditasAdapter.onClick(view);
+                clearArea();
                 break;
             }
-            case R.id.btn_curhat:
-            case R.id.ll_curhat: {
-                if(!mIsEtCurhatExpanded) {
-                    //TranslateAnimation slide = new TranslateAnimation(0, 0, 300, 0);
-                    //slide.setDuration(200);
-                    //slide.setFillAfter(true);
-                    //mEtCurhat.startAnimation(slide);
-                    mEtCurhat.setVisibility(View.VISIBLE);
-                    mEtCurhat.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mEtCurhat.requestFocus();
-                            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            imm.showSoftInput(mEtCurhat, InputMethodManager.SHOW_IMPLICIT);
-                        }
-                    }, 100);
-                    mIsEtCurhatExpanded = true;
-                    mFabMurah.hide();
-                    mFabMahal.hide();
-                }
-                else {
-                    //TranslateAnimation slide = new TranslateAnimation(0, 0, 0, 300);
-                    //slide.setDuration(200);
-                    //slide.setFillAfter(true);
-                    //mEtCurhat.startAnimation(slide);
-                    mEtCurhat.setVisibility(View.GONE);
-                    mIsEtCurhatExpanded = false;
-                    View focusView = getActivity().getCurrentFocus();
-                    if (focusView != null) {
-                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(focusView.getWindowToken(), 0);
-                    }
-                    mFabMurah.show();
-                    mFabMahal.show();
-                }
+            case R.id.btn_curhat: {
+                showHideCurhat();
                 break;
             }
         }
     }
 
-    @Override
-    public void onSetValue(String value) {
-        SharedPreferencesUtils.getInstance(getActivity().getApplicationContext()).setCurhat(value);
-    }
-
     private void initComponents() {
         String title = getActivity().getResources().getString(R.string.app_name);
         getActionBar().setTitle(title);
+
+        mRootView = getActivity().findViewById(android.R.id.content);
+        mRootView.getViewTreeObserver().addOnGlobalLayoutListener(this);
         mFabMurah.setOnClickListener(this);
         mFabMahal.setOnClickListener(this);
-        mLlCurhat.setOnClickListener(this);
         mButtonCurhat.setOnClickListener(this);
-        mIsEtCurhatExpanded = false;
+
+        isCurhatExpanded = false;
     }
 
     private void initAdapters() {
@@ -169,8 +123,31 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         mCirclePageIndicatorKomoditas.setViewPager(mViewPagerKomoditas);
     }
 
-    private void initDialogFragments() {
-        CurhatDialogFragment.newInstance(this).show(getActivity().getSupportFragmentManager(), CurhatDialogFragment.class.getSimpleName());
+    private void showHideCurhat() {
+        if (!isCurhatExpanded) {
+            mEditTextCurhat.setVisibility(View.VISIBLE);
+            mEditTextCurhat.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mEditTextCurhat.requestFocus();
+                }
+            }, Constants.MAX_TIMEOUT);
+
+            isCurhatExpanded = true;
+        } else {
+            mEditTextCurhat.setVisibility(View.GONE);
+            isCurhatExpanded = false;
+        }
+    }
+
+    private void setCurhatValue(String text) {
+        SharedPreferencesUtils.getInstance(getActivity().getApplicationContext()).setCurhat(text);
+    }
+
+    private void clearArea() {
+        mEditTextCurhat.setVisibility(View.GONE);
+        mEditTextCurhat.setText("");
+        isCurhatExpanded = false;
     }
 
     private ActionBar getActionBar() {

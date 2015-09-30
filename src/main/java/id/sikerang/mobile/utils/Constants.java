@@ -1,5 +1,7 @@
 package id.sikerang.mobile.utils;
 
+import android.os.Build;
+
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
@@ -15,6 +17,7 @@ public final class Constants {
     public static final long MAX_TIMEOUT = 1l;
 
     public static final int GEOCODING_MAX_RESULT = 1;
+    public static final int KEYBOARD_LAYOUT = 96 + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 48 : 0);
     public static final int MENU_KOMODITAS = 100;
     public static final int MENU_PANTAU_TREND = 101;
     public static final int MENU_KAWAL_PERUBAHAN = 102;

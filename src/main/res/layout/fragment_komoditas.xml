@@ -74,12 +74,17 @@
 
         <EditText
             android:id="@+id/et_curhat"
-            android:visibility="gone"
-            android:layout_width="fill_parent"
-            android:layout_height="@dimen/view_96dp"
-            android:background="@android:color/white"
-            android:drawableRight="@drawable/abc_ic_go_search_api_mtrl_alpha"
-            android:gravity="top|left" />
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_500"
+            android:gravity="top|start"
+            android:hint="@string/text_hint_curhat"
+            android:inputType="textMultiLine"
+            android:lines="4"
+            android:maxLines="8"
+            android:minLines="4"
+            android:textColor="@color/grey_300"
+            android:textColorHint="@color/grey_300"
+            android:visibility="gone" />
     </LinearLayout>
 </RelativeLayout>
