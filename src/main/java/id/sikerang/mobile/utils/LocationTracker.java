@@ -43,17 +43,14 @@ public final class LocationTracker implements LocationListener {
 
     @Override
     public void onStatusChanged(String s, int i, Bundle bundle) {
-        Log.d(TAG, "onStatusChanged LocationTracker.");
     }
 
     @Override
     public void onProviderEnabled(String s) {
-        Log.d(TAG, "onProviderEnabled LocationTracker.");
     }
 
     @Override
     public void onProviderDisabled(String s) {
-        Log.d(TAG, "onProviderDisabled LocationTracker.");
     }
 
     public Location getLocation() {
@@ -68,36 +65,32 @@ public final class LocationTracker implements LocationListener {
             isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
             Log.i(TAG, String.format("isNetworkEnabled=%s", isNetworkEnabled));
 
-            if (!isGPSEnabled && !isNetworkEnabled) {
-                Log.i(TAG, "Location Unknown!");
-            } else {
-                if (isNetworkEnabled) {
-                    mLocation = null;
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, Constants.MIN_TIME, Constants.MIN_DISTANCE, this);
-                    Log.i(TAG, "Network is Enabled!");
+            if (isNetworkEnabled) {
+                mLocation = null;
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, Constants.MIN_TIME, Constants.MIN_DISTANCE, this);
+                Log.i(TAG, "Network is Enabled!");
 
-                    if (locationManager != null) {
-                        mLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                if (locationManager != null) {
+                    mLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-                        if (mLocation != null) {
-                            mLatitude = mLocation.getLatitude();
-                            mLongitude = mLocation.getLongitude();
-                        }
+                    if (mLocation != null) {
+                        mLatitude = mLocation.getLatitude();
+                        mLongitude = mLocation.getLongitude();
                     }
                 }
+            }
 
-                if (isGPSEnabled) {
-                    mLocation = null;
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.MIN_TIME, Constants.MIN_DISTANCE, this);
-                    Log.i(TAG, "GPS is Enabled!");
+            if (isGPSEnabled) {
+                mLocation = null;
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, Constants.MIN_TIME, Constants.MIN_DISTANCE, this);
+                Log.i(TAG, "GPS is Enabled!");
 
-                    if (locationManager != null) {
-                        mLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                if (locationManager != null) {
+                    mLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                        if (mLocation != null) {
-                            mLatitude = mLocation.getLatitude();
-                            mLongitude = mLocation.getLongitude();
-                        }
+                    if (mLocation != null) {
+                        mLatitude = mLocation.getLatitude();
+                        mLongitude = mLocation.getLongitude();
                     }
                 }
             }
