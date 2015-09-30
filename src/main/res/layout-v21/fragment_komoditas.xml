@@ -66,7 +66,7 @@
             android:drawableStart="@mipmap/ic_feedback"
             android:text="@string/text_action_curhat"
             android:textAllCaps="true"
-            android:textColor="@color/grey_100"
+            android:textColor="@drawable/bg_text"
             android:textSize="@dimen/text_16sp" />
 
         <EditText
