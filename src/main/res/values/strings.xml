@@ -7,10 +7,7 @@
     <string name="menu_kawal_perubahan">Kawal Perubahan</string>
     <string name="menu_tentang_aplikasi">Tentang Aplikasi</string>
     <string name="text_location_unknown">Tidak Diketahui</string>
-    <string name="text_action_ok">Oke</string>
-    <string name="text_action_cancel">Batal</string>
     <string name="text_action_curhat">Curhat</string>
-    <string name="text_title_curhat">Curhatan Kamu</string>
     <string name="text_hint_curhat">Silahkan tulis curhat kamu disini&#8230;</string>
     <string name="text_pantau_trend">Trend\u0020</string>
     <string name="text_tanggal">Tanggal\u0020</string>
