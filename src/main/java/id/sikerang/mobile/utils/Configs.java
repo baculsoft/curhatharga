@@ -10,7 +10,7 @@ public final class Configs {
     private Configs() {
     }
 
-    public static final String APP_URL = "https://sikerang.id";
+    public static final String APP_URL = "http://hackathon2015.baculsoft.com";
     public static final String GEOCODING = "geocoding";
     public static final String CURHAT = "curhat";
 }
