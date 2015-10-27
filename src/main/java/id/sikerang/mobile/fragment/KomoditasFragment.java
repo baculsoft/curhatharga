@@ -13,8 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -31,7 +29,7 @@ import id.sikerang.mobile.utils.SharedPreferencesUtils;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KomoditasFragment extends Fragment implements View.OnClickListener, OnGlobalLayoutListener, Animation.AnimationListener {
+public class KomoditasFragment extends Fragment implements View.OnClickListener, OnGlobalLayoutListener {
     @Bind(R.id.vp_komoditas)
     ViewPager mViewPagerKomoditas;
 
@@ -55,8 +53,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
 
     private KomoditasAdapter mKomoditasAdapter;
     private View mRootView;
-    private Animation mAnimationSlideUp;
-    private Animation mAnimationSlideDown;
     private boolean isCurhatExpanded;
 
     private final Rect mRect = new Rect();
@@ -111,25 +107,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         }
     }
 
-    @Override
-    public void onAnimationStart(Animation animation) {
-    }
-
-    @Override
-    public void onAnimationEnd(Animation animation) {
-        mLinearLayoutCurhat.clearAnimation();
-
-        if (animation.equals(mAnimationSlideUp)) {
-            isCurhatExpanded = true;
-        } else if (animation.equals(mAnimationSlideDown)) {
-            isCurhatExpanded = false;
-        }
-    }
-
-    @Override
-    public void onAnimationRepeat(Animation animation) {
-    }
-
     private void initComponents() {
         String title = getActivity().getResources().getString(R.string.app_name);
         getActionBar().setTitle(title);
@@ -140,11 +117,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         mFabMurah.setOnClickListener(this);
         mFabMahal.setOnClickListener(this);
         mButtonCurhat.setOnClickListener(this);
-
-        mAnimationSlideUp = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up);
-        mAnimationSlideDown = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_down);
-        mAnimationSlideUp.setAnimationListener(this);
-        mAnimationSlideDown.setAnimationListener(this);
 
         isCurhatExpanded = false;
     }
@@ -158,7 +130,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
 
     private void showHideCurhat() {
         if (!isCurhatExpanded) {
-            mLinearLayoutCurhat.startAnimation(mAnimationSlideUp);
             mEditTextCurhat.setVisibility(View.VISIBLE);
             mEditTextCurhat.postDelayed(new Runnable() {
                 @Override
@@ -166,6 +137,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
                     mEditTextCurhat.requestFocus();
                 }
             }, Constants.MAX_TIMEOUT);
+            isCurhatExpanded = true;
         } else {
             clearArea();
         }
@@ -176,9 +148,9 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
     }
 
     private void clearArea() {
-        mLinearLayoutCurhat.startAnimation(mAnimationSlideDown);
         mEditTextCurhat.setVisibility(View.GONE);
         mEditTextCurhat.setText("");
+        isCurhatExpanded = false;
     }
 
     private ActionBar getActionBar() {
