@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- CONTENT -->
-    <string name="app_name">CurhatHarga!</string>
+    <string name="app_name">Curhat Harga!</string>
     <string name="menu_komoditas">Komoditas</string>
     <string name="menu_pantau_trend">Pantau Trend</string>
     <string name="menu_kawal_perubahan">Kawal Perubahan</string>
