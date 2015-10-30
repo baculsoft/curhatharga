@@ -11,7 +11,7 @@ import retrofit.http.POST;
  */
 public interface IKomoditasService {
     @FormUrlEncoded
-    @POST("/api/save")
+    @POST("/save")
     void createKomoditas(@Field("latitude") String latitude,
                          @Field("longitude") String longitude,
                          @Field("screenName") String screenName,
