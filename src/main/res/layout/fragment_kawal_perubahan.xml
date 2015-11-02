@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/grey_300">
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/grey_300">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_kawal_perubahan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/view_6dp"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 
     <ProgressBar
         android:id="@+id/pb_kawal_perubahan"
@@ -17,5 +17,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone" />
+        android:visibility="gone"/>
 </FrameLayout>

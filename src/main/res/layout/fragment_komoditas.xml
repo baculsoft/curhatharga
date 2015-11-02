@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_komoditas"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ll_curhat" />
+        android:layout_above="@+id/ll_curhat"/>
 
     <com.viewpagerindicator.CirclePageIndicator
         android:id="@+id/vp_komoditas_indicator"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ll_curhat"
-        android:padding="@dimen/view_8dp" />
+        android:padding="@dimen/view_8dp"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_mahal"
@@ -31,7 +31,7 @@
         app:backgroundTint="@color/red_500"
         app:borderWidth="@dimen/view_0dp"
         app:pressedTranslationZ="@dimen/view_12dp"
-        app:rippleColor="@color/grey_700" />
+        app:rippleColor="@color/grey_700"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_murah"
@@ -47,7 +47,7 @@
         app:backgroundTint="@color/teal_500"
         app:borderWidth="@dimen/view_0dp"
         app:pressedTranslationZ="@dimen/view_12dp"
-        app:rippleColor="@color/grey_700" />
+        app:rippleColor="@color/grey_700"/>
 
     <LinearLayout
         android:id="@+id/ll_curhat"
@@ -70,7 +70,7 @@
             android:text="@string/text_action_curhat"
             android:textAllCaps="true"
             android:textColor="@drawable/bg_text"
-            android:textSize="@dimen/text_16sp" />
+            android:textSize="@dimen/text_16sp"/>
 
         <EditText
             android:id="@+id/et_curhat"
@@ -85,6 +85,6 @@
             android:minLines="4"
             android:textColor="@color/grey_300"
             android:textColorHint="@color/grey_300"
-            android:visibility="gone" />
+            android:visibility="gone"/>
     </LinearLayout>
 </RelativeLayout>

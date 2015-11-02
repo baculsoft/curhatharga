@@ -5,23 +5,23 @@
             android:id="@+id/item_komoditas"
             android:checkable="true"
             android:icon="@mipmap/ic_shopping_basket"
-            android:title="@string/menu_komoditas" />
+            android:title="@string/menu_komoditas"/>
         <item
             android:id="@+id/item_pantau_trend"
             android:checkable="true"
             android:icon="@mipmap/ic_trending"
-            android:title="@string/menu_pantau_trend" />
+            android:title="@string/menu_pantau_trend"/>
         <item
             android:id="@+id/item_kawal_perubahan"
             android:checkable="true"
             android:icon="@mipmap/ic_speaker_notes"
-            android:title="@string/menu_kawal_perubahan" />
+            android:title="@string/menu_kawal_perubahan"/>
     </group>
     <group android:id="@+id/group_help">
         <item
             android:id="@+id/item_tentang_aplikasi"
             android:checkable="true"
             android:icon="@mipmap/ic_info"
-            android:title="@string/menu_tentang_aplikasi" />
+            android:title="@string/menu_tentang_aplikasi"/>
     </group>
 </menu>

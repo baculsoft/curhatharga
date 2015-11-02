@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/iv_komoditas"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:contentDescription="@string/menu_komoditas"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/tv_komoditas"
@@ -18,7 +18,7 @@
         android:gravity="center"
         android:textColor="@color/teal_500"
         android:textSize="@dimen/text_18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:clickable="false" />
+            android:clickable="false"/>
 
         <TextView
             android:id="@+id/tv_satisfaction"
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@color/teal_500"
-            android:textSize="@dimen/text_12sp" />
+            android:textSize="@dimen/text_12sp"/>
     </LinearLayout>
 
     <TextView
@@ -59,7 +59,7 @@
         android:layout_marginRight="@dimen/view_64dp"
         android:drawableTop="@mipmap/ic_language"
         android:textColor="@color/teal_500"
-        android:textSize="@dimen/text_12sp" />
+        android:textSize="@dimen/text_12sp"/>
 
     <TextView
         android:id="@+id/tv_statement"
@@ -68,5 +68,5 @@
         android:gravity="center"
         android:textAllCaps="true"
         android:textSize="@dimen/text_22sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 </RelativeLayout>
