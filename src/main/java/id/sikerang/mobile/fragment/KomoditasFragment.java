@@ -15,7 +15,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 
 import com.viewpagerindicator.CirclePageIndicator;
 
@@ -41,9 +40,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
 
     @Bind(R.id.fab_mahal)
     FloatingActionButton mFabMahal;
-
-    @Bind(R.id.ll_curhat)
-    LinearLayout mLinearLayoutCurhat;
 
     @Bind(R.id.btn_curhat)
     Button mButtonCurhat;
