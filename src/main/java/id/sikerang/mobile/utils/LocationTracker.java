@@ -77,6 +77,7 @@ public final class LocationTracker implements LocationListener {
                         mLatitude = mLocation.getLatitude();
                         mLongitude = mLocation.getLongitude();
                     }
+                    locationManager.removeUpdates(this);
                 }
             }
 
@@ -92,6 +93,7 @@ public final class LocationTracker implements LocationListener {
                         mLatitude = mLocation.getLatitude();
                         mLongitude = mLocation.getLongitude();
                     }
+                    locationManager.removeUpdates(this);
                 }
             }
         } catch (Exception e) {
