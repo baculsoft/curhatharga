@@ -11,6 +11,7 @@ import id.sikerang.mobile.models.KawalPerubahan;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class KawalPerubahanLoader extends AsyncTaskLoader<KawalPerubahan> {
+    private int countdown = 0;
 
     public KawalPerubahanLoader(Context context) {
         super(context);
@@ -25,7 +26,12 @@ public class KawalPerubahanLoader extends AsyncTaskLoader<KawalPerubahan> {
     public KawalPerubahan loadInBackground() {
         KawalPerubahanController kawalPerubahanController = new KawalPerubahanController();
         kawalPerubahanController.collect();
-        SystemClock.sleep(3000);
+
+        // FIXME Change to eventbus later
+        while (countdown < 3) {
+            SystemClock.sleep(3000);
+            countdown++;
+        }
 
         return kawalPerubahanController.getKawalPerubahan();
     }

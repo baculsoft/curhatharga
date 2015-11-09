@@ -83,7 +83,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             mButtonCurhat.setEnabled(false);
         } else {
             final Boolean isLike = mKomoditasAdapter.isLike();
-            if (isLike != null && mKomoditasAdapter.isLike()) {
+            if (isLike != null) {
                 mFabMurah.hide();
                 mFabMahal.hide();
             } else {
@@ -112,7 +112,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         }
 
         final Boolean isLike = mKomoditasAdapter.isLike();
-        if (isLike != null && mKomoditasAdapter.isLike()) {
+        if (isLike != null) {
             mFabMurah.hide();
             mFabMahal.hide();
         } else {
@@ -146,9 +146,8 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onPageSelected(int position) {
                 mKomoditasAdapter.onPageSelected(position);
-
                 final Boolean isLike = mKomoditasAdapter.isLike();
-                if (isLike != null && mKomoditasAdapter.isLike()) {
+                if (isLike != null) {
                     mFabMurah.hide();
                     mFabMahal.hide();
                 } else {

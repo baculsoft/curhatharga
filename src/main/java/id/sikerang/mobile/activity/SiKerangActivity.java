@@ -1,5 +1,6 @@
 package id.sikerang.mobile.activity;
 
+import android.content.Context;
 import android.location.Address;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.io.IOException;
 import java.util.List;
@@ -193,7 +195,17 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
         return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
     }
 
+    private void hideKeyboard(View pView) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(pView.getWindowToken(), 0);
+    }
+
     private Fragment getFragments(int status) {
+        View view = getCurrentFocus();
+        if (view != null) {
+            hideKeyboard(view);
+        }
+
         switch (status) {
             case Constants.MENU_KOMODITAS: {
                 return new KomoditasFragment();
