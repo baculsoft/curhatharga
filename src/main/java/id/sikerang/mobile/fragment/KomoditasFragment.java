@@ -67,8 +67,10 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
     @Override
     public void onGlobalLayout() {
         // Convert DP to Pixels.
-        int keyboardHeight = (int) TypedValue
-                .applyDimension(TypedValue.COMPLEX_UNIT_DIP, Constants.KEYBOARD_LAYOUT, mRootView.getResources().getDisplayMetrics());
+        int keyboardHeight = (int) TypedValue.applyDimension(
+                                   TypedValue.COMPLEX_UNIT_DIP,
+                                   Constants.KEYBOARD_LAYOUT,
+                                   mRootView.getResources().getDisplayMetrics());
 
         // Conclude whether Keyboard is Shown or Not.
         mRootView.getWindowVisibleDisplayFrame(mRect);
@@ -81,19 +83,14 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             mButtonCurhat.setEnabled(false);
         } else {
             final Boolean isLike = mKomoditasAdapter.isLike();
-            if(isLike != null) {
-                if (mKomoditasAdapter.isLike()) {
-                    mFabMurah.hide();
-                    mFabMahal.show();
-                } else {
-                    mFabMurah.show();
-                    mFabMahal.hide();
-                }
-            }
-            else {
+            if (isLike != null && mKomoditasAdapter.isLike()) {
+                mFabMurah.hide();
+                mFabMahal.hide();
+            } else {
                 mFabMurah.show();
                 mFabMahal.show();
             }
+
             mButtonCurhat.setEnabled(true);
         }
     }
@@ -115,14 +112,12 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         }
 
         final Boolean isLike = mKomoditasAdapter.isLike();
-        if(isLike != null) {
-            if (mKomoditasAdapter.isLike()) {
-                mFabMurah.hide();
-                mFabMahal.show();
-            } else {
-                mFabMurah.show();
-                mFabMahal.hide();
-            }
+        if (isLike != null && mKomoditasAdapter.isLike()) {
+            mFabMurah.hide();
+            mFabMahal.hide();
+        } else {
+            mFabMurah.show();
+            mFabMahal.show();
         }
     }
 
@@ -151,17 +146,12 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onPageSelected(int position) {
                 mKomoditasAdapter.onPageSelected(position);
+
                 final Boolean isLike = mKomoditasAdapter.isLike();
-                if(isLike != null) {
-                    if (mKomoditasAdapter.isLike()) {
-                        mFabMurah.hide();
-                        mFabMahal.show();
-                    } else {
-                        mFabMurah.show();
-                        mFabMahal.hide();
-                    }
-                }
-                else {
+                if (isLike != null && mKomoditasAdapter.isLike()) {
+                    mFabMurah.hide();
+                    mFabMahal.hide();
+                } else {
                     mFabMurah.show();
                     mFabMahal.show();
                 }
