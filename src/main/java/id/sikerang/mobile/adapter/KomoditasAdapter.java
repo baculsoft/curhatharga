@@ -3,7 +3,6 @@ package id.sikerang.mobile.adapter;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +26,6 @@ import id.sikerang.mobile.utils.SharedPreferencesUtils;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class KomoditasAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
-    private static final String TAG = KomoditasAdapter.class.getSimpleName();
-
     private final LayoutInflater mLayoutInflater;
     private final AtomicInteger mPosition;
     private final Map<Integer, KomoditasViewHolder> mHoldersMap;
@@ -97,7 +94,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     }
 
     public Boolean isLike() {
-        KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get() );
+        KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get());
         return komoditasViewHolder.isLikes();
     }
 
