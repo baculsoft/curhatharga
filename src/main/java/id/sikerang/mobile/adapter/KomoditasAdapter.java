@@ -27,6 +27,7 @@ import id.sikerang.mobile.utils.SharedPreferencesUtils;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class KomoditasAdapter extends PagerAdapter implements View.OnClickListener, ViewPager.OnPageChangeListener {
+
     private static final String TAG = KomoditasAdapter.class.getSimpleName();
 
     private final LayoutInflater mLayoutInflater;
@@ -76,11 +77,11 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         komoditasViewHolder.onClick(view);
 
         mKomoditasController.collectCommonInfo(mKomoditasController.getLatitude(),
-                                               mKomoditasController.getLongitude(),
-                                               mKomoditasController.getScreenName(),
-                                               komoditasViewHolder.getTextViewKomoditas().getText().toString(),
-                                               mKomoditasController.getComments(),
-                                               komoditasViewHolder.isLikes());
+                mKomoditasController.getLongitude(),
+                mKomoditasController.getScreenName(),
+                komoditasViewHolder.getTextViewKomoditas().getText().toString(),
+                mKomoditasController.getComments(),
+                komoditasViewHolder.isLikes());
     }
 
     @Override
@@ -96,6 +97,11 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     @Override
     public void onPageScrollStateChanged(int state) {
         Log.d(TAG, "onPageScrollStateChanged KomoditasAdapter.");
+    }
+
+    public Boolean isLike() {
+        KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get() );
+        return komoditasViewHolder.isLikes();
     }
 
     static final class KomoditasViewHolder implements View.OnClickListener {
@@ -119,7 +125,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
 
         private final View mView;
 
-        private boolean isLikes;
+        private Boolean isLikes;
 
         public KomoditasViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.row_komoditas, container, false);
@@ -206,7 +212,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
             return mView;
         }
 
-        public boolean isLikes() {
+        public Boolean isLikes() {
             return isLikes;
         }
 

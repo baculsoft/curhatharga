@@ -80,8 +80,20 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             mFabMahal.hide();
             mButtonCurhat.setEnabled(false);
         } else {
-            mFabMurah.show();
-            mFabMahal.show();
+            final Boolean isLike = mKomoditasAdapter.isLike();
+            if(isLike != null) {
+                if (mKomoditasAdapter.isLike()) {
+                    mFabMurah.hide();
+                    mFabMahal.show();
+                } else {
+                    mFabMurah.show();
+                    mFabMahal.hide();
+                }
+            }
+            else {
+                mFabMurah.show();
+                mFabMahal.show();
+            }
             mButtonCurhat.setEnabled(true);
         }
     }
@@ -99,6 +111,17 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             case R.id.btn_curhat: {
                 showHideCurhat();
                 break;
+            }
+        }
+
+        final Boolean isLike = mKomoditasAdapter.isLike();
+        if(isLike != null) {
+            if (mKomoditasAdapter.isLike()) {
+                mFabMurah.hide();
+                mFabMahal.show();
+            } else {
+                mFabMurah.show();
+                mFabMahal.hide();
             }
         }
     }
@@ -119,7 +142,36 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
 
     private void initAdapters() {
         mKomoditasAdapter = new KomoditasAdapter(getActivity().getApplicationContext());
-        mViewPagerKomoditas.addOnPageChangeListener(mKomoditasAdapter);
+        mViewPagerKomoditas.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                mKomoditasAdapter.onPageScrolled(position, positionOffset, positionOffsetPixels);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mKomoditasAdapter.onPageSelected(position);
+                final Boolean isLike = mKomoditasAdapter.isLike();
+                if(isLike != null) {
+                    if (mKomoditasAdapter.isLike()) {
+                        mFabMurah.hide();
+                        mFabMahal.show();
+                    } else {
+                        mFabMurah.show();
+                        mFabMahal.hide();
+                    }
+                }
+                else {
+                    mFabMurah.show();
+                    mFabMahal.show();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                mKomoditasAdapter.onPageScrollStateChanged(state);
+            }
+        });
         mViewPagerKomoditas.setAdapter(mKomoditasAdapter);
         mCirclePageIndicatorKomoditas.setViewPager(mViewPagerKomoditas);
     }
