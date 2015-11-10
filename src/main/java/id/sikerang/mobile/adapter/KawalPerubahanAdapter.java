@@ -1,5 +1,7 @@
 package id.sikerang.mobile.adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
+import id.sikerang.mobile.activity.KawalPerubahanActivity;
 import id.sikerang.mobile.models.KawalPerubahan;
 import id.sikerang.mobile.utils.DateUtils;
 
@@ -45,8 +48,8 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
         holder.mKawalPerubahanListener = new KawalPerubahanListener() {
             @Override
             public void onClick(View view, long position) {
-                // TODO Implement detail "Kawal Perubahan" here
-                Log.d(TAG, String.format("Not yet implemented %d", position));
+                Intent intent = new Intent(view.getContext(), KawalPerubahanActivity.class);
+                view.getContext().startActivity(intent);
             }
         };
     }

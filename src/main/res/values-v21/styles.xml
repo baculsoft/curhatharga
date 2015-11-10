@@ -3,4 +3,8 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+
+    <style name="AppTheme.Others" parent="AppTheme.Base">
+        <item name="android:statusBarColor">@color/primary_dark</item>
+    </style>
 </resources>

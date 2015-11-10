@@ -25,5 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity
+            android:name="id.sikerang.mobile.activity.KawalPerubahanActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Others">
+        </activity>
     </application>
 </manifest>
