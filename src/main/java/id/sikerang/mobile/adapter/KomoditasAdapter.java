@@ -38,7 +38,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         mPosition = new AtomicInteger();
         mHoldersMap = new HashMap<>();
         mKomoditasController = new KomoditasController(SiKerang.getContext());
-        mSharedPreferenceUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext() );
+        mSharedPreferenceUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext());
     }
 
     @Override
@@ -101,7 +101,6 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
      * Get like status related to current fragment position
      *
      * @return {@code True}, {@code False}, or {@code Null}
-     * @Nullable
      */
     @Nullable
     public Boolean isLike() {
@@ -115,13 +114,31 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
      * @param isLike - Like status
      */
     private void saveLike(final boolean isLike) {
-        switch (mPosition.get() ) {
-            case 0 : mSharedPreferenceUtils.setRiceLikes(isLike); break;
-            case 1 : mSharedPreferenceUtils.setCornLikes(isLike); break;
-            case 2 : mSharedPreferenceUtils.setSoyLikes(isLike); break;
-            case 3 : mSharedPreferenceUtils.setChickenLikes(isLike); break;
-            case 4 : mSharedPreferenceUtils.setBeefLikes(isLike); break;
-            case 5 : mSharedPreferenceUtils.setSugarLikes(isLike); break;
+        switch (mPosition.get()) {
+            case 0: {
+                mSharedPreferenceUtils.setRiceLikes(isLike);
+                break;
+            }
+            case 1: {
+                mSharedPreferenceUtils.setCornLikes(isLike);
+                break;
+            }
+            case 2: {
+                mSharedPreferenceUtils.setSoyLikes(isLike);
+                break;
+            }
+            case 3: {
+                mSharedPreferenceUtils.setChickenLikes(isLike);
+                break;
+            }
+            case 4: {
+                mSharedPreferenceUtils.setBeefLikes(isLike);
+                break;
+            }
+            case 5: {
+                mSharedPreferenceUtils.setSugarLikes(isLike);
+                break;
+            }
         }
     }
 
@@ -150,7 +167,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         private Boolean mIsLikes;
 
         public KomoditasViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
-            mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext() );
+            mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext());
 
             mView = layoutInflater.inflate(R.layout.row_komoditas, container, false);
             ButterKnife.bind(this, mView);
@@ -237,15 +254,15 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
          * such as displaying/hiding text, color, etc.
          */
         private void behaveLike() {
-            if(isLikes() == null) {
+            if (isLikes() == null) {
                 return;
             }
+
             final int color, text;
-            if(isLikes() ) {
+            if (isLikes()) {
                 color = R.color.teal_500;
                 text = R.string.text_murah;
-            }
-            else {
+            } else {
                 color = R.color.red_500;
                 text = R.string.text_mahal;
             }

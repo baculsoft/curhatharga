@@ -1,15 +1,10 @@
 package id.sikerang.mobile.fragment;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -92,8 +87,6 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         }
     }
 
-    private static final int REQUEST_CODE_ASK_PERMISSIONS = 123;
-
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -137,14 +130,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onPageSelected(int position) {
                 mKomoditasAdapter.onPageSelected(position);
-                final Boolean isLike = mKomoditasAdapter.isLike();
-                if (isLike != null) {
-                    mFabMurah.hide();
-                    mFabMahal.hide();
-                } else {
-                    mFabMurah.show();
-                    mFabMahal.show();
-                }
+                showHideFab();
             }
 
             @Override

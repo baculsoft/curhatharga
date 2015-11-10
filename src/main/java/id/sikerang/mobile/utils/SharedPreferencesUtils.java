@@ -176,26 +176,26 @@ public final class SharedPreferencesUtils {
     }
 
     /**
+     * Save like status into {@code SharedPreferences} with given key.
+     *
+     * @param key  - {@code SharedPreference} key
+     * @param like - Like status
+     */
+    private void setLikes(final String key, final boolean like) {
+        Editor editor = mSharedPreferences.edit();
+        editor.putString(key, (like ? String.valueOf(Constants.LIKES) : String.valueOf(Constants.DISLIKES)));
+        editor.apply();
+    }
+
+    /**
      * Get saved like status from {@code SharedPreferences} with given key.
      *
      * @param key - {@code SharedPreference} key
      * @return Boolean. May {@code Null}.
      */
     @Nullable
-    private final Boolean getLikes(final String key) {
+    private Boolean getLikes(final String key) {
         final String like = mSharedPreferences.getString(key, null);
-        return (like != null ? (like.equals(Configs.LIKE_VAL) ? true : false) : null);
-    }
-
-    /**
-     * Save like status into {@code SharedPreferences} with given key.
-     *
-     * @param key - {@code SharedPreference} key
-     * @param like - Like status
-     */
-    private final void setLikes(final String key, final boolean like) {
-        Editor editor = mSharedPreferences.edit();
-        editor.putString(key, (like ? Configs.LIKE_VAL : Configs.DISLIKE_VAL) );
-        editor.apply();
+        return (like != null ? (like.equals(String.valueOf(Constants.LIKES))) : null);
     }
 }
