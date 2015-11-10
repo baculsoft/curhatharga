@@ -19,6 +19,11 @@
     </group>
     <group android:id="@+id/group_help">
         <item
+            android:id="@+id/item_bantuan"
+            android:checkable="true"
+            android:icon="@mipmap/ic_help"
+            android:title="@string/menu_bantuan"/>
+        <item
             android:id="@+id/item_tentang_aplikasi"
             android:checkable="true"
             android:icon="@mipmap/ic_info"

@@ -21,7 +21,17 @@ public final class Constants {
     public static final int MENU_KOMODITAS = 100;
     public static final int MENU_PANTAU_TREND = 101;
     public static final int MENU_KAWAL_PERUBAHAN = 102;
-    public static final int MENU_TENTANG_APLIKASI = 200;
+    public static final int MENU_BANTUAN = 200;
+    public static final int MENU_TENTANG_APLIKASI = 201;
     public static final int STATUS_FAILED = 0;
     public static final int STATUS_SUCCESS = 1;
+
+    /**
+     * Shared preference value for LIKES
+     */
+    public static final int LIKES = 1;
+    /**
+     * Shared preference value for DISLIKES
+     */
+    public static final int DISLIKES = 0;
 }

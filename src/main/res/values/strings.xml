@@ -5,6 +5,7 @@
     <string name="menu_komoditas">Komoditas</string>
     <string name="menu_pantau_trend">Pantau Trend</string>
     <string name="menu_kawal_perubahan">Kawal Perubahan</string>
+    <string name="menu_bantuan">Bantuan</string>
     <string name="menu_tentang_aplikasi">Tentang Aplikasi</string>
     <string name="text_location_unknown">Tidak Diketahui</string>
     <string name="text_action_curhat">Curhat</string>
@@ -19,8 +20,8 @@
     <string name="desc_menu_close">Tutup Menu</string>
 
     <!-- DUMMY TEXT -->
-    <string name="text_murah">Murah!</string>
-    <string name="text_mahal">Mahal!</string>
+    <string name="text_murah">Puas!</string>
+    <string name="text_mahal">Tidak Puas!</string>
 
     <!-- DUMMY PRODUCTS -->
     <string name="product_rice">Beras</string>

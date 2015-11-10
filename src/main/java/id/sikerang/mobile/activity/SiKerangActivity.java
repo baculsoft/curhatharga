@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.controller.KomoditasController;
+import id.sikerang.mobile.fragment.BantuanFragment;
 import id.sikerang.mobile.fragment.KawalPerubahanFragment;
 import id.sikerang.mobile.fragment.KomoditasFragment;
 import id.sikerang.mobile.fragment.PantauTrendFragment;
@@ -107,6 +108,10 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
                 status = Constants.MENU_KAWAL_PERUBAHAN;
                 break;
             }
+            case R.id.item_bantuan: {
+                status = Constants.MENU_BANTUAN;
+                break;
+            }
             case R.id.item_tentang_aplikasi: {
                 status = Constants.MENU_TENTANG_APLIKASI;
                 break;
@@ -176,7 +181,7 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
 
             if (addresses != null && addresses.size() > 0) {
                 Address address = mKomoditasController.getAddress().get(0);
-                locationAddress = address.getLocality();
+                locationAddress = address.getAdminArea();
             }
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e);
@@ -215,6 +220,9 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
             }
             case Constants.MENU_KAWAL_PERUBAHAN: {
                 return new KawalPerubahanFragment();
+            }
+            case Constants.MENU_BANTUAN: {
+                return new BantuanFragment();
             }
             case Constants.MENU_TENTANG_APLIKASI: {
                 return new TentangAplikasiFragment();
