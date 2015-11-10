@@ -38,4 +38,19 @@ public final class Configs {
      * Shared preference key for SUGAR likes
      */
     public static final String PREF_SUGAR_LIKES = "pref_sugar_likes";
+
+    /**
+     * Key for TANGGAL Kawal Perubahan
+     */
+    public static final String KAWAL_DATES = "kawal_dates";
+
+    /**
+     * Key for TITLE Kawal Perubahan
+     */
+    public static final String KAWAL_TITLES = "kawal_titles";
+
+    /**
+     * Key for CONTENTS Kawal Perubahan
+     */
+    public static final String KAWAL_CONTENTS = "kawal_contents";
 }

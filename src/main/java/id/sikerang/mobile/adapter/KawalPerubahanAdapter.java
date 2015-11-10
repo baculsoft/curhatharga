@@ -1,6 +1,7 @@
 package id.sikerang.mobile.adapter;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.activity.KawalPerubahanActivity;
 import id.sikerang.mobile.models.KawalPerubahan;
+import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.DateUtils;
 
 /**
@@ -45,6 +47,17 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
             @Override
             public void onClick(View view, long position) {
                 Intent intent = new Intent(view.getContext(), KawalPerubahanActivity.class);
+                Bundle extras = new Bundle();
+                Long item = position;
+                String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(item.intValue()).getDate());
+                String dates = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(convertedDate);
+                String titles = mKawalPerubahan.getKawalPerubahanContents().get(item.intValue()).getTitle();
+                String contents = mKawalPerubahan.getKawalPerubahanContents().get(item.intValue()).getContent();
+
+                extras.putString(Configs.KAWAL_DATES, dates);
+                extras.putString(Configs.KAWAL_TITLES, titles);
+                extras.putString(Configs.KAWAL_CONTENTS, contents);
+                intent.putExtras(extras);
                 view.getContext().startActivity(intent);
             }
         };
