@@ -74,7 +74,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     public void onClick(View view) {
         KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get());
         komoditasViewHolder.onClick(view);
-        saveLike(komoditasViewHolder.isLikes() );
+        saveLike(komoditasViewHolder.isLikes());
 
         mKomoditasController.collectCommonInfo(mKomoditasController.getLatitude(),
                                                mKomoditasController.getLongitude(),
@@ -150,17 +150,15 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         private Boolean mIsLikes;
 
         public KomoditasViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
+            mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext() );
+
             mView = layoutInflater.inflate(R.layout.row_komoditas, container, false);
             ButterKnife.bind(this, mView);
-            mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext() );
             initComponents(position);
         }
 
         @Override
         public void onClick(View view) {
-            final int color;
-            final int text;
-
             switch (view.getId()) {
                 case R.id.fab_murah: {
                     mIsLikes = true;
@@ -184,8 +182,8 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 case 0: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
-                    getRatingBarSatisfaction().setNumStars(3);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
+                    getRatingBarSatisfaction().setNumStars(1);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     mIsLikes = mSharedPreferencesUtils.getRiceLikes();
                     break;
                 }
@@ -200,16 +198,16 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 case 2: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_soya));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
-                    getRatingBarSatisfaction().setNumStars(1);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
+                    getRatingBarSatisfaction().setNumStars(3);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     mIsLikes = mSharedPreferencesUtils.getSoyLikes();
                     break;
                 }
                 case 3: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_chicken));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
-                    getRatingBarSatisfaction().setNumStars(1);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
+                    getRatingBarSatisfaction().setNumStars(3);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     mIsLikes = mSharedPreferencesUtils.getChickenLikes();
                     break;
                 }
@@ -224,8 +222,8 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 case 5: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
-                    getRatingBarSatisfaction().setNumStars(3);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
+                    getRatingBarSatisfaction().setNumStars(1);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     mIsLikes = mSharedPreferencesUtils.getSugarLikes();
                     break;
                 }
