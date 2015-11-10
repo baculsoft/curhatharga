@@ -1,6 +1,7 @@
 package id.sikerang.mobile.adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -30,12 +31,14 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     private final AtomicInteger mPosition;
     private final Map<Integer, KomoditasViewHolder> mHoldersMap;
     private final KomoditasController mKomoditasController;
+    private final SharedPreferencesUtils mSharedPreferenceUtils;
 
     public KomoditasAdapter(Context context) {
         mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPosition = new AtomicInteger();
         mHoldersMap = new HashMap<>();
         mKomoditasController = new KomoditasController(SiKerang.getContext());
+        mSharedPreferenceUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext() );
     }
 
     @Override
@@ -71,6 +74,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     public void onClick(View view) {
         KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get());
         komoditasViewHolder.onClick(view);
+        saveLike(komoditasViewHolder.isLikes() );
 
         mKomoditasController.collectCommonInfo(mKomoditasController.getLatitude(),
                                                mKomoditasController.getLongitude(),
@@ -93,9 +97,32 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     public void onPageScrollStateChanged(int state) {
     }
 
+    /**
+     * Get like status related to current fragment position
+     *
+     * @return {@code True}, {@code False}, or {@code Null}
+     * @Nullable
+     */
+    @Nullable
     public Boolean isLike() {
         KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get());
         return komoditasViewHolder.isLikes();
+    }
+
+    /**
+     * Save like status into {@code SharedPreferences}.
+     *
+     * @param isLike - Like status
+     */
+    private void saveLike(final boolean isLike) {
+        switch (mPosition.get() ) {
+            case 0 : mSharedPreferenceUtils.setRiceLikes(isLike); break;
+            case 1 : mSharedPreferenceUtils.setCornLikes(isLike); break;
+            case 2 : mSharedPreferenceUtils.setSoyLikes(isLike); break;
+            case 3 : mSharedPreferenceUtils.setChickenLikes(isLike); break;
+            case 4 : mSharedPreferenceUtils.setBeefLikes(isLike); break;
+            case 5 : mSharedPreferenceUtils.setSugarLikes(isLike); break;
+        }
     }
 
     static final class KomoditasViewHolder implements View.OnClickListener {
@@ -118,12 +145,14 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         TextView mTextViewLocation;
 
         private final View mView;
+        private final SharedPreferencesUtils mSharedPreferencesUtils;
 
-        private Boolean isLikes;
+        private Boolean mIsLikes;
 
         public KomoditasViewHolder(final int position, final LayoutInflater layoutInflater, final ViewGroup container) {
             mView = layoutInflater.inflate(R.layout.row_komoditas, container, false);
             ButterKnife.bind(this, mView);
+            mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext() );
             initComponents(position);
         }
 
@@ -134,15 +163,11 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
 
             switch (view.getId()) {
                 case R.id.fab_murah: {
-                    color = R.color.teal_500;
-                    text = R.string.text_murah;
-                    isLikes = true;
+                    mIsLikes = true;
                     break;
                 }
                 case R.id.fab_mahal: {
-                    color = R.color.red_500;
-                    text = R.string.text_mahal;
-                    isLikes = false;
+                    mIsLikes = false;
                     break;
                 }
                 default: {
@@ -150,8 +175,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 }
             }
 
-            getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(color));
-            getTextViewStatment().setText(SiKerang.getContext().getResources().getString(text));
+            behaveLike();
         }
 
         // FIXME Hardcoded value
@@ -162,6 +186,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
                     getRatingBarSatisfaction().setNumStars(3);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
+                    mIsLikes = mSharedPreferencesUtils.getRiceLikes();
                     break;
                 }
                 case 1: {
@@ -169,6 +194,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_corn));
                     getRatingBarSatisfaction().setNumStars(2);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
+                    mIsLikes = mSharedPreferencesUtils.getCornLikes();
                     break;
                 }
                 case 2: {
@@ -176,6 +202,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
                     getRatingBarSatisfaction().setNumStars(1);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
+                    mIsLikes = mSharedPreferencesUtils.getSoyLikes();
                     break;
                 }
                 case 3: {
@@ -183,6 +210,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
                     getRatingBarSatisfaction().setNumStars(1);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
+                    mIsLikes = mSharedPreferencesUtils.getChickenLikes();
                     break;
                 }
                 case 4: {
@@ -190,6 +218,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_meal));
                     getRatingBarSatisfaction().setNumStars(2);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
+                    mIsLikes = mSharedPreferencesUtils.getBeefLikes();
                     break;
                 }
                 case 5: {
@@ -197,9 +226,34 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
                     getRatingBarSatisfaction().setNumStars(3);
                     getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
+                    mIsLikes = mSharedPreferencesUtils.getSugarLikes();
                     break;
                 }
             }
+
+            behaveLike();
+        }
+
+        /**
+         * Displaying interface behaviour related to current like status,
+         * such as displaying/hiding text, color, etc.
+         */
+        private void behaveLike() {
+            if(isLikes() == null) {
+                return;
+            }
+            final int color, text;
+            if(isLikes() ) {
+                color = R.color.teal_500;
+                text = R.string.text_murah;
+            }
+            else {
+                color = R.color.red_500;
+                text = R.string.text_mahal;
+            }
+
+            getTextViewStatment().setTextColor(SiKerang.getContext().getResources().getColor(color));
+            getTextViewStatment().setText(SiKerang.getContext().getResources().getString(text));
         }
 
         public View getView() {
@@ -207,7 +261,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         }
 
         public Boolean isLikes() {
-            return isLikes;
+            return mIsLikes;
         }
 
         public ImageView getImageViewKomoditas() {

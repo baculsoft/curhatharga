@@ -3,6 +3,7 @@ package id.sikerang.mobile.utils;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 /**
@@ -57,6 +58,144 @@ public final class SharedPreferencesUtils {
     public void resetCurhat() {
         Editor editor = mSharedPreferences.edit();
         editor.remove(Configs.CURHAT);
+        editor.apply();
+    }
+
+    /**
+     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_RICE_LIKES}
+     *
+     * @param like boolean
+     */
+    public void setRiceLikes(final boolean like) {
+        setLikes(Configs.PREF_RICE_LIKES, like);
+    }
+
+    /**
+     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_CORN_LIKES}
+     *
+     * @param like boolean
+     */
+    public void setCornLikes(final boolean like) {
+        setLikes(Configs.PREF_CORN_LIKES, like);
+    }
+
+    /**
+     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_SOY_LIKES}
+     *
+     * @param like boolean
+     */
+    public void setSoyLikes(final boolean like) {
+        setLikes(Configs.PREF_SOY_LIKES, like);
+    }
+
+    /**
+     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_CHICKEN_LIKES}
+     *
+     * @param like boolean
+     */
+    public void setChickenLikes(final boolean like) {
+        setLikes(Configs.PREF_CHICKEN_LIKES, like);
+    }
+
+    /**
+     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_BEEF_LIKES}
+     *
+     * @param like boolean
+     */
+    public void setBeefLikes(final boolean like) {
+        setLikes(Configs.PREF_BEEF_LIKES, like);
+    }
+
+    /**
+     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_SUGAR_LIKES}
+     *
+     * @param like boolean
+     */
+    public void setSugarLikes(final boolean like) {
+        setLikes(Configs.PREF_SUGAR_LIKES, like);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_RICE_LIKES}
+     *
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    public Boolean getRiceLikes() {
+        return getLikes(Configs.PREF_RICE_LIKES);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_CORN_LIKES}
+     *
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    public Boolean getCornLikes() {
+        return getLikes(Configs.PREF_CORN_LIKES);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_SOY_LIKES}
+     *
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    public Boolean getSoyLikes() {
+        return getLikes(Configs.PREF_SOY_LIKES);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_CHICKEN_LIKES}
+     *
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    public Boolean getChickenLikes() {
+        return getLikes(Configs.PREF_CHICKEN_LIKES);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_BEEF_LIKES}
+     *
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    public Boolean getBeefLikes() {
+        return getLikes(Configs.PREF_BEEF_LIKES);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_SUGAR_LIKES}
+     *
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    public Boolean getSugarLikes() {
+        return getLikes(Configs.PREF_SUGAR_LIKES);
+    }
+
+    /**
+     * Get saved like status from {@code SharedPreferences} with given key.
+     *
+     * @param key - {@code SharedPreference} key
+     * @return Boolean. May {@code Null}.
+     */
+    @Nullable
+    private final Boolean getLikes(final String key) {
+        final String like = mSharedPreferences.getString(key, null);
+        return (like != null ? (like.equals(Configs.LIKE_VAL) ? true : false) : null);
+    }
+
+    /**
+     * Save like status into {@code SharedPreferences} with given key.
+     *
+     * @param key - {@code SharedPreference} key
+     * @param like - Like status
+     */
+    private final void setLikes(final String key, final boolean like) {
+        Editor editor = mSharedPreferences.edit();
+        editor.putString(key, (like ? Configs.LIKE_VAL : Configs.DISLIKE_VAL) );
         editor.apply();
     }
 }

@@ -1,10 +1,15 @@
 package id.sikerang.mobile.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -82,18 +87,12 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             mFabMahal.hide();
             mButtonCurhat.setEnabled(false);
         } else {
-            final Boolean isLike = mKomoditasAdapter.isLike();
-            if (isLike != null) {
-                mFabMurah.hide();
-                mFabMahal.hide();
-            } else {
-                mFabMurah.show();
-                mFabMahal.show();
-            }
-
+            showHideFab();
             mButtonCurhat.setEnabled(true);
         }
     }
+
+    private static final int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     @Override
     public void onClick(View view) {
@@ -110,15 +109,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
                 break;
             }
         }
-
-        final Boolean isLike = mKomoditasAdapter.isLike();
-        if (isLike != null) {
-            mFabMurah.hide();
-            mFabMahal.hide();
-        } else {
-            mFabMurah.show();
-            mFabMahal.show();
-        }
+        showHideFab();
     }
 
     private void initComponents() {
@@ -177,6 +168,17 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             isCurhatExpanded = true;
         } else {
             clearArea();
+        }
+    }
+
+    private void showHideFab() {
+        final Boolean isLike = mKomoditasAdapter.isLike();
+        if (isLike != null) {
+            mFabMurah.hide();
+            mFabMahal.hide();
+        } else {
+            mFabMurah.show();
+            mFabMahal.show();
         }
     }
 
