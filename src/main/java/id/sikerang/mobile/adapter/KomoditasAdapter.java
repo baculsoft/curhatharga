@@ -160,8 +160,8 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 case 0: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));
-                    getRatingBarSatisfaction().setNumStars(3);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
+                    getRatingBarSatisfaction().setNumStars(1);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     break;
                 }
                 case 1: {
@@ -174,15 +174,15 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 case 2: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_soya));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
-                    getRatingBarSatisfaction().setNumStars(1);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
+                    getRatingBarSatisfaction().setNumStars(3);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
                 case 3: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_chicken));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_chicken));
-                    getRatingBarSatisfaction().setNumStars(1);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
+                    getRatingBarSatisfaction().setNumStars(3);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
                     break;
                 }
                 case 4: {
@@ -195,8 +195,8 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 case 5: {
                     getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_sugar));
                     getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_sugar));
-                    getRatingBarSatisfaction().setNumStars(3);
-                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
+                    getRatingBarSatisfaction().setNumStars(1);
+                    getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_1));
                     break;
                 }
             }
