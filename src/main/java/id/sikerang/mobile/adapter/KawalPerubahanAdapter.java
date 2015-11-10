@@ -1,9 +1,7 @@
 package id.sikerang.mobile.adapter;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +19,6 @@ import id.sikerang.mobile.utils.DateUtils;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAdapter.KawalPerubahanHolder> {
-    private static final String TAG = KawalPerubahanAdapter.class.getSimpleName();
-
     private KawalPerubahan mKawalPerubahan;
 
     public KawalPerubahanAdapter(final KawalPerubahan kawalPerubahan) {
