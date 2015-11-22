@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 buildscript {
     ext {
-        androidSupportVersion = '23.0.1'
+        androidSupportVersion = '23.1.1'
         butterKnifeVersion = '7.0.1'
         viewpagerIndicatorVersion = '2.4.1@aar'
         williamchartVersion = '2.0.1'
@@ -16,20 +16,20 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.3.1'
+        classpath 'com.android.tools.build:gradle:1.5.0'
     }
 }
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "id.sikerang.mobile"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 14
-        versionName "1.0.7"
+        versionCode 15
+        versionName "1.0.8"
     }
     signingConfigs {
         release {
@@ -76,5 +76,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.8'
+    gradleVersion = '2.9'
 }

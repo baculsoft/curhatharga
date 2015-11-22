@@ -29,6 +29,15 @@
             android:name="id.sikerang.mobile.activity.KawalPerubahanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Others">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data
+                    android:host="sikerang.id"
+                    android:pathPrefix="/api/kawal-perubahan"
+                    android:scheme="https"/>
+            </intent-filter>
         </activity>
     </application>
 </manifest>
