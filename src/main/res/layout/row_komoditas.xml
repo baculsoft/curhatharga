@@ -58,6 +58,9 @@
         android:layout_marginEnd="@dimen/view_64dp"
         android:layout_marginRight="@dimen/view_64dp"
         android:drawableTop="@mipmap/ic_language"
+        android:ellipsize="end"
+        android:maxLength="20"
+        android:singleLine="true"
         android:textColor="@color/teal_500"
         android:textSize="@dimen/text_12sp"/>
 

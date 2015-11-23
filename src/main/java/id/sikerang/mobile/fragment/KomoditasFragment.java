@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.adapter.KomoditasAdapter;
 import id.sikerang.mobile.utils.Constants;
+import id.sikerang.mobile.utils.KeyboardUtils;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
@@ -76,13 +77,12 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         mRootView.getWindowVisibleDisplayFrame(mRect);
         int heightDiff = mRootView.getRootView().getHeight() - (mRect.bottom - mRect.top);
         boolean isShown = heightDiff >= keyboardHeight;
+        showHideFab();
+        mKomoditasAdapter.setShowHide(isShown);
 
         if (isShown) {
-            mFabMurah.hide();
-            mFabMahal.hide();
             mButtonCurhat.setEnabled(false);
         } else {
-            showHideFab();
             mButtonCurhat.setEnabled(true);
         }
     }
@@ -92,8 +92,10 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         switch (view.getId()) {
             case R.id.fab_murah:
             case R.id.fab_mahal: {
+                mKomoditasAdapter.setShowHide(false);
                 setCurhatValue(mEditTextCurhat.getText().toString());
                 mKomoditasAdapter.onClick(view);
+                hideSoftKeyboard();
                 clearArea();
                 break;
             }
@@ -176,6 +178,13 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         mEditTextCurhat.setVisibility(View.GONE);
         mEditTextCurhat.setText("");
         isCurhatExpanded = false;
+    }
+
+    private void hideSoftKeyboard() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            KeyboardUtils.hideKeyboard(view, getActivity().getApplicationContext());
+        }
     }
 
     private ActionBar getActionBar() {

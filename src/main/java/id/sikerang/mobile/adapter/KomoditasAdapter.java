@@ -108,6 +108,21 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         return komoditasViewHolder.isLikes();
     }
 
+    public void setShowHide(boolean isShown) {
+        KomoditasViewHolder komoditasViewHolder = mHoldersMap.get(mPosition.get());
+        if (isShown) {
+            komoditasViewHolder.getTextViewKomoditas().setVisibility(View.GONE);
+            komoditasViewHolder.getRatingBarSatisfaction().setVisibility(View.GONE);
+            komoditasViewHolder.getTextViewSatisfaction().setVisibility(View.GONE);
+            komoditasViewHolder.getTextViewLocation().setVisibility(View.GONE);
+        } else {
+            komoditasViewHolder.getTextViewKomoditas().setVisibility(View.VISIBLE);
+            komoditasViewHolder.getRatingBarSatisfaction().setVisibility(View.VISIBLE);
+            komoditasViewHolder.getTextViewSatisfaction().setVisibility(View.VISIBLE);
+            komoditasViewHolder.getTextViewLocation().setVisibility(View.VISIBLE);
+        }
+    }
+
     /**
      * Save like status into {@code SharedPreferences}.
      *
