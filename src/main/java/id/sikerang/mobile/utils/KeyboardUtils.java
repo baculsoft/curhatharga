@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 /**
- * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com.
+ * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public final class KeyboardUtils {
 
