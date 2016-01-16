@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,61 +11,49 @@
         android:id="@+id/toolbar_app"
         layout="@layout/toolbar_app"/>
 
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/view_384dp"
+    <ImageView
+        android:id="@+id/iv_detail"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/view_128dp"
+        android:layout_below="@+id/toolbar_app"
         android:layout_centerInParent="true"
-        android:layout_margin="@dimen/view_16dp"
-        app:cardBackgroundColor="@color/teal_500"
-        app:cardCornerRadius="@dimen/view_4dp"
-        app:cardElevation="@dimen/view_6dp">
+        android:background="@color/teal_500"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_launcher"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_detail"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_date_detail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginBottom="@dimen/view_2dp"
+            android:layout_marginStart="@dimen/view_8dp"
+            android:layout_marginTop="@dimen/view_8dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_12sp"/>
 
-            <ImageView
-                android:layout_width="@dimen/view_96dp"
-                android:layout_height="@dimen/view_96dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher"/>
+        <TextView
+            android:id="@+id/tv_title_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_8dp"
+            android:layout_marginStart="@dimen/view_8dp"
+            android:layout_marginTop="@dimen/view_2dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16sp"
+            android:textStyle="bold"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/view_6dp"
-                android:layout_marginRight="@dimen/view_6dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tv_date_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/view_4dp"
-                    android:textColor="@color/grey_100"
-                    android:textSize="@dimen/text_12sp"/>
-
-                <TextView
-                    android:id="@+id/tv_title_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/view_4dp"
-                    android:layout_marginTop="@dimen/view_4dp"
-                    android:textColor="@color/grey_100"
-                    android:textSize="@dimen/text_16sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/tv_content_detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/view_4dp"
-                    android:textColor="@color/grey_100"
-                    android:textSize="@dimen/text_14sp"/>
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+        <TextView
+            android:id="@+id/tv_content_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_8dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14sp"/>
+    </LinearLayout>
 </RelativeLayout>

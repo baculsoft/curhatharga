@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -39,9 +40,21 @@ public class KawalPerubahanActivity extends AppCompatActivity {
         initContents();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                finish();
+                break;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initComponents() {
-        mToolbarApp.setTitle(getResources().getString(R.string.menu_kawal_perubahan));
         mToolbarApp.setNavigationIcon(getResources().getDrawable(R.mipmap.ic_arrow_back));
+        mToolbarApp.setTitle(getResources().getString(R.string.menu_kawal_perubahan));
         setSupportActionBar(mToolbarApp);
     }
 
