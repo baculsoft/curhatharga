@@ -5,8 +5,8 @@ buildscript {
         androidSupportVersion = '23.1.1'
         butterKnifeVersion = '7.0.1'
         viewpagerIndicatorVersion = '2.4.1@aar'
-        williamchartVersion = '2.0.1'
-        okhttpVersion = '2.5.0'
+        williamchartVersion = '2.2'
+        okhttpVersion = '2.7.2'
         retrofitVersion = '1.9.0'
     }
     repositories {
@@ -28,8 +28,8 @@ android {
         applicationId "id.sikerang.mobile"
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 15
-        versionName "1.0.8"
+        versionCode 16
+        versionName "1.0.9"
     }
     signingConfigs {
         release {
@@ -76,5 +76,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.9'
+    gradleVersion = '2.10'
 }
