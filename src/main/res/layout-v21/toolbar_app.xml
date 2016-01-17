@@ -7,4 +7,5 @@
                                    android:background="@color/primary"
                                    android:elevation="@dimen/view_4dp"
                                    android:minHeight="?attr/actionBarSize"
-                                   app:theme="@style/AppTheme.Toolbar"/>
+                                   app:theme="@style/AppTheme.Toolbar"
+                                   app:titleTextAppearance="@style/AppTheme.ToolbarTitle"/>

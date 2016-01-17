@@ -6,4 +6,5 @@
                                    android:layout_alignParentTop="true"
                                    android:background="@color/primary"
                                    android:minHeight="?attr/actionBarSize"
-                                   app:theme="@style/AppTheme.Toolbar"/>
+                                   app:theme="@style/AppTheme.Toolbar"
+                                   app:titleTextAppearance="@style/AppTheme.ToolbarTitle"/>
