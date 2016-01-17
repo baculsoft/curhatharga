@@ -1,6 +1,6 @@
 package id.sikerang.mobile.services;
 
-import id.sikerang.mobile.models.CommonResponse;
+import id.sikerang.mobile.models.Komoditas;
 import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;
@@ -18,5 +18,5 @@ public interface IKomoditasService {
                          @Field("productName") String productName,
                          @Field("likes") boolean likes,
                          @Field("text") String text,
-                         Callback<CommonResponse> callback);
+                         Callback<Komoditas> callback);
 }

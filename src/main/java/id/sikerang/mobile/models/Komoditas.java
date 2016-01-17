@@ -6,7 +6,7 @@ import android.os.Parcelable;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class Komoditas implements Parcelable {
+public class Komoditas extends CommonResponse implements Parcelable {
     public static final Parcelable.Creator<Komoditas> CREATOR = new Parcelable.Creator<Komoditas>() {
         public Komoditas createFromParcel(Parcel in) {
             return new Komoditas(in);

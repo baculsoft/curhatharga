@@ -3,6 +3,8 @@ package id.sikerang.mobile.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.adapter.PantauTrendAdapter;
+import id.sikerang.mobile.models.PantauTrend;
 import id.sikerang.mobile.task.PantauTrendLoader;
 
 /**
@@ -49,14 +52,32 @@ public class PantauTrendFragment extends Fragment {
     }
 
     private void initAdapters() {
-        PantauTrendAdapter pantauTrendAdapter = new PantauTrendAdapter(getActivity().getApplicationContext());
+        mProgressBarPantauTrend.setVisibility(View.VISIBLE);
 
-        // FIXME Change to eventbus later
-        PantauTrendLoader pantauTrendLoader = new PantauTrendLoader(mProgressBarPantauTrend,
-                                                                    pantauTrendAdapter,
-                                                                    mViewPagerPantauTrend,
-                                                                    mCirclePageIndicatorPantauTrend);
-        pantauTrendLoader.execute();
+        getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<PantauTrend>() {
+            @Override
+            public Loader<PantauTrend> onCreateLoader(int id, Bundle args) {
+                // FIXME Hardcoded "komoditas" for a while
+                return new PantauTrendLoader(getActivity().getApplicationContext(), "beras");
+            }
+
+            @Override
+            public void onLoadFinished(Loader<PantauTrend> loader, PantauTrend data) {
+                PantauTrendAdapter pantauTrendAdapter = new PantauTrendAdapter(getActivity().getApplicationContext());
+                mViewPagerPantauTrend.addOnPageChangeListener(pantauTrendAdapter);
+                mViewPagerPantauTrend.setAdapter(pantauTrendAdapter);
+                mCirclePageIndicatorPantauTrend.setViewPager(mViewPagerPantauTrend);
+
+                if (data != null) {
+                    mProgressBarPantauTrend.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onLoaderReset(Loader<PantauTrend> loader) {
+                loader.forceLoad();
+            }
+        }).forceLoad();
     }
 
     private ActionBar getActionBar() {

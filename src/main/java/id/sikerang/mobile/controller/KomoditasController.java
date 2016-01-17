@@ -14,7 +14,6 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.models.CommonResponse;
 import id.sikerang.mobile.models.Komoditas;
 import id.sikerang.mobile.services.IKomoditasService;
 import id.sikerang.mobile.utils.Configs;
@@ -30,16 +29,56 @@ import retrofit.client.Response;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KomoditasController implements Callback<CommonResponse> {
+public class KomoditasController implements Callback<Komoditas> {
     private static final String TAG = KomoditasController.class.getSimpleName();
 
     private final Context mContext;
 
     private LocationTracker mLocationTracker;
 
+    private Komoditas mKomoditas;
+
     public KomoditasController(Context context) {
         mContext = context;
         mLocationTracker = new LocationTracker(context);
+    }
+
+    @Override
+    public void success(Komoditas pKomoditas, Response response) {
+        mKomoditas = pKomoditas;
+        handleResponse();
+    }
+
+    @Override
+    public void failure(RetrofitError error) {
+        Log.e(TAG, error.getMessage(), error);
+    }
+
+    public void collect(String latitude, String longitude, String screenName, String productName, String text, boolean isLikes) {
+        Komoditas komoditas = new Komoditas();
+        komoditas.setLatitude(latitude);
+        Log.i(TAG, String.format("Latitude:%s", komoditas.getLatitude()));
+
+        komoditas.setLongitude(longitude);
+        Log.i(TAG, String.format("Longitude:%s", komoditas.getLongitude()));
+
+        komoditas.setScreenName(screenName);
+        Log.i(TAG, String.format("ScreenName:%s", komoditas.getScreenName()));
+
+        komoditas.setProductName(productName);
+        Log.i(TAG, String.format("ProductName:%s", komoditas.getProductName()));
+
+        komoditas.setText(text);
+        Log.i(TAG, String.format("Text:%s", komoditas.getText()));
+
+        komoditas.setLikes(isLikes);
+        Log.i(TAG, String.format("Like/Dislike:%s", komoditas.isLikes()));
+
+        submit(komoditas);
+    }
+
+    public Komoditas getKomoditas() {
+        return mKomoditas;
     }
 
     public List<Address> getAddress() throws IOException {
@@ -77,39 +116,6 @@ public class KomoditasController implements Callback<CommonResponse> {
         return SharedPreferencesUtils.getInstance(SiKerang.getContext()).getCurhat();
     }
 
-    public void collectCommonInfo(String latitude, String longitude, String screenName, String productName, String text, boolean isLikes) {
-        Komoditas komoditas = new Komoditas();
-        komoditas.setLatitude(latitude);
-        Log.i(TAG, String.format("Latitude:%s", komoditas.getLatitude()));
-
-        komoditas.setLongitude(longitude);
-        Log.i(TAG, String.format("Longitude:%s", komoditas.getLongitude()));
-
-        komoditas.setScreenName(screenName);
-        Log.i(TAG, String.format("ScreenName:%s", komoditas.getScreenName()));
-
-        komoditas.setProductName(productName);
-        Log.i(TAG, String.format("ProductName:%s", komoditas.getProductName()));
-
-        komoditas.setText(text);
-        Log.i(TAG, String.format("Text:%s", komoditas.getText()));
-
-        komoditas.setLikes(isLikes);
-        Log.i(TAG, String.format("Like/Dislike:%s", komoditas.isLikes()));
-
-        submit(komoditas);
-    }
-
-    @Override
-    public void success(CommonResponse commonResponse, Response response) {
-        handleResponse(commonResponse);
-    }
-
-    @Override
-    public void failure(RetrofitError error) {
-        Log.e(TAG, error.getMessage(), error);
-    }
-
     private void submit(Komoditas komoditas) {
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setConnectTimeout(Constants.MAX_TIMEOUT, TimeUnit.MINUTES);
@@ -134,12 +140,16 @@ public class KomoditasController implements Callback<CommonResponse> {
         }
     }
 
-    private void handleResponse(CommonResponse commonResponse) {
-        switch (commonResponse.getCode()) {
-            case Constants.STATUS_FAILED:
+    private void handleResponse() {
+        switch (getKomoditas().getCode()) {
+            case Constants.STATUS_FAILED: {
+                Log.d(TAG, String.format("Response: %s", getKomoditas().getStatus()));
+                break;
+            }
             case Constants.STATUS_SUCCESS: {
-                Log.d(TAG, String.format("Response: %s", commonResponse.getStatus()));
+                Log.d(TAG, String.format("Response: %s", getKomoditas().getStatus()));
                 resetCurhatValue();
+                break;
             }
         }
     }

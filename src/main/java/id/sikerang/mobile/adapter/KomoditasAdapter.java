@@ -76,12 +76,12 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         komoditasViewHolder.onClick(view);
         saveLike(komoditasViewHolder.isLikes());
 
-        mKomoditasController.collectCommonInfo(mKomoditasController.getLatitude(),
-                                               mKomoditasController.getLongitude(),
-                                               mKomoditasController.getScreenName(),
-                                               komoditasViewHolder.getTextViewKomoditas().getText().toString(),
-                                               mKomoditasController.getComments(),
-                                               komoditasViewHolder.isLikes());
+        mKomoditasController.collect(mKomoditasController.getLatitude(),
+                                     mKomoditasController.getLongitude(),
+                                     mKomoditasController.getScreenName(),
+                                     komoditasViewHolder.getTextViewKomoditas().getText().toString(),
+                                     mKomoditasController.getComments(),
+                                     komoditasViewHolder.isLikes());
     }
 
     @Override

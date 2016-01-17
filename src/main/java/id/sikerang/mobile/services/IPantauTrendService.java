@@ -1,5 +1,7 @@
 package id.sikerang.mobile.services;
 
+import id.sikerang.mobile.models.PantauTrend;
+import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
 
@@ -8,5 +10,6 @@ import retrofit.http.Path;
  */
 public interface IPantauTrendService {
     @GET("/trend/{komoditas}")
-    void readPantauTrend(@Path("komoditas") String komoditas);
+    void readPantauTrend(@Path("komoditas") String komoditas,
+                         Callback<PantauTrend> callback);
 }

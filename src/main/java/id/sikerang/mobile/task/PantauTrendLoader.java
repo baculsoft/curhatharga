@@ -1,51 +1,44 @@
 package id.sikerang.mobile.task;
 
-import android.os.AsyncTask;
+import android.content.Context;
 import android.os.SystemClock;
-import android.support.v4.view.ViewPager;
-import android.view.View;
+import android.support.v4.content.AsyncTaskLoader;
 
-import com.viewpagerindicator.CirclePageIndicator;
-
-import id.sikerang.mobile.adapter.PantauTrendAdapter;
+import id.sikerang.mobile.controller.PantauTrendController;
+import id.sikerang.mobile.models.PantauTrend;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class PantauTrendLoader extends AsyncTask<Void, Integer, Void> {
-    private View mView;
-    private PantauTrendAdapter mPantauTrendAdapter;
-    private ViewPager mViewPager;
-    private CirclePageIndicator mCirclePageIndicator;
+public class PantauTrendLoader extends AsyncTaskLoader<PantauTrend> {
     private int countdown = 0;
+    private String mKomoditasName;
 
-    public PantauTrendLoader(View pView, PantauTrendAdapter pPantauTrendAdapter, ViewPager pViewPager, CirclePageIndicator pCirclePageIndicator) {
-        mView = pView;
-        mPantauTrendAdapter = pPantauTrendAdapter;
-        mViewPager = pViewPager;
-        mCirclePageIndicator = pCirclePageIndicator;
+    public PantauTrendLoader(Context context, String pKomoditasName) {
+        super(context);
+        mKomoditasName = pKomoditasName;
     }
 
     @Override
-    protected void onPreExecute() {
-        mView.setVisibility(View.VISIBLE);
+    public void deliverResult(PantauTrend data) {
+        super.deliverResult(data);
     }
 
     @Override
-    protected Void doInBackground(Void... pVoids) {
+    public PantauTrend loadInBackground() {
+        PantauTrendController pantauTrendController = new PantauTrendController(getKomoditas());
+        pantauTrendController.collect();
+
+        // FIXME Change to eventbus later
         while (countdown < 3) {
             SystemClock.sleep(3000);
             countdown++;
         }
 
-        return null;
+        return pantauTrendController.getPantauTrend();
     }
 
-    @Override
-    protected void onPostExecute(Void result) {
-        mView.setVisibility(View.GONE);
-        mViewPager.addOnPageChangeListener(mPantauTrendAdapter);
-        mViewPager.setAdapter(mPantauTrendAdapter);
-        mCirclePageIndicator.setViewPager(mViewPager);
+    public String getKomoditas() {
+        return mKomoditasName;
     }
 }
