@@ -4,6 +4,7 @@ import android.location.Address;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -26,6 +27,7 @@ import id.sikerang.mobile.fragment.KawalPerubahanFragment;
 import id.sikerang.mobile.fragment.KomoditasFragment;
 import id.sikerang.mobile.fragment.PantauTrendFragment;
 import id.sikerang.mobile.fragment.TentangAplikasiFragment;
+import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.KeyboardUtils;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
@@ -45,7 +47,7 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
     @Bind(R.id.nv_menu)
     NavigationView mNavigationViewMenu;
 
-    private MenuItem mMenuItemPrevious;
+    private MenuItem mMenuItemCurrent;
     private KomoditasController mKomoditasController;
 
     @Override
@@ -87,37 +89,13 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
+        mMenuItemCurrent = menuItem;
+
         setCheckedMenu(0, false);
         menuItem.setChecked(true);
-        getCheckedMenu(mMenuItemPrevious, false);
-        mMenuItemPrevious = menuItem;
+        getCheckedMenu(getMenuItemCurrent(), false);
         mDrawerLayoutMenu.closeDrawers();
 
-        int status = 0;
-        switch (menuItem.getItemId()) {
-            case R.id.item_komoditas: {
-                status = Constants.MENU_KOMODITAS;
-                break;
-            }
-            case R.id.item_pantau_trend: {
-                status = Constants.MENU_PANTAU_TREND;
-                break;
-            }
-            case R.id.item_kawal_perubahan: {
-                status = Constants.MENU_KAWAL_PERUBAHAN;
-                break;
-            }
-            case R.id.item_bantuan: {
-                status = Constants.MENU_BANTUAN;
-                break;
-            }
-            case R.id.item_tentang_aplikasi: {
-                status = Constants.MENU_TENTANG_APLIKASI;
-                break;
-            }
-        }
-
-        initFragments(status);
         return true;
     }
 
@@ -126,7 +104,7 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
         setCheckedMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         initDrawers();
-        initFragments(Constants.MENU_KOMODITAS);
+        initFragments(Constants.MENU_KOMODITAS, Configs.TAG_KOMODITAS);
     }
 
     private void initControllers() {
@@ -144,6 +122,10 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+
+                if (getMenuItemCurrent() != null) {
+                    switchMenu(getMenuItemCurrent());
+                }
             }
 
             @Override
@@ -155,12 +137,17 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
                 }
             }
         };
+
         mDrawerLayoutMenu.setDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
     }
 
-    private void initFragments(int status) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_sikerang, getFragments(status)).commit();
+    private void initFragments(int status, String tag) {
+        if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fl_sikerang, getFragments(status), tag);
+            fragmentTransaction.commit();
+        }
     }
 
     private void addLocationAddress() {
@@ -189,14 +176,52 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
         return locationAddress;
     }
 
+    public MenuItem getMenuItemCurrent() {
+        return mMenuItemCurrent;
+    }
+
     private void getCheckedMenu(MenuItem menuItem, boolean checked) {
-        if (menuItem != null && menuItem != mMenuItemPrevious) {
+        if (menuItem != null && menuItem != mMenuItemCurrent) {
             menuItem.setChecked(checked);
         }
     }
 
     private MenuItem setCheckedMenu(int position, boolean checked) {
         return mNavigationViewMenu.getMenu().getItem(position).setChecked(checked);
+    }
+
+    private void switchMenu(MenuItem pMenuItem) {
+        int status = 0;
+        String tag = null;
+        switch (pMenuItem.getItemId()) {
+            case R.id.item_komoditas: {
+                status = Constants.MENU_KOMODITAS;
+                tag = Configs.TAG_KOMODITAS;
+                break;
+            }
+            case R.id.item_pantau_trend: {
+                status = Constants.MENU_PANTAU_TREND;
+                tag = Configs.TAG_PANTAU_TREND;
+                break;
+            }
+            case R.id.item_kawal_perubahan: {
+                status = Constants.MENU_KAWAL_PERUBAHAN;
+                tag = Configs.TAG_KAWAL_PERUBAHAN;
+                break;
+            }
+            case R.id.item_bantuan: {
+                status = Constants.MENU_BANTUAN;
+                tag = Configs.TAG_BANTUAN;
+                break;
+            }
+            case R.id.item_tentang_aplikasi: {
+                status = Constants.MENU_TENTANG_APLIKASI;
+                tag = Configs.TAG_TENTANG_APLIKASI;
+                break;
+            }
+        }
+
+        initFragments(status, tag);
     }
 
     private Fragment getFragments(int status) {

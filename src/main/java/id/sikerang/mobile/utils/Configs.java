@@ -10,10 +10,19 @@ public final class Configs {
     private Configs() {
     }
 
+    /**
+     * Application API URL
+     */
     public static final String APP_URL = "http://hackathon2015.baculsoft.com/api";
-    public static final String GEOCODING = "geocoding";
-    public static final String CURHAT = "curhat";
 
+    /**
+     * Shared preference key for setup geolocation
+     */
+    public static final String GEOCODING = "geocoding";
+    /**
+     * Shared preference key for setup curhat value
+     */
+    public static final String CURHAT = "curhat";
     /**
      * Shared preference key for RICE likes
      */
@@ -43,14 +52,33 @@ public final class Configs {
      * Key for TANGGAL Kawal Perubahan
      */
     public static final String KAWAL_DATES = "kawal_dates";
-
     /**
      * Key for TITLE Kawal Perubahan
      */
     public static final String KAWAL_TITLES = "kawal_titles";
-
     /**
      * Key for CONTENTS Kawal Perubahan
      */
     public static final String KAWAL_CONTENTS = "kawal_contents";
+
+    /**
+     * Tag fragment for menu komoditas
+     */
+    public static final String TAG_KOMODITAS = "MENU_KOMODITAS";
+    /**
+     * Tag fragment for menu pantau trend
+     */
+    public static final String TAG_PANTAU_TREND = "MENU_PANTAU_TREND";
+    /**
+     * Tag fragment for menu kawal perubahan
+     */
+    public static final String TAG_KAWAL_PERUBAHAN = "MENU_KAWAL_PERUBAHAN";
+    /**
+     * Tag fragment for menu bantuan
+     */
+    public static final String TAG_BANTUAN = "MENU_BANTUAN";
+    /**
+     * Tag fragment for menu tentang aplikasi
+     */
+    public static final String TAG_TENTANG_APLIKASI = "MENU_TENTANG_APLIKASI";
 }
