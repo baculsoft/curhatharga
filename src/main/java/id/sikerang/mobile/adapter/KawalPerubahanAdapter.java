@@ -15,6 +15,7 @@ import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.activity.KawalPerubahanActivity;
 import id.sikerang.mobile.models.KawalPerubahan;
 import id.sikerang.mobile.utils.Configs;
+import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.DateUtils;
 
 /**
@@ -37,8 +38,8 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
     public void onBindViewHolder(KawalPerubahanHolder holder, int position) {
         String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(position).getDate());
         String date = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(convertedDate);
-        String title = mKawalPerubahan.getKawalPerubahanContents().get(position).getTitle();
-        String content = mKawalPerubahan.getKawalPerubahanContents().get(position).getContent().substring(0, 128).concat("...");
+        String title = mKawalPerubahan.getKawalPerubahanContents().get(position).getTitle().substring(0, Constants.MAX_TITLE).concat("...");
+        String content = mKawalPerubahan.getKawalPerubahanContents().get(position).getContent().substring(0, Constants.MAX_CONTENT).concat("...");
 
         holder.getTextViewDate().setText(date);
         holder.getTextViewTitle().setText(title);

@@ -14,7 +14,7 @@ public final class Constants {
 
     public static final long MIN_TIME = 1L;
     public static final long MIN_DISTANCE = 1L;
-    public static final long MAX_TIMEOUT = 1l;
+    public static final long MAX_TIMEOUT = 1L;
 
     public static final int GEOCODING_MAX_RESULT = 1;
     public static final int KEYBOARD_LAYOUT = 96 + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 48 : 0);
@@ -25,6 +25,8 @@ public final class Constants {
     public static final int MENU_TENTANG_APLIKASI = 201;
     public static final int STATUS_FAILED = 0;
     public static final int STATUS_SUCCESS = 1;
+    public static final int MAX_TITLE = 40;
+    public static final int MAX_CONTENT = 90;
 
     /**
      * Shared preference value for LIKES

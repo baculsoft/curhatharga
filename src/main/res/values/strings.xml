@@ -14,6 +14,15 @@
     <string name="text_tanggal">Tanggal\u0020</string>
     <string name="text_versi">Versi\u0020</string>
     <string name="text_copyright">Copyright\u00A9\u00202015</string>
+    <string name="product_rice">Beras</string>
+    <string name="product_corn">Jagung</string>
+    <string name="product_soya">Kedelai</string>
+    <string name="product_chicken">Daging Ayam</string>
+    <string name="product_meal">Daging Sapi</string>
+    <string name="product_sugar">Gula</string>
+    <string name="satisfaction_level_1">Cukup Puas</string>
+    <string name="satisfaction_level_2">Puas</string>
+    <string name="satisfaction_level_3">Sangat Puas</string>
 
     <!-- CONTENT DESCRIPTION -->
     <string name="desc_menu_open">Buka Menu</string>
@@ -22,17 +31,4 @@
     <!-- DUMMY TEXT -->
     <string name="text_murah">Puas!</string>
     <string name="text_mahal">Tidak Puas!</string>
-
-    <!-- DUMMY PRODUCTS -->
-    <string name="product_rice">Beras</string>
-    <string name="product_corn">Jagung</string>
-    <string name="product_soya">Kedelai</string>
-    <string name="product_chicken">Daging Ayam</string>
-    <string name="product_meal">Daging Sapi</string>
-    <string name="product_sugar">Gula</string>
-
-    <!-- DUMMY SATISFACTION LEVEL -->
-    <string name="satisfaction_level_1">Cukup Puas</string>
-    <string name="satisfaction_level_2">Puas</string>
-    <string name="satisfaction_level_3">Sangat Puas</string>
 </resources>

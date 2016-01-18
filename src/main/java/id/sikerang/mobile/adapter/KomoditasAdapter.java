@@ -208,7 +208,6 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
             behaveLike();
         }
 
-        // FIXME Hardcoded value
         private void initComponents(int position) {
             switch (position) {
                 case 0: {
