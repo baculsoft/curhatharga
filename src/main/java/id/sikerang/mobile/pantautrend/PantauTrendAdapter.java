@@ -1,4 +1,4 @@
-package id.sikerang.mobile.adapter;
+package id.sikerang.mobile.pantautrend;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

@@ -1,6 +1,5 @@
-package id.sikerang.mobile.services;
+package id.sikerang.mobile.pantautrend;
 
-import id.sikerang.mobile.models.PantauTrend;
 import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;

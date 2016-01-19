@@ -1,4 +1,4 @@
-package id.sikerang.mobile.controller;
+package id.sikerang.mobile.komoditas;
 
 import android.content.Context;
 import android.location.Address;
@@ -14,8 +14,6 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.models.Komoditas;
-import id.sikerang.mobile.services.IKomoditasService;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.LocationTracker;

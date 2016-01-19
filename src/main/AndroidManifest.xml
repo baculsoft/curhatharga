@@ -19,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name="id.sikerang.mobile.activity.KomoditasActivity"
+            android:name="id.sikerang.mobile.komoditas.KomoditasActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="id.sikerang.mobile.activity.KawalPerubahanActivity"
+            android:name="id.sikerang.mobile.kawalperubahan.KawalPerubahanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Others">
             <intent-filter>

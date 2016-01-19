@@ -1,4 +1,4 @@
-package id.sikerang.mobile.activity;
+package id.sikerang.mobile.komoditas;
 
 import android.location.Address;
 import android.os.Bundle;
@@ -21,12 +21,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.controller.KomoditasController;
-import id.sikerang.mobile.fragment.BantuanFragment;
-import id.sikerang.mobile.fragment.KawalPerubahanFragment;
-import id.sikerang.mobile.fragment.KomoditasFragment;
-import id.sikerang.mobile.fragment.PantauTrendFragment;
-import id.sikerang.mobile.fragment.TentangAplikasiFragment;
+import id.sikerang.mobile.bantuan.BantuanFragment;
+import id.sikerang.mobile.kawalperubahan.KawalPerubahanFragment;
+import id.sikerang.mobile.pantautrend.PantauTrendFragment;
+import id.sikerang.mobile.tentangaplikasi.TentangAplikasiFragment;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.KeyboardUtils;

@@ -1,4 +1,4 @@
-package id.sikerang.mobile.fragment;
+package id.sikerang.mobile.bantuan;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

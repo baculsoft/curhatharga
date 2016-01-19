@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/grey_300"
     android:orientation="vertical"
-    tools:context="id.sikerang.mobile.activity.KawalPerubahanActivity">
+    tools:context="id.sikerang.mobile.kawalperubahan.KawalPerubahanActivity">
 
     <include
         android:id="@+id/toolbar_app"

@@ -1,4 +1,4 @@
-package id.sikerang.mobile.adapter;
+package id.sikerang.mobile.komoditas;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -20,7 +20,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.controller.KomoditasController;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**

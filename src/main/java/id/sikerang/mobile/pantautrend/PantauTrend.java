@@ -1,7 +1,9 @@
-package id.sikerang.mobile.models;
+package id.sikerang.mobile.pantautrend;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import id.sikerang.mobile.models.CommonResponse;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)

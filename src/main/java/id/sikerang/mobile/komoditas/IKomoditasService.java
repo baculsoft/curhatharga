@@ -1,6 +1,5 @@
-package id.sikerang.mobile.services;
+package id.sikerang.mobile.komoditas;
 
-import id.sikerang.mobile.models.Komoditas;
 import retrofit.Callback;
 import retrofit.http.Field;
 import retrofit.http.FormUrlEncoded;

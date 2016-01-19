@@ -1,4 +1,4 @@
-package id.sikerang.mobile.adapter;
+package id.sikerang.mobile.kawalperubahan;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
-import id.sikerang.mobile.activity.KawalPerubahanActivity;
-import id.sikerang.mobile.models.KawalPerubahan;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.DateUtils;

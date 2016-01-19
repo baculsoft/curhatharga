@@ -1,4 +1,4 @@
-package id.sikerang.mobile.fragment;
+package id.sikerang.mobile.pantautrend;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -18,9 +18,6 @@ import com.viewpagerindicator.CirclePageIndicator;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
-import id.sikerang.mobile.adapter.PantauTrendAdapter;
-import id.sikerang.mobile.models.PantauTrend;
-import id.sikerang.mobile.task.PantauTrendLoader;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)

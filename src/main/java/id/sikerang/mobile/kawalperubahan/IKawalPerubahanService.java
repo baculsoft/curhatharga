@@ -1,6 +1,5 @@
-package id.sikerang.mobile.services;
+package id.sikerang.mobile.kawalperubahan;
 
-import id.sikerang.mobile.models.KawalPerubahan;
 import retrofit.Callback;
 import retrofit.http.GET;
 

@@ -1,4 +1,4 @@
-package id.sikerang.mobile.fragment;
+package id.sikerang.mobile.tentangaplikasi;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;

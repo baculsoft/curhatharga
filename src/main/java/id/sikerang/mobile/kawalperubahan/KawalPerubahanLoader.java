@@ -1,11 +1,8 @@
-package id.sikerang.mobile.task;
+package id.sikerang.mobile.kawalperubahan;
 
 import android.content.Context;
 import android.os.SystemClock;
 import android.support.v4.content.AsyncTaskLoader;
-
-import id.sikerang.mobile.controller.KawalPerubahanController;
-import id.sikerang.mobile.models.KawalPerubahan;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)

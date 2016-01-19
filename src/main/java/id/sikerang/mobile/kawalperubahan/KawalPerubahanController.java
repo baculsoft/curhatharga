@@ -1,4 +1,4 @@
-package id.sikerang.mobile.controller;
+package id.sikerang.mobile.kawalperubahan;
 
 import android.util.Log;
 
@@ -6,8 +6,6 @@ import com.squareup.okhttp.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
 
-import id.sikerang.mobile.models.KawalPerubahan;
-import id.sikerang.mobile.services.IKawalPerubahanService;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import retrofit.Callback;

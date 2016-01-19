@@ -1,4 +1,4 @@
-package id.sikerang.mobile.fragment;
+package id.sikerang.mobile.komoditas;
 
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ import com.viewpagerindicator.CirclePageIndicator;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
-import id.sikerang.mobile.adapter.KomoditasAdapter;
+import id.sikerang.mobile.komoditas.KomoditasAdapter;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.KeyboardUtils;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;

@@ -1,4 +1,4 @@
-package id.sikerang.mobile.fragment;
+package id.sikerang.mobile.kawalperubahan;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,9 +17,6 @@ import android.widget.ProgressBar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
-import id.sikerang.mobile.adapter.KawalPerubahanAdapter;
-import id.sikerang.mobile.models.KawalPerubahan;
-import id.sikerang.mobile.task.KawalPerubahanLoader;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)

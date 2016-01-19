@@ -1,11 +1,8 @@
-package id.sikerang.mobile.task;
+package id.sikerang.mobile.pantautrend;
 
 import android.content.Context;
 import android.os.SystemClock;
 import android.support.v4.content.AsyncTaskLoader;
-
-import id.sikerang.mobile.controller.PantauTrendController;
-import id.sikerang.mobile.models.PantauTrend;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)

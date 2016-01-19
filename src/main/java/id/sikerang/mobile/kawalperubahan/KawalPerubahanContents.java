@@ -1,4 +1,4 @@
-package id.sikerang.mobile.models;
+package id.sikerang.mobile.kawalperubahan;
 
 import android.os.Parcel;
 import android.os.Parcelable;
