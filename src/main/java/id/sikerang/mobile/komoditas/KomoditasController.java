@@ -33,12 +33,11 @@ public class KomoditasController implements Callback<Komoditas> {
     private final Context mContext;
 
     private LocationTracker mLocationTracker;
-
     private Komoditas mKomoditas;
 
-    public KomoditasController(Context context) {
-        mContext = context;
-        mLocationTracker = new LocationTracker(context);
+    public KomoditasController(Context pContext) {
+        mContext = pContext;
+        mLocationTracker = new LocationTracker(pContext);
     }
 
     @Override
@@ -48,35 +47,31 @@ public class KomoditasController implements Callback<Komoditas> {
     }
 
     @Override
-    public void failure(RetrofitError error) {
-        Log.e(TAG, error.getMessage(), error);
+    public void failure(RetrofitError retrofitError) {
+        Log.e(TAG, retrofitError.getMessage(), retrofitError);
     }
 
-    public void collect(String latitude, String longitude, String screenName, String productName, String text, boolean isLikes) {
+    public void collect(String pLatitude, String pLongitude, String pScreenName, String pProductName, String pText, boolean isLikes) {
         Komoditas komoditas = new Komoditas();
-        komoditas.setLatitude(latitude);
+        komoditas.setLatitude(pLatitude);
         Log.i(TAG, String.format("Latitude:%s", komoditas.getLatitude()));
 
-        komoditas.setLongitude(longitude);
+        komoditas.setLongitude(pLongitude);
         Log.i(TAG, String.format("Longitude:%s", komoditas.getLongitude()));
 
-        komoditas.setScreenName(screenName);
+        komoditas.setScreenName(pScreenName);
         Log.i(TAG, String.format("ScreenName:%s", komoditas.getScreenName()));
 
-        komoditas.setProductName(productName);
+        komoditas.setProductName(pProductName);
         Log.i(TAG, String.format("ProductName:%s", komoditas.getProductName()));
 
-        komoditas.setText(text);
+        komoditas.setText(pText);
         Log.i(TAG, String.format("Text:%s", komoditas.getText()));
 
         komoditas.setLikes(isLikes);
         Log.i(TAG, String.format("Like/Dislike:%s", komoditas.isLikes()));
 
         submit(komoditas);
-    }
-
-    public Komoditas getKomoditas() {
-        return mKomoditas;
     }
 
     public List<Address> getAddress() throws IOException {
@@ -112,6 +107,10 @@ public class KomoditasController implements Callback<Komoditas> {
 
     public String getComments() {
         return SharedPreferencesUtils.getInstance(SiKerang.getContext()).getCurhat();
+    }
+
+    public Komoditas getKomoditas() {
+        return mKomoditas;
     }
 
     private void submit(Komoditas komoditas) {

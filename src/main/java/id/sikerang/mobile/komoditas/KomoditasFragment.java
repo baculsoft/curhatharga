@@ -21,7 +21,6 @@ import com.viewpagerindicator.CirclePageIndicator;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
-import id.sikerang.mobile.komoditas.KomoditasAdapter;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.KeyboardUtils;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
@@ -48,11 +47,11 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
     @Bind(R.id.et_curhat)
     EditText mEditTextCurhat;
 
-    private KomoditasAdapter mKomoditasAdapter;
-    private View mRootView;
-    private boolean isCurhatExpanded;
-
     private final Rect mRect = new Rect();
+
+    private View mRootView;
+    private KomoditasAdapter mKomoditasAdapter;
+    private boolean isCurhatExpanded;
 
     @Nullable
     @Override
@@ -93,8 +92,8 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             case R.id.fab_murah:
             case R.id.fab_mahal: {
                 mKomoditasAdapter.setShowHide(false);
-                setCurhatValue(mEditTextCurhat.getText().toString());
                 mKomoditasAdapter.onClick(view);
+                setCurhatValue(mEditTextCurhat.getText().toString());
                 hideSoftKeyboard();
                 clearArea();
                 break;
@@ -132,7 +131,10 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             @Override
             public void onPageSelected(int position) {
                 mKomoditasAdapter.onPageSelected(position);
+                isCurhatExpanded = true;
+                hideSoftKeyboard();
                 showHideFab();
+                showHideCurhat();
             }
 
             @Override
@@ -140,6 +142,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
                 mKomoditasAdapter.onPageScrollStateChanged(state);
             }
         });
+
         mViewPagerKomoditas.setAdapter(mKomoditasAdapter);
         mCirclePageIndicatorKomoditas.setViewPager(mViewPagerKomoditas);
     }

@@ -88,9 +88,8 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         mMenuItemCurrent = menuItem;
-
-        setCheckedMenu(0, false);
         menuItem.setChecked(true);
+        setCheckedMenu(0, false);
         getCheckedMenu(getMenuItemCurrent(), false);
         mDrawerLayoutMenu.closeDrawers();
 
@@ -191,6 +190,7 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
     private void switchMenu(MenuItem pMenuItem) {
         int status = 0;
         String tag = null;
+
         switch (pMenuItem.getItemId()) {
             case R.id.item_komoditas: {
                 status = Constants.MENU_KOMODITAS;
@@ -246,7 +246,7 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
             }
             default: {
                 Log.e(TAG, "Menu is not available");
-                return new TentangAplikasiFragment();
+                return null;
             }
         }
     }

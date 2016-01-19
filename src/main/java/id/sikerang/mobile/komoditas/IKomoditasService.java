@@ -11,11 +11,11 @@ import retrofit.http.POST;
 public interface IKomoditasService {
     @FormUrlEncoded
     @POST("/save")
-    void createKomoditas(@Field("latitude") String latitude,
-                         @Field("longitude") String longitude,
-                         @Field("screenName") String screenName,
-                         @Field("productName") String productName,
-                         @Field("likes") boolean likes,
-                         @Field("text") String text,
-                         Callback<Komoditas> callback);
+    void createKomoditas(@Field("latitude") String pLatitude,
+                         @Field("longitude") String pLongitude,
+                         @Field("screenName") String pScreenName,
+                         @Field("productName") String pProductName,
+                         @Field("likes") boolean isLikes,
+                         @Field("text") String pText,
+                         Callback<Komoditas> pKomoditasCallback);
 }
