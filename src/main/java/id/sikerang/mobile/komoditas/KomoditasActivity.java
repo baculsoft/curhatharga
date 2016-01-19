@@ -56,6 +56,7 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         ButterKnife.bind(this);
         initComponents();
         initControllers();
+        addLocationAddress();
     }
 
     @Override
@@ -82,7 +83,6 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
             mDrawerLayoutMenu.closeDrawers();
         } else {
             finish();
-            removeLocationAddress();
         }
     }
 
@@ -145,7 +145,6 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
 
     private void initControllers() {
         mKomoditasController = new KomoditasController(SiKerang.getContext());
-        addLocationAddress();
     }
 
     private void addLocationAddress() {
