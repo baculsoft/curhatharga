@@ -16,22 +16,22 @@ public final class SharedPreferencesUtils {
 
     private SharedPreferences mSharedPreferences;
 
-    public static synchronized SharedPreferencesUtils getInstance(Context context) {
+    public static synchronized SharedPreferencesUtils getInstance(Context pContext) {
         if (INSTANCE == null) {
-            INSTANCE = new SharedPreferencesUtils(context);
+            INSTANCE = new SharedPreferencesUtils(pContext);
         }
 
         return INSTANCE;
     }
 
-    public SharedPreferencesUtils(Context context) {
+    public SharedPreferencesUtils(Context pContext) {
         Log.d(TAG, "Initial SharedPreferencesUtils");
-        mSharedPreferences = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+        mSharedPreferences = pContext.getSharedPreferences(pContext.getPackageName(), Context.MODE_PRIVATE);
     }
 
-    public void setLocationAddress(String location) {
+    public void setLocationAddress(String pLocationAddress) {
         Editor editor = mSharedPreferences.edit();
-        editor.putString(Configs.GEOCODING, location);
+        editor.putString(Configs.GEOCODING, pLocationAddress);
         editor.apply();
     }
 
@@ -39,9 +39,9 @@ public final class SharedPreferencesUtils {
         return mSharedPreferences.getString(Configs.GEOCODING, null);
     }
 
-    public void setCurhat(String text) {
+    public void setCurhat(String pComments) {
         Editor editor = mSharedPreferences.edit();
-        editor.putString(Configs.CURHAT, text);
+        editor.putString(Configs.CURHAT, pComments);
         editor.apply();
     }
 
@@ -64,55 +64,55 @@ public final class SharedPreferencesUtils {
     /**
      * Save like into {@code SharedPreferences} with key {@code Configs.RICE_LIKES}
      *
-     * @param like boolean
+     * @param isRiceLikes boolean
      */
-    public void setRiceLikes(final boolean like) {
-        setLikes(Configs.RICE_LIKES, like);
+    public void setRiceLikes(final boolean isRiceLikes) {
+        setLikes(Configs.RICE_LIKES, isRiceLikes);
     }
 
     /**
      * Save like into {@code SharedPreferences} with key {@code Configs.CORN_LIKES}
      *
-     * @param like boolean
+     * @param isCornLikes boolean
      */
-    public void setCornLikes(final boolean like) {
-        setLikes(Configs.CORN_LIKES, like);
+    public void setCornLikes(final boolean isCornLikes) {
+        setLikes(Configs.CORN_LIKES, isCornLikes);
     }
 
     /**
      * Save like into {@code SharedPreferences} with key {@code Configs.SOY_LIKES}
      *
-     * @param like boolean
+     * @param isSoyLikes boolean
      */
-    public void setSoyLikes(final boolean like) {
-        setLikes(Configs.SOY_LIKES, like);
+    public void setSoyLikes(final boolean isSoyLikes) {
+        setLikes(Configs.SOY_LIKES, isSoyLikes);
     }
 
     /**
      * Save like into {@code SharedPreferences} with key {@code Configs.CHICKEN_LIKES}
      *
-     * @param like boolean
+     * @param isChickenLikes boolean
      */
-    public void setChickenLikes(final boolean like) {
-        setLikes(Configs.CHICKEN_LIKES, like);
+    public void setChickenLikes(final boolean isChickenLikes) {
+        setLikes(Configs.CHICKEN_LIKES, isChickenLikes);
     }
 
     /**
      * Save like into {@code SharedPreferences} with key {@code Configs.BEEF_LIKES}
      *
-     * @param like boolean
+     * @param isBeefLikes boolean
      */
-    public void setBeefLikes(final boolean like) {
-        setLikes(Configs.BEEF_LIKES, like);
+    public void setBeefLikes(final boolean isBeefLikes) {
+        setLikes(Configs.BEEF_LIKES, isBeefLikes);
     }
 
     /**
      * Save like into {@code SharedPreferences} with key {@code Configs.SUGAR_LIKES}
      *
-     * @param like boolean
+     * @param isSugarLikes boolean
      */
-    public void setSugarLikes(final boolean like) {
-        setLikes(Configs.SUGAR_LIKES, like);
+    public void setSugarLikes(final boolean isSugarLikes) {
+        setLikes(Configs.SUGAR_LIKES, isSugarLikes);
     }
 
     /**
@@ -178,24 +178,24 @@ public final class SharedPreferencesUtils {
     /**
      * Save like status into {@code SharedPreferences} with given key.
      *
-     * @param key  - {@code SharedPreference} key
-     * @param like - Like status
+     * @param pTag    - {@code SharedPreference} Tag key
+     * @param isLikes - Like/Dislike status
      */
-    private void setLikes(final String key, final boolean like) {
+    private void setLikes(final String pTag, final boolean isLikes) {
         Editor editor = mSharedPreferences.edit();
-        editor.putString(key, (like ? String.valueOf(Constants.LIKES) : String.valueOf(Constants.DISLIKES)));
+        editor.putString(pTag, (isLikes ? String.valueOf(Constants.LIKES) : String.valueOf(Constants.DISLIKES)));
         editor.apply();
     }
 
     /**
      * Get saved like status from {@code SharedPreferences} with given key.
      *
-     * @param key - {@code SharedPreference} key
+     * @param pTAG - {@code SharedPreference} Tag key
      * @return Boolean. May {@code Null}.
      */
     @Nullable
-    private Boolean getLikes(final String key) {
-        final String like = mSharedPreferences.getString(key, null);
+    private Boolean getLikes(final String pTAG) {
+        final String like = mSharedPreferences.getString(pTAG, null);
         return (like != null ? (like.equals(String.valueOf(Constants.LIKES))) : null);
     }
 }

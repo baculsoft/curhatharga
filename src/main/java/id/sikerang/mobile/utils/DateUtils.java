@@ -16,11 +16,11 @@ public final class DateUtils {
     public static final SimpleDateFormat SERVER_PATTERN = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
     public static final SimpleDateFormat MOBILE_PATTERN = new SimpleDateFormat("d MMMM yyyy", new Locale("id"));
 
-    public static String convertDate(String dateValue) {
+    public static String convertDate(String pDateValue) {
         String convertedDate = "";
 
         try {
-            Date date = SERVER_PATTERN.parse(dateValue);
+            Date date = SERVER_PATTERN.parse(pDateValue);
             convertedDate = MOBILE_PATTERN.format(date);
         } catch (ParseException e) {
             Log.e(TAG, e.getMessage(), e);
