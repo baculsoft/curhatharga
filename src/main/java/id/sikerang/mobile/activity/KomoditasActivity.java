@@ -35,8 +35,8 @@ import id.sikerang.mobile.utils.SharedPreferencesUtils;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class SiKerangActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private static final String TAG = SiKerangActivity.class.getSimpleName();
+public class KomoditasActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG = KomoditasActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar_app)
     Toolbar mToolbarApp;
@@ -52,9 +52,9 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate SiKerangActivity.");
+        Log.d(TAG, "onCreate KomoditasActivity.");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sikerang);
+        setContentView(R.layout.activity_komoditas);
         ButterKnife.bind(this);
         initComponents();
         initControllers();
@@ -145,7 +145,7 @@ public class SiKerangActivity extends AppCompatActivity implements NavigationVie
     private void initFragments(int status, String tag) {
         if (getSupportFragmentManager().findFragmentByTag(tag) == null) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fl_sikerang, getFragments(status), tag);
+            fragmentTransaction.replace(R.id.fl_komoditas, getFragments(status), tag);
             fragmentTransaction.commit();
         }
     }

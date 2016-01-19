@@ -6,8 +6,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@dimen/view_16dp"
     android:fitsSystemWindows="true"
-    tools:context="id.sikerang.mobile.activity.SiKerangActivity">
+    tools:context="id.sikerang.mobile.activity.KomoditasActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             layout="@layout/toolbar_app"/>
 
         <FrameLayout
-            android:id="@+id/fl_sikerang"
+            android:id="@+id/fl_komoditas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
