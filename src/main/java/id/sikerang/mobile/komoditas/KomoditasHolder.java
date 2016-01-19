@@ -35,14 +35,14 @@ public class KomoditasHolder implements View.OnClickListener {
     @Bind(R.id.tv_location)
     TextView mTextViewLocation;
 
-    private final SharedPreferencesUtils mSharedPreferencesUtils;
     private final View mView;
+    private final SharedPreferencesUtils mSharedPreferencesUtils;
 
     private Boolean mIsLikes;
 
     public KomoditasHolder(final int pPosition, final LayoutInflater pLayoutInflater, final ViewGroup pContainer) {
-        mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext());
         mView = pLayoutInflater.inflate(R.layout.row_komoditas, pContainer, false);
+        mSharedPreferencesUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext());
         ButterKnife.bind(this, mView);
         initComponents(pPosition);
     }
@@ -66,8 +66,8 @@ public class KomoditasHolder implements View.OnClickListener {
         behaveLike();
     }
 
-    private void initComponents(int position) {
-        switch (position) {
+    private void initComponents(int pPosition) {
+        switch (pPosition) {
             case 0: {
                 getImageViewKomoditas().setBackgroundDrawable(SiKerang.getContext().getResources().getDrawable(R.mipmap.ic_rice));
                 getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_rice));

@@ -35,7 +35,7 @@ public class KawalPerubahanContents implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int i) {
+    public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(content);
         dest.writeString(title);
         dest.writeString(date);

@@ -54,7 +54,7 @@ public class KawalPerubahanFragment extends Fragment {
 
         getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<KawalPerubahan>() {
             @Override
-            public Loader<KawalPerubahan> onCreateLoader(int id, Bundle args) {
+            public Loader<KawalPerubahan> onCreateLoader(int id, Bundle state) {
                 return new KawalPerubahanLoader(getActivity().getApplicationContext());
             }
 

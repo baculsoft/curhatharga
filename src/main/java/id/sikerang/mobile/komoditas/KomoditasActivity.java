@@ -82,6 +82,7 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
             mDrawerLayoutMenu.closeDrawers();
         } else {
             finish();
+            removeLocationAddress();
         }
     }
 
@@ -102,11 +103,6 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         initDrawers();
         initFragments(Constants.MENU_KOMODITAS, Configs.TAG_KOMODITAS);
-    }
-
-    private void initControllers() {
-        mKomoditasController = new KomoditasController(SiKerang.getContext());
-        addLocationAddress();
     }
 
     private void initDrawers() {
@@ -145,6 +141,11 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
             fragmentTransaction.replace(R.id.fl_komoditas, getFragments(status), tag);
             fragmentTransaction.commit();
         }
+    }
+
+    private void initControllers() {
+        mKomoditasController = new KomoditasController(SiKerang.getContext());
+        addLocationAddress();
     }
 
     private void addLocationAddress() {

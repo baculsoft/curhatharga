@@ -10,8 +10,8 @@ import android.support.v4.content.AsyncTaskLoader;
 public class KawalPerubahanLoader extends AsyncTaskLoader<KawalPerubahan> {
     private int countdown = 0;
 
-    public KawalPerubahanLoader(Context context) {
-        super(context);
+    public KawalPerubahanLoader(Context pContext) {
+        super(pContext);
     }
 
     @Override

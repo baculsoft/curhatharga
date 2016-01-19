@@ -27,8 +27,8 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     private final KomoditasController mKomoditasController;
     private KomoditasHolder mKomoditasHolder;
 
-    public KomoditasAdapter(Context context) {
-        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    public KomoditasAdapter(Context pContext) {
+        mLayoutInflater = (LayoutInflater) pContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mPosition = new AtomicInteger();
         mHoldersMap = new HashMap<>();
         mSharedPreferenceUtils = SharedPreferencesUtils.getInstance(SiKerang.getContext());
@@ -65,20 +65,6 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View view) {
-        setKomoditasHolder(mHoldersMap.get(mPosition.get()));
-        getKomoditasHolder().onClick(view);
-        saveLike(getKomoditasHolder().isLikes());
-
-        mKomoditasController.collect(mKomoditasController.getLatitude(),
-                                     mKomoditasController.getLongitude(),
-                                     mKomoditasController.getScreenName(),
-                                     getKomoditasHolder().getTextViewKomoditas().getText().toString(),
-                                     mKomoditasController.getComments(),
-                                     getKomoditasHolder().isLikes());
-    }
-
-    @Override
     public void onPageSelected(int position) {
         mPosition.set(position);
     }
@@ -91,8 +77,22 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     public void onPageScrollStateChanged(int state) {
     }
 
+    @Override
+    public void onClick(View view) {
+        setKomoditasHolder(mHoldersMap.get(mPosition.get()));
+        getKomoditasHolder().onClick(view);
+        setLike(getKomoditasHolder().isLikes());
+
+        mKomoditasController.collect(mKomoditasController.getLatitude(),
+                                     mKomoditasController.getLongitude(),
+                                     mKomoditasController.getScreenName(),
+                                     getKomoditasHolder().getTextViewKomoditas().getText().toString(),
+                                     mKomoditasController.getComments(),
+                                     getKomoditasHolder().isLikes());
+    }
+
     /**
-     * Get like status related to current fragment position
+     * Get like/dislike status related to current fragment position
      *
      * @return {@code True}, {@code False}, or {@code Null}
      */
@@ -102,35 +102,12 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         return getKomoditasHolder().isLikes();
     }
 
-    public void setShowHide(boolean isShown) {
-        setKomoditasHolder(mHoldersMap.get(mPosition.get()));
-        if (isShown) {
-            getKomoditasHolder().getTextViewKomoditas().setVisibility(View.GONE);
-            getKomoditasHolder().getRatingBarSatisfaction().setVisibility(View.GONE);
-            getKomoditasHolder().getTextViewSatisfaction().setVisibility(View.GONE);
-            getKomoditasHolder().getTextViewLocation().setVisibility(View.GONE);
-        } else {
-            getKomoditasHolder().getTextViewKomoditas().setVisibility(View.VISIBLE);
-            getKomoditasHolder().getRatingBarSatisfaction().setVisibility(View.VISIBLE);
-            getKomoditasHolder().getTextViewSatisfaction().setVisibility(View.VISIBLE);
-            getKomoditasHolder().getTextViewLocation().setVisibility(View.VISIBLE);
-        }
-    }
-
-    public KomoditasHolder getKomoditasHolder() {
-        return mKomoditasHolder;
-    }
-
-    public void setKomoditasHolder(KomoditasHolder pKomoditasHolder) {
-        mKomoditasHolder = pKomoditasHolder;
-    }
-
     /**
-     * Save like status into {@code SharedPreferences}.
+     * Set like/dislike status into {@code SharedPreferences}.
      *
-     * @param isLike - Like status
+     * @param isLike - Like/Dislike status
      */
-    private void saveLike(final boolean isLike) {
+    private void setLike(final boolean isLike) {
         switch (mPosition.get()) {
             case 0: {
                 mSharedPreferenceUtils.setRiceLikes(isLike);
@@ -157,5 +134,28 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 break;
             }
         }
+    }
+
+    public void setShowHide(boolean isShown) {
+        setKomoditasHolder(mHoldersMap.get(mPosition.get()));
+        if (isShown) {
+            getKomoditasHolder().getTextViewKomoditas().setVisibility(View.GONE);
+            getKomoditasHolder().getRatingBarSatisfaction().setVisibility(View.GONE);
+            getKomoditasHolder().getTextViewSatisfaction().setVisibility(View.GONE);
+            getKomoditasHolder().getTextViewLocation().setVisibility(View.GONE);
+        } else {
+            getKomoditasHolder().getTextViewKomoditas().setVisibility(View.VISIBLE);
+            getKomoditasHolder().getRatingBarSatisfaction().setVisibility(View.VISIBLE);
+            getKomoditasHolder().getTextViewSatisfaction().setVisibility(View.VISIBLE);
+            getKomoditasHolder().getTextViewLocation().setVisibility(View.VISIBLE);
+        }
+    }
+
+    public KomoditasHolder getKomoditasHolder() {
+        return mKomoditasHolder;
+    }
+
+    public void setKomoditasHolder(KomoditasHolder pKomoditasHolder) {
+        mKomoditasHolder = pKomoditasHolder;
     }
 }

@@ -23,10 +23,10 @@ public class KawalPerubahanHolder extends RecyclerView.ViewHolder implements Vie
 
     private IKawalPerubahanListener mKawalPerubahanListener;
 
-    public KawalPerubahanHolder(View itemView, IKawalPerubahanListener pKawalPerubahanListener) {
-        super(itemView);
-        ButterKnife.bind(this, itemView);
-        itemView.setOnClickListener(this);
+    public KawalPerubahanHolder(View pItemView, IKawalPerubahanListener pKawalPerubahanListener) {
+        super(pItemView);
+        ButterKnife.bind(this, pItemView);
+        pItemView.setOnClickListener(this);
         mKawalPerubahanListener = pKawalPerubahanListener;
     }
 

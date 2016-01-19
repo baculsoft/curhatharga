@@ -44,11 +44,11 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanHo
             public void onClick(View view, long position) {
                 Intent intent = new Intent(view.getContext(), KawalPerubahanActivity.class);
                 Bundle extras = new Bundle();
-                Long item = position;
-                String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(item.intValue()).getDate());
+                Long itemPosition = position;
+                String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getDate());
                 String dates = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(convertedDate);
-                String titles = mKawalPerubahan.getKawalPerubahanContents().get(item.intValue()).getTitle();
-                String contents = mKawalPerubahan.getKawalPerubahanContents().get(item.intValue()).getContent();
+                String titles = mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getTitle();
+                String contents = mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getContent();
 
                 extras.putString(Configs.KAWAL_DATES, dates);
                 extras.putString(Configs.KAWAL_TITLES, titles);
