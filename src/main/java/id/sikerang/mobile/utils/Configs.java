@@ -16,69 +16,69 @@ public final class Configs {
     public static final String APP_URL = "http://hackathon2015.baculsoft.com/api";
 
     /**
-     * Shared preference key for setup geolocation
+     * Shared preference key for setup geocoding
      */
     public static final String GEOCODING = "geocoding";
     /**
-     * Shared preference key for setup curhat value
+     * Shared preference key for setup curhat comments
      */
     public static final String CURHAT = "curhat";
     /**
      * Shared preference key for RICE likes
      */
-    public static final String PREF_RICE_LIKES = "pref_rice_likes";
+    public static final String RICE_LIKES = "rice_likes";
     /**
      * Shared preference key for CORN likes
      */
-    public static final String PREF_CORN_LIKES = "pref_corn_likes";
+    public static final String CORN_LIKES = "corn_likes";
     /**
      * Shared preference key for SOY likes
      */
-    public static final String PREF_SOY_LIKES = "pref_soy_likes";
+    public static final String SOY_LIKES = "soy_likes";
     /**
      * Shared preference key for CHICKEN likes
      */
-    public static final String PREF_CHICKEN_LIKES = "pref_chicken_likes";
+    public static final String CHICKEN_LIKES = "chicken_likes";
     /**
      * Shared preference key for BEEF likes
      */
-    public static final String PREF_BEEF_LIKES = "pref_beef_likes";
+    public static final String BEEF_LIKES = "beef_likes";
     /**
      * Shared preference key for SUGAR likes
      */
-    public static final String PREF_SUGAR_LIKES = "pref_sugar_likes";
+    public static final String SUGAR_LIKES = "sugar_likes";
 
     /**
-     * Key for TANGGAL Kawal Perubahan
+     * Key for TANGGAL "Kawal Perubahan" feature
      */
     public static final String KAWAL_DATES = "kawal_dates";
     /**
-     * Key for TITLE Kawal Perubahan
+     * Key for TITLE "Kawal Perubahan" feature
      */
     public static final String KAWAL_TITLES = "kawal_titles";
     /**
-     * Key for CONTENTS Kawal Perubahan
+     * Key for CONTENTS "Kawal Perubahan" feature
      */
     public static final String KAWAL_CONTENTS = "kawal_contents";
 
     /**
-     * Tag fragment for menu komoditas
+     * Tag fragment for menu "Komoditas"
      */
     public static final String TAG_KOMODITAS = "MENU_KOMODITAS";
     /**
-     * Tag fragment for menu pantau trend
+     * Tag fragment for menu "Pantau Trend"
      */
     public static final String TAG_PANTAU_TREND = "MENU_PANTAU_TREND";
     /**
-     * Tag fragment for menu kawal perubahan
+     * Tag fragment for menu "Kawal Perubahan"
      */
     public static final String TAG_KAWAL_PERUBAHAN = "MENU_KAWAL_PERUBAHAN";
     /**
-     * Tag fragment for menu bantuan
+     * Tag fragment for menu "Bantuan"
      */
     public static final String TAG_BANTUAN = "MENU_BANTUAN";
     /**
-     * Tag fragment for menu tentang aplikasi
+     * Tag fragment for menu "Tentang Aplikasi"
      */
     public static final String TAG_TENTANG_APLIKASI = "MENU_TENTANG_APLIKASI";
 }

@@ -62,117 +62,117 @@ public final class SharedPreferencesUtils {
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_RICE_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.RICE_LIKES}
      *
      * @param like boolean
      */
     public void setRiceLikes(final boolean like) {
-        setLikes(Configs.PREF_RICE_LIKES, like);
+        setLikes(Configs.RICE_LIKES, like);
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_CORN_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.CORN_LIKES}
      *
      * @param like boolean
      */
     public void setCornLikes(final boolean like) {
-        setLikes(Configs.PREF_CORN_LIKES, like);
+        setLikes(Configs.CORN_LIKES, like);
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_SOY_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.SOY_LIKES}
      *
      * @param like boolean
      */
     public void setSoyLikes(final boolean like) {
-        setLikes(Configs.PREF_SOY_LIKES, like);
+        setLikes(Configs.SOY_LIKES, like);
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_CHICKEN_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.CHICKEN_LIKES}
      *
      * @param like boolean
      */
     public void setChickenLikes(final boolean like) {
-        setLikes(Configs.PREF_CHICKEN_LIKES, like);
+        setLikes(Configs.CHICKEN_LIKES, like);
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_BEEF_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.BEEF_LIKES}
      *
      * @param like boolean
      */
     public void setBeefLikes(final boolean like) {
-        setLikes(Configs.PREF_BEEF_LIKES, like);
+        setLikes(Configs.BEEF_LIKES, like);
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.PREF_SUGAR_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.SUGAR_LIKES}
      *
      * @param like boolean
      */
     public void setSugarLikes(final boolean like) {
-        setLikes(Configs.PREF_SUGAR_LIKES, like);
+        setLikes(Configs.SUGAR_LIKES, like);
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_RICE_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.RICE_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
     public Boolean getRiceLikes() {
-        return getLikes(Configs.PREF_RICE_LIKES);
+        return getLikes(Configs.RICE_LIKES);
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_CORN_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.CORN_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
     public Boolean getCornLikes() {
-        return getLikes(Configs.PREF_CORN_LIKES);
+        return getLikes(Configs.CORN_LIKES);
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_SOY_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.SOY_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
     public Boolean getSoyLikes() {
-        return getLikes(Configs.PREF_SOY_LIKES);
+        return getLikes(Configs.SOY_LIKES);
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_CHICKEN_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.CHICKEN_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
     public Boolean getChickenLikes() {
-        return getLikes(Configs.PREF_CHICKEN_LIKES);
+        return getLikes(Configs.CHICKEN_LIKES);
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_BEEF_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.BEEF_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
     public Boolean getBeefLikes() {
-        return getLikes(Configs.PREF_BEEF_LIKES);
+        return getLikes(Configs.BEEF_LIKES);
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.PREF_SUGAR_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.SUGAR_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
     public Boolean getSugarLikes() {
-        return getLikes(Configs.PREF_SUGAR_LIKES);
+        return getLikes(Configs.SUGAR_LIKES);
     }
 
     /**

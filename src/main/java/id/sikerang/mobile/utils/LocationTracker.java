@@ -23,16 +23,16 @@ public final class LocationTracker implements LocationListener {
 
     protected LocationManager locationManager;
 
-    public static synchronized LocationTracker getInstance(Context context) {
+    public static synchronized LocationTracker getInstance(Context pContext) {
         if (INSTANCE == null) {
-            INSTANCE = new LocationTracker(context);
+            INSTANCE = new LocationTracker(pContext);
         }
 
         return INSTANCE;
     }
 
-    public LocationTracker(Context context) {
-        mContext = context;
+    public LocationTracker(Context pContext) {
+        mContext = pContext;
         getLocation();
     }
 

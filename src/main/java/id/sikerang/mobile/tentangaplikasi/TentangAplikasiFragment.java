@@ -23,7 +23,7 @@ public class TentangAplikasiFragment extends Fragment {
     private static final String TAG = TentangAplikasiFragment.class.getSimpleName();
 
     @Bind(R.id.tv_about_version)
-    TextView mTextViewAboutVersion;
+    TextView mTextViewTentangAplikasi;
 
     @Nullable
     @Override
@@ -31,7 +31,7 @@ public class TentangAplikasiFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tentang_aplikasi, container, false);
         ButterKnife.bind(this, view);
         initComponents();
-        initPackageInfo();
+        initContents();
 
         return view;
     }
@@ -41,11 +41,11 @@ public class TentangAplikasiFragment extends Fragment {
         getActionBar().setTitle(title);
     }
 
-    private void initPackageInfo() {
+    private void initContents() {
         try {
             String appVersion = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0).versionName;
             String appInfo = getActivity().getResources().getString(R.string.text_versi).concat(appVersion);
-            mTextViewAboutVersion.setText(appInfo);
+            mTextViewTentangAplikasi.setText(appInfo);
         } catch (PackageManager.NameNotFoundException e) {
             Log.e(TAG, e.getMessage(), e);
         }
