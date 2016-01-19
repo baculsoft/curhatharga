@@ -23,14 +23,14 @@ public class KawalPerubahanController implements Callback<KawalPerubahan> {
     private KawalPerubahan mKawalPerubahan;
 
     @Override
-    public void success(KawalPerubahan pKawalPerubahan, Response pResponse) {
+    public void success(KawalPerubahan pKawalPerubahan, Response response) {
         mKawalPerubahan = pKawalPerubahan;
         handleResponse();
     }
 
     @Override
-    public void failure(RetrofitError pRetrofitError) {
-        Log.e(TAG, pRetrofitError.getMessage(), pRetrofitError);
+    public void failure(RetrofitError retrofitError) {
+        Log.e(TAG, retrofitError.getMessage(), retrofitError);
     }
 
     public void collect() {

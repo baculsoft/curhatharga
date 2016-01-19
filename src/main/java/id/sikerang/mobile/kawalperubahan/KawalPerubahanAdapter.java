@@ -6,10 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.utils.Configs;
@@ -19,11 +16,11 @@ import id.sikerang.mobile.utils.DateUtils;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAdapter.KawalPerubahanHolder> {
+public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanHolder> {
     private KawalPerubahan mKawalPerubahan;
 
-    public KawalPerubahanAdapter(final KawalPerubahan kawalPerubahan) {
-        mKawalPerubahan = kawalPerubahan;
+    public KawalPerubahanAdapter(final KawalPerubahan pKawalPerubahan) {
+        mKawalPerubahan = pKawalPerubahan;
     }
 
     @Override
@@ -42,7 +39,7 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
         holder.getTextViewDate().setText(date);
         holder.getTextViewTitle().setText(title);
         holder.getTextViewContent().setText(content);
-        holder.mKawalPerubahanListener = new KawalPerubahanListener() {
+        holder.setKawalPerubahanListener(new IKawalPerubahanListener() {
             @Override
             public void onClick(View view, long position) {
                 Intent intent = new Intent(view.getContext(), KawalPerubahanActivity.class);
@@ -59,52 +56,11 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanAd
                 intent.putExtras(extras);
                 view.getContext().startActivity(intent);
             }
-        };
+        });
     }
 
     @Override
     public int getItemCount() {
         return mKawalPerubahan.getSize();
-    }
-
-    class KawalPerubahanHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @Bind(R.id.tv_date)
-        TextView mTextViewDate;
-
-        @Bind(R.id.tv_title)
-        TextView mTextViewTitle;
-
-        @Bind(R.id.tv_content)
-        TextView mTextViewContent;
-
-        private KawalPerubahanListener mKawalPerubahanListener;
-
-        public KawalPerubahanHolder(View itemView, final KawalPerubahanListener kawalPerubahanListener) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
-            mKawalPerubahanListener = kawalPerubahanListener;
-        }
-
-        @Override
-        public void onClick(View view) {
-            mKawalPerubahanListener.onClick(view, getAdapterPosition());
-        }
-
-        public TextView getTextViewDate() {
-            return mTextViewDate;
-        }
-
-        public TextView getTextViewTitle() {
-            return mTextViewTitle;
-        }
-
-        public TextView getTextViewContent() {
-            return mTextViewContent;
-        }
-    }
-
-    interface KawalPerubahanListener {
-        void onClick(View view, long position);
     }
 }
