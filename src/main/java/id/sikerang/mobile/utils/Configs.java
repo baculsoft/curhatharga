@@ -40,9 +40,9 @@ public final class Configs {
      */
     public static final String CHICKEN_LIKES = "chicken_likes";
     /**
-     * Shared preference key for BEEF likes
+     * Shared preference key for MEAL likes
      */
-    public static final String BEEF_LIKES = "beef_likes";
+    public static final String MEAL_LIKES = "meal_likes";
     /**
      * Shared preference key for SUGAR likes
      */

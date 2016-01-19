@@ -126,7 +126,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
                 break;
             }
             case 4: {
-                mSharedPreferenceUtils.setBeefLikes(isLike);
+                mSharedPreferenceUtils.setMealLikes(isLike);
                 break;
             }
             case 5: {

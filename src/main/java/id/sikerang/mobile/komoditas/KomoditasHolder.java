@@ -105,7 +105,7 @@ public class KomoditasHolder implements View.OnClickListener {
                 getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_meal));
                 getRatingBarSatisfaction().setNumStars(2);
                 getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_2));
-                mIsLikes = mSharedPreferencesUtils.getBeefLikes();
+                mIsLikes = mSharedPreferencesUtils.getMealLikes();
                 break;
             }
             case 5: {

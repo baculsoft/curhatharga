@@ -98,12 +98,12 @@ public final class SharedPreferencesUtils {
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.BEEF_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.MEAL_LIKES}
      *
-     * @param isBeefLikes boolean
+     * @param isMealLikes boolean
      */
-    public void setBeefLikes(final boolean isBeefLikes) {
-        setLikes(Configs.BEEF_LIKES, isBeefLikes);
+    public void setMealLikes(final boolean isMealLikes) {
+        setLikes(Configs.MEAL_LIKES, isMealLikes);
     }
 
     /**
@@ -156,13 +156,13 @@ public final class SharedPreferencesUtils {
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.BEEF_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.MEAL_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
-    public Boolean getBeefLikes() {
-        return getLikes(Configs.BEEF_LIKES);
+    public Boolean getMealLikes() {
+        return getLikes(Configs.MEAL_LIKES);
     }
 
     /**
