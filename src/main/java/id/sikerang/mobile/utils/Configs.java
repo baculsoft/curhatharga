@@ -32,9 +32,9 @@ public final class Configs {
      */
     public static final String CORN_LIKES = "corn_likes";
     /**
-     * Shared preference key for SOY likes
+     * Shared preference key for SOYA likes
      */
-    public static final String SOY_LIKES = "soy_likes";
+    public static final String SOYA_LIKES = "soya_likes";
     /**
      * Shared preference key for CHICKEN likes
      */

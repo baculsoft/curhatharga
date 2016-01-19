@@ -80,12 +80,12 @@ public final class SharedPreferencesUtils {
     }
 
     /**
-     * Save like into {@code SharedPreferences} with key {@code Configs.SOY_LIKES}
+     * Save like into {@code SharedPreferences} with key {@code Configs.SOYA_LIKES}
      *
-     * @param isSoyLikes boolean
+     * @param isSoyaLikes boolean
      */
-    public void setSoyLikes(final boolean isSoyLikes) {
-        setLikes(Configs.SOY_LIKES, isSoyLikes);
+    public void setSoyaLikes(final boolean isSoyaLikes) {
+        setLikes(Configs.SOYA_LIKES, isSoyaLikes);
     }
 
     /**
@@ -136,13 +136,13 @@ public final class SharedPreferencesUtils {
     }
 
     /**
-     * Get saved like status from {@code SharedPreferences} with key {@code Configs.SOY_LIKES}
+     * Get saved like status from {@code SharedPreferences} with key {@code Configs.SOYA_LIKES}
      *
      * @return Boolean. May {@code Null}.
      */
     @Nullable
-    public Boolean getSoyLikes() {
-        return getLikes(Configs.SOY_LIKES);
+    public Boolean getSoyaLikes() {
+        return getLikes(Configs.SOYA_LIKES);
     }
 
     /**

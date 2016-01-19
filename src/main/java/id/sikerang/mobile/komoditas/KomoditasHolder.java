@@ -89,7 +89,7 @@ public class KomoditasHolder implements View.OnClickListener {
                 getTextViewKomoditas().setText(SiKerang.getContext().getResources().getString(R.string.product_soya));
                 getRatingBarSatisfaction().setNumStars(3);
                 getTextViewSatisfaction().setText(SiKerang.getContext().getResources().getString(R.string.satisfaction_level_3));
-                mIsLikes = mSharedPreferencesUtils.getSoyLikes();
+                mIsLikes = mSharedPreferencesUtils.getSoyaLikes();
                 break;
             }
             case 3: {
