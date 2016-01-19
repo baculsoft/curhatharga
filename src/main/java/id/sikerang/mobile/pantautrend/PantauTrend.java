@@ -35,7 +35,7 @@ public class PantauTrend extends CommonResponse implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int i) {
+    public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(likes);
         dest.writeString(date);
     }

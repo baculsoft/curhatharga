@@ -53,7 +53,7 @@ public class PantauTrendFragment extends Fragment {
 
         getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<PantauTrend>() {
             @Override
-            public Loader<PantauTrend> onCreateLoader(int id, Bundle args) {
+            public Loader<PantauTrend> onCreateLoader(int id, Bundle state) {
                 // FIXME Hardcoded "komoditas" for a while
                 return new PantauTrendLoader(getActivity().getApplicationContext(), "beras");
             }

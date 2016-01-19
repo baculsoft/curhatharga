@@ -11,8 +11,8 @@ public class PantauTrendLoader extends AsyncTaskLoader<PantauTrend> {
     private int countdown = 0;
     private String mKomoditasName;
 
-    public PantauTrendLoader(Context context, String pKomoditasName) {
-        super(context);
+    public PantauTrendLoader(Context pContext, String pKomoditasName) {
+        super(pContext);
         mKomoditasName = pKomoditasName;
     }
 
@@ -23,7 +23,7 @@ public class PantauTrendLoader extends AsyncTaskLoader<PantauTrend> {
 
     @Override
     public PantauTrend loadInBackground() {
-        PantauTrendController pantauTrendController = new PantauTrendController(getKomoditas());
+        PantauTrendController pantauTrendController = new PantauTrendController(getKomoditasName());
         pantauTrendController.collect();
 
         // FIXME Change to eventbus later
@@ -35,7 +35,7 @@ public class PantauTrendLoader extends AsyncTaskLoader<PantauTrend> {
         return pantauTrendController.getPantauTrend();
     }
 
-    public String getKomoditas() {
+    public String getKomoditasName() {
         return mKomoditasName;
     }
 }

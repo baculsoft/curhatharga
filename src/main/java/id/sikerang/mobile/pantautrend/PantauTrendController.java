@@ -20,22 +20,22 @@ import retrofit.client.Response;
 public class PantauTrendController implements Callback<PantauTrend> {
     private static final String TAG = PantauTrendController.class.getSimpleName();
 
-    private PantauTrend mPantauTrend;
     private String mKomoditasName;
+    private PantauTrend mPantauTrend;
 
     public PantauTrendController(String pKomoditasName) {
         mKomoditasName = pKomoditasName;
     }
 
     @Override
-    public void success(PantauTrend pPantauTrend, Response pResponse) {
+    public void success(PantauTrend pPantauTrend, Response response) {
         mPantauTrend = pPantauTrend;
         handleResponse();
     }
 
     @Override
-    public void failure(RetrofitError pRetrofitError) {
-        Log.e(TAG, pRetrofitError.getMessage(), pRetrofitError);
+    public void failure(RetrofitError retrofitError) {
+        Log.e(TAG, retrofitError.getMessage(), retrofitError);
     }
 
     public void collect() {
@@ -56,12 +56,12 @@ public class PantauTrendController implements Callback<PantauTrend> {
         }
     }
 
-    public PantauTrend getPantauTrend() {
-        return mPantauTrend;
-    }
-
     public String getKomoditasName() {
         return mKomoditasName;
+    }
+
+    public PantauTrend getPantauTrend() {
+        return mPantauTrend;
     }
 
     private void handleResponse() {

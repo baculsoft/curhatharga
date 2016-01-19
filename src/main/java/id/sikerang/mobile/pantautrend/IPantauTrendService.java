@@ -9,6 +9,6 @@ import retrofit.http.Path;
  */
 public interface IPantauTrendService {
     @GET("/trend/{komoditas}")
-    void readPantauTrend(@Path("komoditas") String komoditas,
-                         Callback<PantauTrend> callback);
+    void readPantauTrend(@Path("komoditas") String pKomoditas,
+                         Callback<PantauTrend> pPantauTrendCallback);
 }
