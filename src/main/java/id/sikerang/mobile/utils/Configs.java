@@ -24,6 +24,10 @@ public final class Configs {
      */
     public static final String CURHAT = "curhat";
     /**
+     * Shared preference key for setup komoditas name
+     */
+    public static final String KOMODITAS_NAME = "komoditas_name";
+    /**
      * Shared preference key for RICE likes
      */
     public static final String RICE_LIKES = "rice_likes";

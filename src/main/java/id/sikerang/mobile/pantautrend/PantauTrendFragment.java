@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -13,22 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.viewpagerindicator.CirclePageIndicator;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
+import id.sikerang.mobile.SiKerang;
+import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class PantauTrendFragment extends Fragment {
-    @Bind(R.id.vp_pantau_trend)
-    ViewPager mViewPagerPantauTrend;
-
-    @Bind(R.id.vp_pantau_trend_indicator)
-    CirclePageIndicator mCirclePageIndicatorPantauTrend;
-
     @Bind(R.id.pb_pantau_trend)
     ProgressBar mProgressBarPantauTrend;
 
@@ -54,17 +47,12 @@ public class PantauTrendFragment extends Fragment {
         getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<PantauTrend>() {
             @Override
             public Loader<PantauTrend> onCreateLoader(int id, Bundle state) {
-                // FIXME Hardcoded "komoditas" for a while
-                return new PantauTrendLoader(getActivity().getApplicationContext(), "beras");
+                String komoditasName = SharedPreferencesUtils.getInstance(SiKerang.getContext()).getKomoditasName();
+                return new PantauTrendLoader(getActivity().getApplicationContext(), komoditasName);
             }
 
             @Override
             public void onLoadFinished(Loader<PantauTrend> loader, PantauTrend data) {
-                PantauTrendAdapter pantauTrendAdapter = new PantauTrendAdapter(getActivity().getApplicationContext());
-                mViewPagerPantauTrend.addOnPageChangeListener(pantauTrendAdapter);
-                mViewPagerPantauTrend.setAdapter(pantauTrendAdapter);
-                mCirclePageIndicatorPantauTrend.setViewPager(mViewPagerPantauTrend);
-
                 if (data != null) {
                     mProgressBarPantauTrend.setVisibility(View.GONE);
                 }

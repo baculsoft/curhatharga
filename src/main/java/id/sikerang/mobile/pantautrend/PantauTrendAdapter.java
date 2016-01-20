@@ -1,77 +1,90 @@
 package id.sikerang.mobile.pantautrend;
 
-import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.List;
+
+import id.sikerang.mobile.R;
+import id.sikerang.mobile.utils.Configs;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class PantauTrendAdapter extends PagerAdapter implements ViewPager.OnPageChangeListener {
-    private final LayoutInflater mLayoutInflater;
-    private final AtomicInteger mPosition;
-    private final Map<Integer, PantauTrendHolder> mHoldersMap;
-    private PantauTrendHolder mPantauTrendHolder;
+public class PantauTrendAdapter extends BaseAdapter {
+    private Activity mActivity;
+    private String mKomoditasName;
+    private List<String> mKomoditasNames;
 
-    public PantauTrendAdapter(Context pContext) {
-        mLayoutInflater = (LayoutInflater) pContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mPosition = new AtomicInteger();
-        mHoldersMap = new HashMap<>();
+    public PantauTrendAdapter(Activity pActivity, List<String> pKomoditasNames, String pKomoditasName) {
+        mActivity = pActivity;
+        mKomoditasNames = pKomoditasNames;
+        mKomoditasName = pKomoditasName;
     }
 
     @Override
     public int getCount() {
-        return 6;
+        return mKomoditasNames.size();
     }
 
     @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+    public Object getItem(int position) {
+        return mKomoditasNames.get(position);
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
-        if (!mHoldersMap.containsKey(position)) {
-            mHoldersMap.put(position, new PantauTrendHolder(position, mLayoutInflater, container));
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getDropDownView(int position, View view, ViewGroup parent) {
+        if (view == null || !view.getTag().toString().equals(Configs.TAG_SPINNER_DROPDOWN)) {
+            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            view = layoutInflater.inflate(R.layout.row_spinner_dropdown, parent, false);
+            view.setTag(Configs.TAG_SPINNER_DROPDOWN);
         }
 
-        setPantauTrendHolder(mHoldersMap.get(position));
-        container.addView(getPantauTrendHolder().getView());
+        TextView textView = (TextView) view.findViewById(R.id.tv_spinner_dropdown);
+        textView.setText(mKomoditasNames.get(position));
 
-        return getPantauTrendHolder().getView();
+        if (getTitle(position).equals(mKomoditasName)) {
+            textView.setTextColor(getActivity().getResources().getColor(R.color.black));
+        } else {
+            textView.setTextColor(getActivity().getResources().getColor(R.color.grey_100));
+        }
+
+        return view;
     }
 
     @Override
-    public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((RelativeLayout) object);
+    public View getView(int position, View view, ViewGroup parent) {
+        if (view == null || !view.getTag().toString().equals(Configs.TAG_SPINNER_NODROPDOWN)) {
+            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            view = layoutInflater.inflate(R.layout.row_spinner, parent, false);
+            view.setTag(Configs.TAG_SPINNER_NODROPDOWN);
+        }
+
+        TextView textView = (TextView) view.findViewById(R.id.tv_spinner);
+        textView.setText(mKomoditasNames.get(position));
+
+        return view;
     }
 
-    @Override
-    public void onPageSelected(int position) {
-        mPosition.set(position);
+    public void refreshAdapter(String pKomoditasName) {
+        mKomoditasName = pKomoditasName;
+        notifyDataSetChanged();
     }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+    public Activity getActivity() {
+        return mActivity;
     }
 
-    @Override
-    public void onPageScrollStateChanged(int state) {
-    }
-
-    public PantauTrendHolder getPantauTrendHolder() {
-        return mPantauTrendHolder;
-    }
-
-    public void setPantauTrendHolder(PantauTrendHolder pPantauTrendHolder) {
-        mPantauTrendHolder = pPantauTrendHolder;
+    private String getTitle(int position) {
+        return position >= 0 && position < mKomoditasNames.size() ? mKomoditasNames.get(position) : "";
     }
 }
