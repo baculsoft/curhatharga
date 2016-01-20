@@ -13,7 +13,7 @@ public final class Configs {
     /**
      * Application API URL
      */
-    public static final String APP_URL = "http://hackathon2015.baculsoft.com/api";
+    public static final String APP_URL = "https://sikerang.id/api";
 
     /**
      * Shared preference key for setup geocoding
@@ -23,10 +23,6 @@ public final class Configs {
      * Shared preference key for setup curhat comments
      */
     public static final String CURHAT = "curhat";
-    /**
-     * Shared preference key for setup komoditas name
-     */
-    public static final String KOMODITAS_NAME = "komoditas_name";
     /**
      * Shared preference key for RICE likes
      */

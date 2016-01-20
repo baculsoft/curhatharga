@@ -9,15 +9,12 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -26,9 +23,7 @@ import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.bantuan.BantuanFragment;
 import id.sikerang.mobile.kawalperubahan.KawalPerubahanFragment;
-import id.sikerang.mobile.pantautrend.PantauTrendAdapter;
 import id.sikerang.mobile.pantautrend.PantauTrendFragment;
-import id.sikerang.mobile.pantautrend.PantauTrendLoader;
 import id.sikerang.mobile.tentangaplikasi.TentangAplikasiFragment;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
@@ -38,14 +33,11 @@ import id.sikerang.mobile.utils.SharedPreferencesUtils;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KomoditasActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
+public class KomoditasActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = KomoditasActivity.class.getSimpleName();
 
     @Bind(R.id.toolbar_app)
     Toolbar mToolbarApp;
-
-    @Bind(R.id.asp_komoditas)
-    AppCompatSpinner mAppCompatSpinnerKomoditas;
 
     @Bind(R.id.dl_menu)
     DrawerLayout mDrawerLayoutMenu;
@@ -55,8 +47,6 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
 
     private MenuItem mMenuItemCurrent;
     private KomoditasController mKomoditasController;
-    private String mKomoditasName;
-    private PantauTrendAdapter mPantauTrendAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,32 +97,12 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         return true;
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        setKomoditasName((String) parent.getItemAtPosition(position));
-        addKomoditasName(getKomoditasName().replace(" ", "").toLowerCase());
-        mPantauTrendAdapter.refreshAdapter(getKomoditasName());
-
-        // FIXME Prevent to always run twice
-        String komoditasName = SharedPreferencesUtils.getInstance(SiKerang.getContext()).getKomoditasName();
-        PantauTrendLoader pantauTrendLoader = new PantauTrendLoader(this, komoditasName);
-        pantauTrendLoader.forceLoad();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
     private void initComponents() {
         setSupportActionBar(mToolbarApp);
         setCheckedMenu(0, true);
         mNavigationViewMenu.setNavigationItemSelectedListener(this);
         initDrawers();
         initFragments(Constants.MENU_KOMODITAS, Configs.TAG_KOMODITAS);
-        mAppCompatSpinnerKomoditas.setOnItemSelectedListener(this);
-        List<String> komoditasNames = Arrays.asList(getResources().getStringArray(R.array.komoditas));
-        mPantauTrendAdapter = new PantauTrendAdapter(this, komoditasNames, getKomoditasName());
-        mAppCompatSpinnerKomoditas.setAdapter(mPantauTrendAdapter);
     }
 
     private void initDrawers() {
@@ -203,15 +173,7 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         return locationAddress;
     }
 
-    public String getKomoditasName() {
-        return mKomoditasName;
-    }
-
-    public void setKomoditasName(String pKomoditasName) {
-        mKomoditasName = pKomoditasName;
-    }
-
-    public MenuItem getMenuItemCurrent() {
+    private MenuItem getMenuItemCurrent() {
         return mMenuItemCurrent;
     }
 
@@ -268,26 +230,18 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
 
         switch (status) {
             case Constants.MENU_KOMODITAS: {
-                mAppCompatSpinnerKomoditas.setVisibility(View.GONE);
                 return new KomoditasFragment();
             }
             case Constants.MENU_PANTAU_TREND: {
-                mAppCompatSpinnerKomoditas.setVisibility(View.VISIBLE);
-                mAppCompatSpinnerKomoditas.setSelection(0);
-                removeKomoditasName();
-                addKomoditasName("beras");
                 return new PantauTrendFragment();
             }
             case Constants.MENU_KAWAL_PERUBAHAN: {
-                mAppCompatSpinnerKomoditas.setVisibility(View.GONE);
                 return new KawalPerubahanFragment();
             }
             case Constants.MENU_BANTUAN: {
-                mAppCompatSpinnerKomoditas.setVisibility(View.GONE);
                 return new BantuanFragment();
             }
             case Constants.MENU_TENTANG_APLIKASI: {
-                mAppCompatSpinnerKomoditas.setVisibility(View.GONE);
                 return new TentangAplikasiFragment();
             }
             default: {
@@ -295,13 +249,5 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
                 return null;
             }
         }
-    }
-
-    private void addKomoditasName(String pKomoditasName) {
-        SharedPreferencesUtils.getInstance(SiKerang.getContext()).setKomoditasName(pKomoditasName);
-    }
-
-    private void removeKomoditasName() {
-        SharedPreferencesUtils.getInstance(SiKerang.getContext()).resetKomoditasName();
     }
 }

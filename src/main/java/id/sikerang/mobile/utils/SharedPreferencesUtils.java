@@ -49,16 +49,6 @@ public final class SharedPreferencesUtils {
         return mSharedPreferences.getString(Configs.CURHAT, null);
     }
 
-    public void setKomoditasName(String pKomoditasName) {
-        Editor editor = mSharedPreferences.edit();
-        editor.putString(Configs.KOMODITAS_NAME, pKomoditasName);
-        editor.apply();
-    }
-
-    public String getKomoditasName() {
-        return mSharedPreferences.getString(Configs.KOMODITAS_NAME, null);
-    }
-
     public void resetLocationAddress() {
         Editor editor = mSharedPreferences.edit();
         editor.remove(Configs.GEOCODING);
@@ -68,12 +58,6 @@ public final class SharedPreferencesUtils {
     public void resetCurhat() {
         Editor editor = mSharedPreferences.edit();
         editor.remove(Configs.CURHAT);
-        editor.apply();
-    }
-
-    public void resetKomoditasName() {
-        Editor editor = mSharedPreferences.edit();
-        editor.remove(Configs.KOMODITAS_NAME);
         editor.apply();
     }
 

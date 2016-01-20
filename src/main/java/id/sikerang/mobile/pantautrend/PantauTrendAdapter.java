@@ -17,8 +17,8 @@ import id.sikerang.mobile.utils.Configs;
  */
 public class PantauTrendAdapter extends BaseAdapter {
     private Activity mActivity;
-    private String mKomoditasName;
     private List<String> mKomoditasNames;
+    private String mKomoditasName;
 
     public PantauTrendAdapter(Activity pActivity, List<String> pKomoditasNames, String pKomoditasName) {
         mActivity = pActivity;
@@ -52,7 +52,7 @@ public class PantauTrendAdapter extends BaseAdapter {
         TextView textView = (TextView) view.findViewById(R.id.tv_spinner_dropdown);
         textView.setText(mKomoditasNames.get(position));
 
-        if (getTitle(position).equals(mKomoditasName)) {
+        if (getTitle(position).equalsIgnoreCase(mKomoditasName)) {
             textView.setTextColor(getActivity().getResources().getColor(R.color.black));
         } else {
             textView.setTextColor(getActivity().getResources().getColor(R.color.grey_100));
@@ -80,7 +80,7 @@ public class PantauTrendAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public Activity getActivity() {
+    private Activity getActivity() {
         return mActivity;
     }
 
