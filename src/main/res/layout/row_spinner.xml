@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_spinner"
+        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@mipmap/ic_spinner"
+        android:drawablePadding="@dimen/view_8dp"
+        android:drawableRight="@mipmap/ic_spinner"
+        android:paddingLeft="@dimen/view_4dp"
+        android:paddingRight="@dimen/view_4dp"
+        android:textColor="@color/grey_100"/>
+</LinearLayout>

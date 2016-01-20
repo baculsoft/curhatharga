@@ -81,4 +81,10 @@ public final class Configs {
      * Tag fragment for menu "Tentang Aplikasi"
      */
     public static final String TAG_TENTANG_APLIKASI = "MENU_TENTANG_APLIKASI";
+
+    /**
+     * Tag for spinner item state
+     */
+    public static final String TAG_SPINNER_DROPDOWN = "DROPDOWN";
+    public static final String TAG_SPINNER_NODROPDOWN = "NO_DROPDOWN";
 }

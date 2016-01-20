@@ -7,4 +7,11 @@
     <style name="AppTheme.Others" parent="AppTheme.Base">
         <item name="android:statusBarColor">@color/primary_dark</item>
     </style>
+
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
+        <item name="android:divider">@null</item>
+        <item name="android:overlapAnchor">true</item>
+    </style>
 </resources>

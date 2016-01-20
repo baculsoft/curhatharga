@@ -31,6 +31,12 @@
         <item name="android:progressDrawable">@mipmap/ic_thumb</item>
     </style>
 
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
+        <item name="android:divider">@null</item>
+    </style>
+
     <style name="CustomCirclePageIndicator">
         <item name="fillColor">@color/teal_500</item>
         <item name="radius">@dimen/view_6dp</item>
