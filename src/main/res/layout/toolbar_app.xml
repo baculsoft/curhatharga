@@ -10,7 +10,7 @@
                                    app:titleTextAppearance="@style/AppTheme.ToolbarTitle">
 
     <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/asp_komoditas"
+        android:id="@+id/acsp_app"
         style="@style/AppTheme.Spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

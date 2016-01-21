@@ -20,17 +20,22 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
+import id.sikerang.mobile.adapter.SpinnerAdapter;
+import id.sikerang.mobile.utils.Constants;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class PantauTrendFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class PantauTrendFragment extends Fragment implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<PantauTrend> {
     @Bind(R.id.pb_pantau_trend)
     ProgressBar mProgressBarPantauTrend;
 
-    private String komoditasName;
-    private AppCompatSpinner mAppCompatSpinnerKomoditas;
-    private PantauTrendAdapter mPantauTrendAdapter;
+    AppCompatSpinner mAppCompatSpinnerApp;
+
+    private List<String> mKomoditasNames;
+    private String mKomoditasName;
+    private boolean isFirstTime = true;
+    private SpinnerAdapter mSpinnerAdapter;
 
     @Nullable
     @Override
@@ -45,67 +50,80 @@ public class PantauTrendFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onDestroyView() {
-        mAppCompatSpinnerKomoditas.setVisibility(View.GONE);
+        mAppCompatSpinnerApp.setVisibility(View.GONE);
         super.onDestroyView();
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String komoditas = mAppCompatSpinnerKomoditas.getSelectedItem().toString();
-        setKomoditasName(komoditas.replace(" ", "").toLowerCase());
-        mPantauTrendAdapter.refreshAdapter(komoditas);
+        String komoditasName = mAppCompatSpinnerApp.getSelectedItem().toString();
+        setKomoditasName(komoditasName.replace(" ", "").toLowerCase());
+        mSpinnerAdapter.refreshAdapter(komoditasName);
+
+        if (isFirstTime) {
+            isFirstTime = false;
+        } else {
+            getLoaderManager().restartLoader(Constants.LOADER_PANTAU_TREND, null, this).forceLoad();
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
+    @Override
+    public Loader<PantauTrend> onCreateLoader(int id, Bundle args) {
+        mProgressBarPantauTrend.setVisibility(View.VISIBLE);
+        mAppCompatSpinnerApp.setVisibility(View.VISIBLE);
+
+        return new PantauTrendLoader(getActivity().getApplicationContext(), getKomoditasName());
+    }
+
+    @Override
+    public void onLoadFinished(Loader<PantauTrend> loader, PantauTrend data) {
+        if (data != null) {
+            mProgressBarPantauTrend.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<PantauTrend> loader) {
+        mProgressBarPantauTrend.setVisibility(View.GONE);
+        loader.forceLoad();
+    }
+
     private void initComponents() {
         String title = getActivity().getResources().getString(R.string.menu_pantau_trend);
         getActionBar().setTitle(title);
-        mAppCompatSpinnerKomoditas = (AppCompatSpinner) getActivity().findViewById(R.id.asp_komoditas);
-        mAppCompatSpinnerKomoditas.setSelection(0);
-        mAppCompatSpinnerKomoditas.setOnItemSelectedListener(this);
-        mAppCompatSpinnerKomoditas.setVisibility(View.VISIBLE);
+        mAppCompatSpinnerApp = (AppCompatSpinner) getActivity().findViewById(R.id.acsp_app);
+        mAppCompatSpinnerApp.setOnItemSelectedListener(this);
+        setKomoditasNames(Arrays.asList(getResources().getStringArray(R.array.komoditas)));
+        setKomoditasName(getKomoditasNames().get(0).replace(" ", "").toLowerCase());
     }
 
     private void initAdapters() {
-        mProgressBarPantauTrend.setVisibility(View.VISIBLE);
-
-        final List<String> komoditasNames = Arrays.asList(getResources().getStringArray(R.array.komoditas));
-        getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<PantauTrend>() {
-            @Override
-            public Loader<PantauTrend> onCreateLoader(int id, Bundle state) {
-                String komoditas = komoditasNames.get(0).replace(" ", "").toLowerCase();
-                return new PantauTrendLoader(getActivity().getApplicationContext(), komoditas);
-            }
-
-            @Override
-            public void onLoadFinished(Loader<PantauTrend> loader, PantauTrend data) {
-                mPantauTrendAdapter = new PantauTrendAdapter(getActivity(), komoditasNames, getKomoditasName());
-                mAppCompatSpinnerKomoditas.setAdapter(mPantauTrendAdapter);
-
-                if (data != null) {
-                    mProgressBarPantauTrend.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onLoaderReset(Loader<PantauTrend> loader) {
-                loader.forceLoad();
-            }
-        }).forceLoad();
+        mSpinnerAdapter = new SpinnerAdapter(getActivity(), getKomoditasNames(), getKomoditasName());
+        mAppCompatSpinnerApp.setAdapter(mSpinnerAdapter);
+        getLoaderManager().initLoader(Constants.LOADER_PANTAU_TREND, null, this).forceLoad();
     }
 
     private ActionBar getActionBar() {
         return ((AppCompatActivity) getActivity()).getSupportActionBar();
     }
 
+    private List<String> getKomoditasNames() {
+        return mKomoditasNames;
+    }
+
+    private void setKomoditasNames(List<String> pKomoditasNames) {
+        mKomoditasNames = pKomoditasNames;
+    }
+
     private String getKomoditasName() {
-        return komoditasName;
+        return mKomoditasName;
     }
 
     private void setKomoditasName(String pKomoditasName) {
-        komoditasName = pKomoditasName;
+        mKomoditasName = pKomoditasName;
     }
 }

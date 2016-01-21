@@ -46,6 +46,12 @@ public final class Constants {
     public static final int MENU_TENTANG_APLIKASI = 201;
 
     /**
+     * Application loader id
+     */
+    public static final int LOADER_PANTAU_TREND = 300;
+    public static final int LOADER_KAWAL_PERUBAHAN = 301;
+
+    /**
      * Application API status
      */
     public static final int STATUS_FAILED = 0;

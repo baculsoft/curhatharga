@@ -18,6 +18,12 @@
         <item name="android:textSize">@dimen/text_20sp</item>
     </style>
 
+    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
+        <item name="android:divider">@null</item>
+    </style>
+
     <style name="AppTheme.NavigationView">
         <item name="android:textSize">@dimen/text_16sp</item>
         <item name="itemIconTint">@color/grey_100</item>
@@ -29,12 +35,6 @@
         <item name="android:maxHeight">@dimen/view_40dp</item>
         <item name="android:minHeight">@dimen/view_40dp</item>
         <item name="android:progressDrawable">@mipmap/ic_thumb</item>
-    </style>
-
-    <style name="AppTheme.Spinner" parent="Widget.AppCompat.Light.Spinner.DropDown.ActionBar">
-        <item name="android:background">?android:selectableItemBackground</item>
-        <item name="android:dropDownSelector">?android:selectableItemBackground</item>
-        <item name="android:divider">@null</item>
     </style>
 
     <style name="CustomCirclePageIndicator">

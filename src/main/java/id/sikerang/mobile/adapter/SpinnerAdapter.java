@@ -1,4 +1,4 @@
-package id.sikerang.mobile.pantautrend;
+package id.sikerang.mobile.adapter;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -15,30 +15,44 @@ import id.sikerang.mobile.utils.Configs;
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class PantauTrendAdapter extends BaseAdapter {
+public class SpinnerAdapter extends BaseAdapter {
     private Activity mActivity;
-    private List<String> mKomoditasNames;
-    private String mKomoditasName;
+    private List<String> mNames;
+    private String mName;
 
-    public PantauTrendAdapter(Activity pActivity, List<String> pKomoditasNames, String pKomoditasName) {
+    public SpinnerAdapter(Activity pActivity, List<String> pNames, String pName) {
         mActivity = pActivity;
-        mKomoditasNames = pKomoditasNames;
-        mKomoditasName = pKomoditasName;
+        mNames = pNames;
+        mName = pName;
     }
 
     @Override
     public int getCount() {
-        return mKomoditasNames.size();
+        return mNames.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return mKomoditasNames.get(position);
+        return mNames.get(position);
     }
 
     @Override
     public long getItemId(int position) {
         return position;
+    }
+
+    @Override
+    public View getView(int position, View view, ViewGroup parent) {
+        if (view == null || !view.getTag().toString().equals(Configs.TAG_SPINNER_ACTIONBAR)) {
+            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+            view = layoutInflater.inflate(R.layout.row_spinner_actionbar, parent, false);
+            view.setTag(Configs.TAG_SPINNER_ACTIONBAR);
+        }
+
+        TextView textView = (TextView) view.findViewById(R.id.tv_spinner_actionbar);
+        textView.setText(mNames.get(position));
+
+        return view;
     }
 
     @Override
@@ -50,9 +64,9 @@ public class PantauTrendAdapter extends BaseAdapter {
         }
 
         TextView textView = (TextView) view.findViewById(R.id.tv_spinner_dropdown);
-        textView.setText(mKomoditasNames.get(position));
+        textView.setText(mNames.get(position));
 
-        if (getTitle(position).equalsIgnoreCase(mKomoditasName)) {
+        if (getTitle(position).equalsIgnoreCase(mName)) {
             textView.setTextColor(getActivity().getResources().getColor(R.color.black));
         } else {
             textView.setTextColor(getActivity().getResources().getColor(R.color.grey_100));
@@ -61,22 +75,8 @@ public class PantauTrendAdapter extends BaseAdapter {
         return view;
     }
 
-    @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        if (view == null || !view.getTag().toString().equals(Configs.TAG_SPINNER_NODROPDOWN)) {
-            LayoutInflater layoutInflater = (LayoutInflater) getActivity().getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-            view = layoutInflater.inflate(R.layout.row_spinner, parent, false);
-            view.setTag(Configs.TAG_SPINNER_NODROPDOWN);
-        }
-
-        TextView textView = (TextView) view.findViewById(R.id.tv_spinner);
-        textView.setText(mKomoditasNames.get(position));
-
-        return view;
-    }
-
-    public void refreshAdapter(String pKomoditasName) {
-        mKomoditasName = pKomoditasName;
+    public void refreshAdapter(String pName) {
+        mName = pName;
         notifyDataSetChanged();
     }
 
@@ -85,6 +85,6 @@ public class PantauTrendAdapter extends BaseAdapter {
     }
 
     private String getTitle(int position) {
-        return position >= 0 && position < mKomoditasNames.size() ? mKomoditasNames.get(position) : "";
+        return position >= 0 && position < mNames.size() ? mNames.get(position) : "";
     }
 }

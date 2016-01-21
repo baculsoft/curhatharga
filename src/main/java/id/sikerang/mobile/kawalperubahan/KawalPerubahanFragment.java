@@ -17,18 +17,17 @@ import android.widget.ProgressBar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
+import id.sikerang.mobile.utils.Constants;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
-public class KawalPerubahanFragment extends Fragment {
+public class KawalPerubahanFragment extends Fragment implements LoaderManager.LoaderCallbacks<KawalPerubahan> {
     @Bind(R.id.rv_kawal_perubahan)
     RecyclerView mRecyclerViewKawalPerubahan;
 
     @Bind(R.id.pb_kawal_perubahan)
     ProgressBar mProgressBarKawalPerubahan;
-
-    private KawalPerubahanAdapter mKawalPerubahanAdapter;
 
     @Nullable
     @Override
@@ -41,6 +40,28 @@ public class KawalPerubahanFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public Loader<KawalPerubahan> onCreateLoader(int id, Bundle args) {
+        mProgressBarKawalPerubahan.setVisibility(View.VISIBLE);
+        return new KawalPerubahanLoader(getActivity().getApplicationContext());
+    }
+
+    @Override
+    public void onLoadFinished(Loader<KawalPerubahan> loader, KawalPerubahan data) {
+        KawalPerubahanAdapter kawalPerubahanAdapter = new KawalPerubahanAdapter(data);
+        mRecyclerViewKawalPerubahan.setAdapter(kawalPerubahanAdapter);
+
+        if (data != null) {
+            mProgressBarKawalPerubahan.setVisibility(View.GONE);
+            mRecyclerViewKawalPerubahan.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<KawalPerubahan> loader) {
+        loader.forceLoad();
+    }
+
     private void initComponents() {
         String title = getActivity().getResources().getString(R.string.menu_kawal_perubahan);
         getActionBar().setTitle(title);
@@ -50,30 +71,7 @@ public class KawalPerubahanFragment extends Fragment {
     }
 
     private void initAdapters() {
-        mProgressBarKawalPerubahan.setVisibility(View.VISIBLE);
-
-        getLoaderManager().initLoader(0, null, new LoaderManager.LoaderCallbacks<KawalPerubahan>() {
-            @Override
-            public Loader<KawalPerubahan> onCreateLoader(int id, Bundle state) {
-                return new KawalPerubahanLoader(getActivity().getApplicationContext());
-            }
-
-            @Override
-            public void onLoadFinished(Loader<KawalPerubahan> loader, KawalPerubahan data) {
-                mKawalPerubahanAdapter = new KawalPerubahanAdapter(data);
-                mRecyclerViewKawalPerubahan.setAdapter(mKawalPerubahanAdapter);
-
-                if (data != null) {
-                    mProgressBarKawalPerubahan.setVisibility(View.GONE);
-                    mRecyclerViewKawalPerubahan.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onLoaderReset(Loader<KawalPerubahan> loader) {
-                loader.forceLoad();
-            }
-        }).forceLoad();
+        getLoaderManager().initLoader(Constants.LOADER_KAWAL_PERUBAHAN, null, this).forceLoad();
     }
 
     private ActionBar getActionBar() {

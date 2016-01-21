@@ -16,6 +16,33 @@ public final class Configs {
     public static final String APP_URL = "https://sikerang.id/api";
 
     /**
+     * Tag fragment for menu "Komoditas"
+     */
+    public static final String TAG_KOMODITAS = "MENU_KOMODITAS";
+    /**
+     * Tag fragment for menu "Pantau Trend"
+     */
+    public static final String TAG_PANTAU_TREND = "MENU_PANTAU_TREND";
+    /**
+     * Tag fragment for menu "Kawal Perubahan"
+     */
+    public static final String TAG_KAWAL_PERUBAHAN = "MENU_KAWAL_PERUBAHAN";
+    /**
+     * Tag fragment for menu "Bantuan"
+     */
+    public static final String TAG_BANTUAN = "MENU_BANTUAN";
+    /**
+     * Tag fragment for menu "Tentang Aplikasi"
+     */
+    public static final String TAG_TENTANG_APLIKASI = "MENU_TENTANG_APLIKASI";
+
+    /**
+     * Tag spinner for each widget row
+     */
+    public static final String TAG_SPINNER_ACTIONBAR = "ACTIONBAR";
+    public static final String TAG_SPINNER_DROPDOWN = "DROPDOWN";
+
+    /**
      * Shared preference key for setup geocoding
      */
     public static final String GEOCODING = "geocoding";
@@ -60,31 +87,4 @@ public final class Configs {
      * Key for CONTENTS "Kawal Perubahan" feature
      */
     public static final String KAWAL_CONTENTS = "kawal_contents";
-
-    /**
-     * Tag fragment for menu "Komoditas"
-     */
-    public static final String TAG_KOMODITAS = "MENU_KOMODITAS";
-    /**
-     * Tag fragment for menu "Pantau Trend"
-     */
-    public static final String TAG_PANTAU_TREND = "MENU_PANTAU_TREND";
-    /**
-     * Tag fragment for menu "Kawal Perubahan"
-     */
-    public static final String TAG_KAWAL_PERUBAHAN = "MENU_KAWAL_PERUBAHAN";
-    /**
-     * Tag fragment for menu "Bantuan"
-     */
-    public static final String TAG_BANTUAN = "MENU_BANTUAN";
-    /**
-     * Tag fragment for menu "Tentang Aplikasi"
-     */
-    public static final String TAG_TENTANG_APLIKASI = "MENU_TENTANG_APLIKASI";
-
-    /**
-     * Tag for spinner item state
-     */
-    public static final String TAG_SPINNER_DROPDOWN = "DROPDOWN";
-    public static final String TAG_SPINNER_NODROPDOWN = "NO_DROPDOWN";
 }

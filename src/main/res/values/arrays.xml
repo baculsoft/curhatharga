@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="komoditas">
-        <item name="beras">Beras</item>
-        <item name="jagung">Jagung</item>
-        <item name="kedelai">Kedelai</item>
-        <item name="dagingayam">Daging Ayam</item>
-        <item name="dagingsapi">Daging Sapi</item>
-        <item name="gula">Gula</item>
+        <item>Beras</item>
+        <item>Jagung</item>
+        <item>Kedelai</item>
+        <item>Daging Ayam</item>
+        <item>Daging Sapi</item>
+        <item>Gula</item>
     </string-array>
 </resources>
