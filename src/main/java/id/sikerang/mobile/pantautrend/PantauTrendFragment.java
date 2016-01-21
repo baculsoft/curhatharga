@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
-import id.sikerang.mobile.adapter.SpinnerAdapter;
+import id.sikerang.mobile.custom.SpinnerAdapter;
 import id.sikerang.mobile.utils.Constants;
 
 /**

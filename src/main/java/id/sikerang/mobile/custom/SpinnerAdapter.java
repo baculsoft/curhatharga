@@ -1,4 +1,4 @@
-package id.sikerang.mobile.adapter;
+package id.sikerang.mobile.custom;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
