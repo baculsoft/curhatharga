@@ -69,6 +69,6 @@ public final class Constants {
     /**
      * Maximum preview content for "Kawal Perubahan" feature
      */
-    public static final int MAX_TITLE = 40;
-    public static final int MAX_CONTENT = 90;
+    public static final int MAX_TITLE = 30;
+    public static final int MAX_CONTENT = 110;
 }
