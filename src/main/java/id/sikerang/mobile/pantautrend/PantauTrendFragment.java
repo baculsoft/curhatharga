@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 
 import java.util.Arrays;
@@ -27,12 +28,16 @@ import id.sikerang.mobile.utils.Constants;
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class PantauTrendFragment extends Fragment implements AdapterView.OnItemSelectedListener, LoaderManager.LoaderCallbacks<PantauTrend> {
+    @Bind(R.id.lv_pantau_trend)
+    ListView mListViewPantauTrend;
+
     @Bind(R.id.pb_pantau_trend)
     ProgressBar mProgressBarPantauTrend;
 
     AppCompatSpinner mAppCompatSpinnerApp;
 
     private List<String> mKomoditasNames;
+    private String mKomoditasTitle;
     private String mKomoditasName;
     private boolean isFirstTime = true;
     private SpinnerAdapter mSpinnerAdapter;
@@ -56,9 +61,9 @@ public class PantauTrendFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String komoditasName = mAppCompatSpinnerApp.getSelectedItem().toString();
-        setKomoditasName(komoditasName.replace(" ", "").toLowerCase());
-        mSpinnerAdapter.refreshAdapter(komoditasName);
+        mKomoditasTitle = mAppCompatSpinnerApp.getSelectedItem().toString();
+        setKomoditasName(mKomoditasTitle.replace(" ", "").toLowerCase());
+        mSpinnerAdapter.refreshAdapter(mKomoditasTitle);
 
         if (isFirstTime) {
             isFirstTime = false;
@@ -73,22 +78,28 @@ public class PantauTrendFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public Loader<PantauTrend> onCreateLoader(int id, Bundle args) {
-        mProgressBarPantauTrend.setVisibility(View.VISIBLE);
         mAppCompatSpinnerApp.setVisibility(View.VISIBLE);
+        mProgressBarPantauTrend.setVisibility(View.VISIBLE);
+        mListViewPantauTrend.setVisibility(View.GONE);
 
         return new PantauTrendLoader(getActivity().getApplicationContext(), getKomoditasName());
     }
 
     @Override
     public void onLoadFinished(Loader<PantauTrend> loader, PantauTrend data) {
+        PantauTrendAdapter pantauTrendAdapter = new PantauTrendAdapter(getActivity(), getKomoditasTitle());
+        mListViewPantauTrend.setAdapter(pantauTrendAdapter);
+
         if (data != null) {
             mProgressBarPantauTrend.setVisibility(View.GONE);
+            mListViewPantauTrend.setVisibility(View.VISIBLE);
         }
     }
 
     @Override
     public void onLoaderReset(Loader<PantauTrend> loader) {
         mProgressBarPantauTrend.setVisibility(View.GONE);
+        mListViewPantauTrend.setVisibility(View.VISIBLE);
         loader.forceLoad();
     }
 
@@ -117,6 +128,10 @@ public class PantauTrendFragment extends Fragment implements AdapterView.OnItemS
 
     private void setKomoditasNames(List<String> pKomoditasNames) {
         mKomoditasNames = pKomoditasNames;
+    }
+
+    public String getKomoditasTitle() {
+        return mKomoditasTitle;
     }
 
     private String getKomoditasName() {

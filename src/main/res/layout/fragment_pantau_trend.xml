@@ -4,6 +4,13 @@
              android:layout_height="match_parent"
              android:background="@color/grey_300">
 
+    <ListView
+        android:id="@+id/lv_pantau_trend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/view_6dp"
+        android:visibility="gone"/>
+
     <ProgressBar
         android:id="@+id/pb_pantau_trend"
         style="?android:attr/progressBarStyle"
