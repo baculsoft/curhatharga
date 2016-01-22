@@ -58,24 +58,22 @@ public class PantauTrendAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.row_pantau_trend, parent, false);
             holder = new PantauTrendHolder(view);
             view.setTag(holder);
-
-            List<String> dates = new ArrayList<>();
-            List<Float> likes = new ArrayList<>();
-            for (PantauTrendContents contents : mPantauTrend.getPantauTrendContents()) {
-                String convertedDate = DateUtils.convertDate(contents.getDate(), DateUtils.GRAPH_PATTERN);
-                dates.add(convertedDate);
-                likes.add(Float.valueOf(contents.getLikes()));
-            }
-
-            String[] labels = dates.toArray(new String[dates.size()]);
-            float[] values = new float[likes.size()];
-            for (Float value : likes) {
-                values[likes.indexOf(value)] = value;
-            }
-            initContents(holder, labels, values);
+            buildContents(holder, mPantauTrend);
         }
 
         return view;
+    }
+
+    private void buildContents(PantauTrendHolder pPantauTrendHolder, PantauTrend pPantauTrend) {
+        final List<String> dates = new ArrayList<>();
+        final List<Float> likes = new ArrayList<>();
+        for (PantauTrendContents contents : pPantauTrend.getPantauTrendContents()) {
+            String convertedDate = DateUtils.convertDate(contents.getDate(), DateUtils.GRAPH_PATTERN);
+            dates.add(convertedDate);
+            likes.add(Float.valueOf(contents.getLikes()));
+        }
+
+        initContents(pPantauTrendHolder, getLabels(dates), getValues(likes));
     }
 
     private void initContents(PantauTrendHolder pPantauTrendHolder, String[] pLabel, float[] pValues) {
@@ -107,5 +105,18 @@ public class PantauTrendAdapter extends BaseAdapter {
 
     private Activity getActivity() {
         return mActivity;
+    }
+
+    private String[] getLabels(List<String> pLabels) {
+        return pLabels.toArray(new String[pLabels.size()]);
+    }
+
+    private float[] getValues(List<Float> pValues) {
+        float[] values = new float[pValues.size()];
+        for (Float value : pValues) {
+            values[pValues.indexOf(value)] = value;
+        }
+
+        return values;
     }
 }
