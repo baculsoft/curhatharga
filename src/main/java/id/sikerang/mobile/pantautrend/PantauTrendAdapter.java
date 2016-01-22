@@ -12,6 +12,10 @@ import com.db.chart.model.LineSet;
 import com.db.chart.view.AxisController;
 import com.db.chart.view.animation.Animation;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 
@@ -21,10 +25,12 @@ import id.sikerang.mobile.SiKerang;
 public class PantauTrendAdapter extends BaseAdapter {
     private Activity mActivity;
     private String mKomoditasName;
+    private PantauTrend mPantauTrend;
 
-    public PantauTrendAdapter(Activity pActivity, String pKomoditasName) {
+    public PantauTrendAdapter(final Activity pActivity, final String pKomoditasName, final PantauTrend pPantauTrend) {
         mActivity = pActivity;
         mKomoditasName = pKomoditasName;
+        mPantauTrend = pPantauTrend;
     }
 
     @Override
@@ -52,23 +58,31 @@ public class PantauTrendAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.row_pantau_trend, parent, false);
             holder = new PantauTrendHolder(view);
             view.setTag(holder);
-        }
 
-        holder = (PantauTrendHolder) view.getTag();
-        initContents(holder);
+            // FIXME How to convert into float array?
+            List<String> dates = new ArrayList<>();
+            //List<String> likes = new ArrayList<>();
+            for (PantauTrendContents contents : mPantauTrend.getPantauTrendContents()) {
+                dates.add(contents.getDate().replace("-", "/"));
+                //likes.add(contents.getLikes());
+            }
+            Collections.sort(dates);
+            //Collections.sort(likes);
+            String[] label = dates.toArray(new String[dates.size()]);
+            //String[] value = likes.toArray(new String[likes.size()]);
+            float[] value = new float[]{85, 23, 69, 43, 60};
+            initContents(holder, label, value);
+        }
 
         return view;
     }
 
-    private void initContents(PantauTrendHolder pPantauTrendHolder) {
+    private void initContents(PantauTrendHolder pPantauTrendHolder, String[] pLabel, float[] pValues) {
         final String title = SiKerang.getContext().getResources().getString(R.string.text_pantau_trend);
         final String fullTitle = title.concat(mKomoditasName);
-        final String[] label = new String[]{"16/09/2015", "17/09/2015", "18/09/2015", "19/09/2015", "20/09/2015"};
-        final float[] values = new float[]{0f, 72f, 45f, 87f, 61f};
-
         pPantauTrendHolder.getTextViewPantauTrend().setText(fullTitle);
 
-        LineSet dataset = new LineSet(label, values);
+        LineSet dataset = new LineSet(pLabel, pValues);
         dataset.setColor(getActivity().getResources().getColor(R.color.accent))
                                       .setDotsStrokeThickness(Tools.fromDpToPx(3))
                                       .setDotsStrokeColor(getActivity().getResources().getColor(R.color.accent))

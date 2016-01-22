@@ -87,7 +87,7 @@ public class PantauTrendFragment extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onLoadFinished(Loader<PantauTrend> loader, PantauTrend data) {
-        PantauTrendAdapter pantauTrendAdapter = new PantauTrendAdapter(getActivity(), getKomoditasTitle());
+        PantauTrendAdapter pantauTrendAdapter = new PantauTrendAdapter(getActivity(), getKomoditasTitle(), data);
         mListViewPantauTrend.setAdapter(pantauTrendAdapter);
 
         if (data != null) {
