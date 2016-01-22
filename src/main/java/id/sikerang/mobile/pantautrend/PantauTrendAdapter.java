@@ -13,11 +13,11 @@ import com.db.chart.view.AxisController;
 import com.db.chart.view.animation.Animation;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
+import id.sikerang.mobile.utils.DateUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
@@ -59,19 +59,20 @@ public class PantauTrendAdapter extends BaseAdapter {
             holder = new PantauTrendHolder(view);
             view.setTag(holder);
 
-            // FIXME How to convert into float array?
             List<String> dates = new ArrayList<>();
-            //List<String> likes = new ArrayList<>();
+            List<Float> likes = new ArrayList<>();
             for (PantauTrendContents contents : mPantauTrend.getPantauTrendContents()) {
-                dates.add(contents.getDate().replace("-", "/"));
-                //likes.add(contents.getLikes());
+                String convertedDate = DateUtils.convertDate(contents.getDate(), DateUtils.GRAPH_PATTERN);
+                dates.add(convertedDate);
+                likes.add(Float.valueOf(contents.getLikes()));
             }
-            Collections.sort(dates);
-            //Collections.sort(likes);
-            String[] label = dates.toArray(new String[dates.size()]);
-            //String[] value = likes.toArray(new String[likes.size()]);
-            float[] value = new float[]{85, 23, 69, 43, 60};
-            initContents(holder, label, value);
+
+            String[] labels = dates.toArray(new String[dates.size()]);
+            float[] values = new float[likes.size()];
+            for (Float value : likes) {
+                values[likes.indexOf(value)] = value;
+            }
+            initContents(holder, labels, values);
         }
 
         return view;

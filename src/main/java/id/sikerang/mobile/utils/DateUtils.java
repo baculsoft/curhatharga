@@ -14,14 +14,15 @@ public final class DateUtils {
     private static final String TAG = DateUtils.class.getSimpleName();
 
     public static final SimpleDateFormat SERVER_PATTERN = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
-    public static final SimpleDateFormat MOBILE_PATTERN = new SimpleDateFormat("d MMMM yyyy", new Locale("id"));
+    public static final SimpleDateFormat GRAPH_PATTERN = new SimpleDateFormat("dd/MM/yyyy", new Locale("id"));
+    public static final SimpleDateFormat NEWS_PATTERN = new SimpleDateFormat("d MMMM yyyy", new Locale("id"));
 
-    public static String convertDate(String pDateValue) {
+    public static String convertDate(String pDateValue, SimpleDateFormat pSimpleDateFormat) {
         String convertedDate = "";
 
         try {
             Date date = SERVER_PATTERN.parse(pDateValue);
-            convertedDate = MOBILE_PATTERN.format(date);
+            convertedDate = pSimpleDateFormat.format(date);
         } catch (ParseException e) {
             Log.e(TAG, e.getMessage(), e);
         }

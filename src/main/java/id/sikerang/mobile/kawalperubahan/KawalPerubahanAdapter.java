@@ -31,7 +31,7 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanHo
 
     @Override
     public void onBindViewHolder(KawalPerubahanHolder holder, int position) {
-        String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(position).getDate());
+        String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(position).getDate(), DateUtils.NEWS_PATTERN);
         String date = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(convertedDate);
         String title = mKawalPerubahan.getKawalPerubahanContents().get(position).getTitle().substring(0, Constants.MAX_TITLE).concat("...");
         String content = mKawalPerubahan.getKawalPerubahanContents().get(position).getContent().substring(0, Constants.MAX_CONTENT).concat("...");
@@ -45,7 +45,7 @@ public class KawalPerubahanAdapter extends RecyclerView.Adapter<KawalPerubahanHo
                 Intent intent = new Intent(view.getContext(), KawalPerubahanActivity.class);
                 Bundle extras = new Bundle();
                 Long itemPosition = position;
-                String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getDate());
+                String convertedDate = DateUtils.convertDate(mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getDate(), DateUtils.NEWS_PATTERN);
                 String dates = SiKerang.getContext().getResources().getString(R.string.text_tanggal).concat(convertedDate);
                 String titles = mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getTitle();
                 String contents = mKawalPerubahan.getKawalPerubahanContents().get(itemPosition.intValue()).getContent();
