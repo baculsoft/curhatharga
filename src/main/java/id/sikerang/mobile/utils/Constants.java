@@ -71,4 +71,10 @@ public final class Constants {
      */
     public static final int MAX_TITLE = 30;
     public static final int MAX_CONTENT = 110;
+
+    /**
+     * Request Permission Code
+     */
+    public static final int LOCATION_PERMISSION_REQUEST = 23;
+    public static final int PHONESTATE_PERMISSION_REQUEST = 24;
 }

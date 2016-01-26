@@ -55,12 +55,13 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_komoditas);
         ButterKnife.bind(this);
         initComponents();
+
         initControllers();
         addLocationAddress();
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onDestroy () {
         removeLocationAddress();
         super.onDestroy();
     }
@@ -95,6 +96,11 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         mDrawerLayoutMenu.closeDrawers();
 
         return true;
+    }
+
+    public void updateLocation(){
+        mKomoditasController.updateLocation();
+        addLocationAddress();
     }
 
     private void initComponents() {

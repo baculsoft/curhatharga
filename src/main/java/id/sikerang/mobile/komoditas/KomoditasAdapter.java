@@ -158,4 +158,8 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
     public void setKomoditasHolder(KomoditasHolder pKomoditasHolder) {
         mKomoditasHolder = pKomoditasHolder;
     }
+
+    public void updateLocation(){
+        mKomoditasController.updateLocation();
+    }
 }

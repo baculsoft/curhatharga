@@ -113,6 +113,10 @@ public class KomoditasController implements Callback<Komoditas> {
         return mKomoditas;
     }
 
+    public void updateLocation(){
+        mLocationTracker.getLocation();
+    }
+
     private void submit(Komoditas komoditas) {
         OkHttpClient okHttpClient = new OkHttpClient();
         okHttpClient.setConnectTimeout(Constants.MAX_TIMEOUT, TimeUnit.MINUTES);

@@ -1,5 +1,7 @@
 package id.sikerang.mobile.komoditas;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,12 +26,15 @@ import butterknife.ButterKnife;
 import id.sikerang.mobile.R;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.KeyboardUtils;
+import id.sikerang.mobile.utils.PermissionUtil;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
 public class KomoditasFragment extends Fragment implements View.OnClickListener, OnGlobalLayoutListener {
+    private static final String TAG = KomoditasFragment.class.getSimpleName();
+
     @Bind(R.id.vp_komoditas)
     ViewPager mViewPagerKomoditas;
 
@@ -52,6 +58,8 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
     private View mRootView;
     private KomoditasAdapter mKomoditasAdapter;
     private boolean isCurhatExpanded;
+    private boolean isLocationRequested;
+    private boolean isPhoneStateRequested;
 
     @Nullable
     @Override
@@ -60,7 +68,7 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
         ButterKnife.bind(this, view);
         initComponents();
         initAdapters();
-
+        requestPermission();
         return view;
     }
 
@@ -104,6 +112,35 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
             }
         }
         showHideFab();
+    }
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case Constants.LOCATION_PERMISSION_REQUEST:
+                if (grantResults.length > 0 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    mKomoditasAdapter.updateLocation();
+                    ((KomoditasActivity)getActivity()).updateLocation();
+                    Log.d(TAG, "Location permission granted");
+                } else {
+                    isLocationRequested = false;
+                    requestPermission();
+                    Log.d(TAG, "Location permission not granted");
+                }
+                break;
+            case Constants.PHONESTATE_PERMISSION_REQUEST:
+                if (grantResults.length > 0 &&
+                        grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Log.d(TAG, "Phone State permission granted");
+                } else {
+                    isPhoneStateRequested = false;
+                    requestPermission();
+                    Log.d(TAG, "Phone State permission not granted");
+                }
+                break;
+            default:
+                return;
+        }
     }
 
     private void initComponents() {
@@ -192,5 +229,22 @@ public class KomoditasFragment extends Fragment implements View.OnClickListener,
 
     private ActionBar getActionBar() {
         return ((AppCompatActivity) getActivity()).getSupportActionBar();
+    }
+
+    private void requestPermission(){
+        if(!PermissionUtil.isLocationPermitted() && !isLocationRequested){
+            isLocationRequested = true;
+            this.requestPermissions(new String[]{
+                            android.Manifest.permission.ACCESS_COARSE_LOCATION},
+                    Constants.LOCATION_PERMISSION_REQUEST);
+        }
+
+        if(!PermissionUtil.isPhoneStatePermitted() && !isPhoneStateRequested){
+            isPhoneStateRequested = true;
+            this.requestPermissions(new String[]{
+                            Manifest.permission.READ_PHONE_STATE},
+                    Constants.PHONESTATE_PERMISSION_REQUEST);
+        }
+
     }
 }
