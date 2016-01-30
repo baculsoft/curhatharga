@@ -96,7 +96,7 @@ public final class LocationTracker implements LocationListener {
                     locationManager.removeUpdates(this);
                 }
             }
-        } catch (Exception e) {
+        } catch (SecurityException e) {
             Log.e(TAG, e.getMessage(), e);
         }
 

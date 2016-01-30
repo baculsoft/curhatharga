@@ -37,6 +37,11 @@ public final class Constants {
     public static final int KEYBOARD_LAYOUT = 96 + (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ? 48 : 0);
 
     /**
+     * Application permission request code
+     */
+    public static final int REQUEST_APP_PERMISSIONS = 10;
+
+    /**
      * Application menu code
      */
     public static final int MENU_KOMODITAS = 100;
@@ -71,10 +76,4 @@ public final class Constants {
      */
     public static final int MAX_TITLE = 30;
     public static final int MAX_CONTENT = 110;
-
-    /**
-     * Request Permission Code
-     */
-    public static final int LOCATION_PERMISSION_REQUEST = 23;
-    public static final int PHONESTATE_PERMISSION_REQUEST = 24;
 }

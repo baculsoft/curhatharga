@@ -113,7 +113,7 @@ public class KomoditasController implements Callback<Komoditas> {
         return mKomoditas;
     }
 
-    public void updateLocation(){
+    public void updateLocation() {
         mLocationTracker.getLocation();
     }
 

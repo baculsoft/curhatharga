@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import id.sikerang.mobile.R;
 import id.sikerang.mobile.SiKerang;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
@@ -51,7 +52,7 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
             mHoldersMap.put(position, new KomoditasHolder(position, mLayoutInflater, container));
         }
 
-        String location = SharedPreferencesUtils.getInstance(SiKerang.getContext()).getLocationAddress();
+        String location = getLocation();
         setKomoditasHolder(mHoldersMap.get(position));
         getKomoditasHolder().getTextViewLocation().setText(location);
         container.addView(getKomoditasHolder().getView());
@@ -159,7 +160,12 @@ public class KomoditasAdapter extends PagerAdapter implements View.OnClickListen
         mKomoditasHolder = pKomoditasHolder;
     }
 
-    public void updateLocation(){
-        mKomoditasController.updateLocation();
+    private String getLocation() {
+        String location = SiKerang.getContext().getResources().getString(R.string.text_location_unknown);
+        if (SharedPreferencesUtils.getInstance(SiKerang.getContext()).getLocationAddress() != null) {
+            location = SharedPreferencesUtils.getInstance(SiKerang.getContext()).getLocationAddress();
+        }
+
+        return location;
     }
 }

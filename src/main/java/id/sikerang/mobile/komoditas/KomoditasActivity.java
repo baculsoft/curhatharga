@@ -1,7 +1,10 @@
 package id.sikerang.mobile.komoditas;
 
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -28,6 +31,7 @@ import id.sikerang.mobile.tentangaplikasi.TentangAplikasiFragment;
 import id.sikerang.mobile.utils.Configs;
 import id.sikerang.mobile.utils.Constants;
 import id.sikerang.mobile.utils.KeyboardUtils;
+import id.sikerang.mobile.utils.Permissions;
 import id.sikerang.mobile.utils.SharedPreferencesUtils;
 
 /**
@@ -55,13 +59,11 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         setContentView(R.layout.activity_komoditas);
         ButterKnife.bind(this);
         initComponents();
-
         initControllers();
-        addLocationAddress();
     }
 
     @Override
-    protected void onDestroy () {
+    protected void onDestroy() {
         removeLocationAddress();
         super.onDestroy();
     }
@@ -69,7 +71,12 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
     @Override
     protected void onResume() {
         super.onResume();
-        addLocationAddress();
+
+        if (Permissions.isMarshmallow()) {
+            initPermissions();
+        } else {
+            addLocationAddress();
+        }
     }
 
     @Override
@@ -98,9 +105,18 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         return true;
     }
 
-    public void updateLocation(){
-        mKomoditasController.updateLocation();
-        addLocationAddress();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case Constants.REQUEST_APP_PERMISSIONS: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+                    finish();
+                } else {
+                    finish();
+                }
+                break;
+            }
+        }
     }
 
     private void initComponents() {
@@ -153,7 +169,17 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
         mKomoditasController = new KomoditasController(SiKerang.getContext());
     }
 
+    @TargetApi(23)
+    private void initPermissions() {
+        if (!Permissions.hasSelfPermissions(KomoditasActivity.this, Configs.APP_PERMISSIONS)) {
+            requestPermissions(Configs.APP_PERMISSIONS, Constants.REQUEST_APP_PERMISSIONS);
+        } else {
+            addLocationAddress();
+        }
+    }
+
     private void addLocationAddress() {
+        mKomoditasController.updateLocation();
         String locationAddress = getLocationAddress();
         SharedPreferencesUtils.getInstance(SiKerang.getContext()).setLocationAddress(locationAddress);
     }

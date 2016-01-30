@@ -1,5 +1,7 @@
 package id.sikerang.mobile.utils;
 
+import android.Manifest;
+
 /**
  * @author Budi Oktaviyan Suryanto (budioktaviyans@gmail.com)
  */
@@ -9,6 +11,15 @@ public final class Configs {
      */
     private Configs() {
     }
+
+    /**
+     * Android application permissions
+     */
+    public static final String[] APP_PERMISSIONS = {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.READ_PHONE_STATE
+    };
 
     /**
      * Application API URL
