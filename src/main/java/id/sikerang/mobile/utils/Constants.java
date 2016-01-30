@@ -72,6 +72,11 @@ public final class Constants {
     public static final int DISLIKES = 0;
 
     /**
+     * Maximum address length for "Komoditas" feature
+     */
+    public static final int MAX_ADDRESS = 15;
+
+    /**
      * Maximum preview content for "Kawal Perubahan" feature
      */
     public static final int MAX_TITLE = 30;

@@ -109,9 +109,7 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
             case Constants.REQUEST_APP_PERMISSIONS: {
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
-                    finish();
-                } else {
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED && grantResults[2] != PackageManager.PERMISSION_GRANTED) {
                     finish();
                 }
                 break;
@@ -197,6 +195,9 @@ public class KomoditasActivity extends AppCompatActivity implements NavigationVi
             if (addresses != null && addresses.size() > 0) {
                 Address address = mKomoditasController.getAddress().get(0);
                 locationAddress = address.getAdminArea();
+                if (locationAddress.length() >= Constants.MAX_ADDRESS) {
+                    locationAddress = locationAddress.substring(0, Constants.MAX_ADDRESS).concat("\n").concat(locationAddress.substring(Constants.MAX_ADDRESS));
+                }
             }
         } catch (IOException e) {
             Log.e(TAG, e.getMessage(), e);
